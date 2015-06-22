@@ -1,3 +1,7 @@
+html {
+	background: 	#090110;
+}
+
 img {
 	width:			48px;
 	height:			48px;
@@ -8,22 +12,9 @@ img {
 	background:		#000;
 }
 
-img.highlighted {
-	background:		rgba(50, 50, 50, 0.5);
-}
-
-div.description {
-	font-family:	consolas;
-	font-size:		14px;
-	min-height:		50px;
-}
-
-div.description strong {
-	font-size: 		18px;
-}
-
 h1, h2 {
 	font-family:	consolas;
+	color:			#FFF;
 }
 
 #getBonkd, #hotslogs {
@@ -31,6 +22,11 @@ h1, h2 {
 	min-height: 	500px;
 	min-width: 		350px;
 	margin-right:	20px;
+	color:			#FFF;
+}
+
+table {
+	color:			#FFF;
 }
 
 div.left {
@@ -65,4 +61,23 @@ td.talentNum {
 
 #search, #search input {
 	width:			350px;
+	height:			30px;
+
+	font-family:	consolas;
+	font-size:		18px;
+}
+
+#search {
+	height:			50px;
+}
+
+#search input {
+	margin:			20px 0;
+}
+
+#bg-video {
+	position: 		absolute;
+	bottom:			0;
+	right:			0;
+	z-index:		-100;
 }

@@ -137,8 +137,7 @@
 
 		echo "Getting GB information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $gbTalents, $images, ETalentSite::GetBonkd);
-
-		break;
+		
 	}
 
 	truncateTable(ETable::Skills);

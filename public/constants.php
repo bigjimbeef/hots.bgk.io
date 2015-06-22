@@ -13,6 +13,7 @@
 		const HotsLogs 		= "hotslogs";
 		const HeroesFire 	= "heroesfire";
 		const Skills		= "skills";
+		const Videos		= "videos";
 	}
 
 	$TALENT_LEVELS = array(

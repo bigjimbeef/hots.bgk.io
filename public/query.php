@@ -65,3 +65,21 @@
 
 		queryDB($query);
 	}
+
+	function populateVideos($array) {
+		$query = "INSERT IGNORE INTO hots_bgk_io." . ETable::Videos . " (hero, videopath) VALUES";
+
+		$count = 0;
+		foreach ($array as $key => $value) {
+			$query .= "(\"$key\", \"$value\")";
+
+			++$count;
+			if ( $count < count($array) ) {
+				$query .= ", ";
+			}
+		}
+
+		$query .= ";";
+
+		queryDB($query);
+	}

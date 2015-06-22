@@ -67,7 +67,7 @@
 
 		$html = "";
 
-		$query = "SELECT one, four, seven, ten, thirteen, sixteen, twenty FROM hots_bgk_io.$targetTable AS gb WHERE gb.hero LIKE '%$character%';";
+		$query = "SELECT one, four, seven, ten, thirteen, sixteen, twenty FROM hots_bgk_io.$targetTable AS gb WHERE gb.hero LIKE '%" . addslashes($character) . "%';";
 		$result = queryDB($query);
 	
 		while ( $row = mysql_fetch_assoc($result["res"]) )
@@ -75,7 +75,7 @@
 	    	$html .= "<table>";
 	        foreach ( $row as $col_name => $col_val )
 	        {
-	        	$query = "SELECT * FROM hots_bgk_io.skills AS s WHERE name LIKE '%$col_val%'";
+	        	$query = "SELECT * FROM hots_bgk_io.skills AS s WHERE name LIKE '%" . addslashes($col_val) . "%'";
 	        	$result = queryDB($query);
 
 	        	$res = mysql_fetch_assoc($result["res"]);
@@ -93,6 +93,19 @@
 	    return $baseHTML;
 	}
 
+	function setupVideoBackground($character, $baseHTML) {
+
+		$query = "SELECT videopath FROM hots_bgk_io." . ETable::Videos . " AS v WHERE v.hero LIKE '%" . addslashes($character) . "%'";
+		$result = queryDB($query);
+
+		$res = mysql_fetch_assoc($result["res"]);
+
+		$videopath = $res["videopath"];
+
+		$baseHTML->find("#bg-video", 0)->src = $videopath;
+
+		return $baseHTML;
+	}
 
 	// The base contents of the page.
 	$pageContents = "";
@@ -102,13 +115,17 @@
 
 	$baseHTML 	= file_get_html("base.html");
 
-	if ( !empty($closest) )
+	if ( !empty($character) )
 	{
 		$moddedHTML = $baseHTML;
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::GetBonkd);
 		
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HotsLogs);
 
+		// Draw the background video.
+		$moddedHTML = setupVideoBackground($closest, $moddedHTML);
+
+		// Character name.
 		$moddedHTML->find("h1", 0)->innertext = $closest;
 
 		$pageContents .= $moddedHTML;
