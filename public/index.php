@@ -1,52 +1,14 @@
 <?php
 	include("simple_html_dom.php");
-
-	const 	DEBUG = 0;
-
-	const 	MAX_TALENTS = 7;
-	$CHARACTERS = array(
-		"Abathur",
-		"Anub'arak",
-		"Arthas",
-		"Azmodan",
-		"Brightwing",
-		"Chen",
-		"Diablo",
-		"E.T.C.",
-		"Falstad",
-		"Gazlowe",
-		"Illidan",
-		"Jaina",
-		"Johanna",
-		"Kael'thas",
-		"Kerrigan",
-		"Li Li",
-		"Malfurion",
-		"Muradin",
-		"Murky",
-		"Nazeebo",
-		"Nova",
-		"Raynor",
-		"Rehgar",
-		"Sgt Hammer",
-		"Sonya",
-		"Stitches",
-		"Sylvanas",
-		"Tassadar",
-		"The Butcher",
-		"The Lost Vikings",
-		"Thrall",
-		"Tychus",
-		"Tyrael",
-		"Tyrande",
-		"Uther",
-		"Valla",
-		"Zagara",
-		"Zeratul"
-	);
+	include("constants.php");
+	include("query.php");
 
 	function getClosestName($input)
 	{
+		if ( empty($input) ) {
+			return "";
+		}
+
 		// We remove periods from search terms if none are present in the input.
 		$keepPeriods = strpos($input, '.') !== false;
 
@@ -82,92 +44,6 @@
 		return $closest;
 	}
 
-	function getBonkd($character, $baseHTML)
-	{
-		// Remove punctuation and replace spaces with dashes.
-		$character 	= preg_replace("/['|\.]/", "", $character);
-		$character 	= preg_replace("/ /", "-", $character);
-		$url		= "http://getbonkd.com/guides/$character/";
-		
-		$output = "";
-
-		if ( DEBUG )
-		{
-			$output = ("GB:" . $url . PHP_EOL);
-		}
-		else 
-		{
-			$html = file_get_html($url);
-
-			$count = 0;
-			foreach($html->find("#toptalents span.tooltips") as $singleTalent) 
-			{
-				$text 	= $singleTalent->title;
-
-				$img 	= $singleTalent->find("img", 0);
-				$img->description = $text;
-
-				if ( !empty($text) )
-				{
-					if ( $count >= MAX_TALENTS )
-					{
-						break;
-					}
-				}
-
-				$output .= $img;
-
-				$count++;
-			}
-		}
-
-		$baseHTML->find("#getbonkd div.talents", 0)->innertext = $output;
-
-		return $baseHTML;
-	}
-
-	function hotsLogs($character, $baseHTML)
-	{
-		// Ensure the character name is capitalised, because HL needs that for some reason.
-		$character 	= ucwords($character);
-		$character 	= rawurlencode($character);
-		$url		= "https://www.hotslogs.com/Sitewide/HeroDetails?Hero=$character";
-
-		$output = "";
-
-		if ( DEBUG )
-		{
-			$output = ("HL:" . $url . PHP_EOL);
-		}
-		else
-		{
-			$html = file_get_html($url);
-
-			$table 	= $html->find("table", 2);
-			$row 	= $table->find("tr.rgRow", 0);
-
-			$count = 0;
-			foreach($row->find("td img") as $singleTalent)
-			{
-				if ( !empty($singleTalent) )
-				{
-					if ( $count >= MAX_TALENTS )
-					{
-						break;
-					}
-				}
-
-				$output .= $singleTalent;
-
-				$count++;
-			}
-		}
-
-		$baseHTML->find("#hotslogs div.talents", 0)->innertext = $output;
-
-		return $baseHTML;
-	}
-
 	function getCharacterFromURL()
 	{
 		$retVal = "";
@@ -185,24 +61,61 @@
 		return $retVal;
 	}
 
+	function drawTalents($character, $baseHTML, $targetTable) {
+
+		global $TALENT_LEVELS;
+
+		$html = "";
+
+		$query = "SELECT one, four, seven, ten, thirteen, sixteen, twenty FROM hots_bgk_io.$targetTable AS gb WHERE gb.hero LIKE '%$character%';";
+		$result = queryDB($query);
+	
+		while ( $row = mysql_fetch_assoc($result["res"]) )
+	    {
+	    	$html .= "<table>";
+	        foreach ( $row as $col_name => $col_val )
+	        {
+	        	$query = "SELECT * FROM hots_bgk_io.skills AS s WHERE name LIKE '%$col_val%'";
+	        	$result = queryDB($query);
+
+	        	$res = mysql_fetch_assoc($result["res"]);
+
+	        	$imgpath = $res["imgpath"];
+	        	$talentNum = $TALENT_LEVELS[$col_name];
+
+	        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img src='http:$imgpath' /></tr>";
+	        }
+	        $html .=  "</table>";
+	    }
+
+	    $baseHTML->find("#$targetTable div.talents", 0)->innertext = $html;
+
+	    return $baseHTML;
+	}
+
+
 	// The base contents of the page.
 	$pageContents = "";
 
-	$character = getCharacterFromURL();
-	$closest = getClosestName($character);
+	$character 	= getCharacterFromURL();
+	$closest 	= getClosestName($character);
+
+	$baseHTML 	= file_get_html("base.html");
 
 	if ( !empty($closest) )
 	{
-		$baseHTML = file_get_html("base.html");
-
 		$moddedHTML = $baseHTML;
-		$moddedHTML = getBonkd($closest, $baseHTML);
-		$moddedHTML = hotsLogs($closest, $moddedHTML);
+		$moddedHTML = drawTalents($closest, $baseHTML, ETable::GetBonkd);
+		
+		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HotsLogs);
 
 		$moddedHTML->find("h1", 0)->innertext = $closest;
 
 		$pageContents .= $moddedHTML;
 	}
+	else
+	{
+		$pageContents = $baseHTML;
+	}
 
 	echo $pageContents;
-?>

@@ -1,0 +1,2 @@
+CREATE TABLE getbonkd ( id INT(32) NOT NULL AUTO_INCREMENT PRIMARY KEY, hero VARCHAR(32), one VARCHAR(32), four VARCHAR(32), seven VARCHAR(32), ten VARCHAR(32), thirteen VARCHAR(32), sixteen VARCHAR(32), twenty VARCHAR(32) );
+
