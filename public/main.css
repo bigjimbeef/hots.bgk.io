@@ -80,4 +80,11 @@ td.talentNum {
 	bottom:			0;
 	right:			0;
 	z-index:		-100;
+	transition:		opacity 1.0s ease-in-out;
+}
+
+@media (max-width: 1200px) {
+	#bg-video {
+		opacity:		0.3;
+	}
 }
