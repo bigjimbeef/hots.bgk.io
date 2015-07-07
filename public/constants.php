@@ -14,6 +14,7 @@
 		const HeroesFire 	= "heroesfire";
 		const Skills		= "skills";
 		const Videos		= "videos";
+		const Time			= "time";
 	}
 
 	$TALENT_LEVELS = array(
@@ -56,7 +57,7 @@
 		"Stitches",
 		"Sylvanas",
 		"Tassadar",
-		//"The Butcher",
+		"The Butcher",
 		"The Lost Vikings",
 		"Thrall",
 		"Tychus",

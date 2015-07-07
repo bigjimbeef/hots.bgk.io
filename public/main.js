@@ -4,11 +4,16 @@ $(document).ready(function(){
 
 	// Search
 	//
+
+	function doSearch() {
+		var value = $(search).val();
+
+		window.location.href = value;
+	}
+
 	$(search).keyup(function(e) {
 		if ( e.which == 13 ) {
-			var value = $(this).val();
-
-			window.location.href = value;
+			doSearch();
 		}
 	});
 
@@ -19,5 +24,14 @@ $(document).ready(function(){
 	});
 	$(search).focus();
 
+	$(search).autocomplete({
+		source: characterJson
+	});
+
+
+	$("li.ui-menu-item").click(function() {
+		console.log("GO");
+		doSearch();
+	});
 	//
 });

@@ -83,3 +83,11 @@
 
 		queryDB($query);
 	}
+
+	function populateTime() {
+		$date 	= date("g:ia \o\\n l jS F Y");
+
+		$query 	= "INSERT INTO hots_bgk_io." . ETable::Time . " (updated) VALUES ('" . $date . "');";
+
+		queryDB($query);
+	}

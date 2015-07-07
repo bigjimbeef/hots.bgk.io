@@ -69,7 +69,7 @@
 
 		$query = "SELECT one, four, seven, ten, thirteen, sixteen, twenty FROM hots_bgk_io.$targetTable AS gb WHERE gb.hero LIKE '%" . addslashes($character) . "%';";
 		$result = queryDB($query);
-	
+
 		while ( $row = mysql_fetch_assoc($result["res"]) )
 	    {
 	    	$html .= "<table>";
@@ -107,23 +107,62 @@
 		return $baseHTML;
 	}
 
+	function setupTime($baseHTML) {
+
+		$query = "SELECT updated FROM hots_bgk_io." . ETable::Time . ";";
+		$result = queryDB($query);
+
+		$res = mysql_fetch_assoc($result["res"]);
+		$updated = $res["updated"];
+
+		$baseHTML->find("#update-time", 0)->innertext = "Last updated: $updated";
+
+		return $baseHTML;
+	}
+
+	function addCharacterJSON($baseHTML) {
+
+		global $CHARACTERS;
+
+		$json = "<script>var characterJson = [";
+
+		$count = 0;
+		foreach ( $CHARACTERS as $character ) {
+
+			$json .= "\"$character\"";
+
+			++$count;
+			if ( $count < count($CHARACTERS) ) {
+				$json .= ", ";
+			}
+		}
+
+		$json .= "];</script>";
+
+		$baseHTML .= $json;
+
+		return $baseHTML;
+	}
+
 	// The base contents of the page.
 	$pageContents = "";
 
 	$character 	= getCharacterFromURL();
 	$closest 	= getClosestName($character);
 
-	$baseHTML 	= file_get_html("base.html");
-
 	if ( !empty($character) )
 	{
-		$moddedHTML = $baseHTML;
+		$baseHTML 	= file_get_html("base.html");
+		$moddedHTML = addCharacterJSON($baseHTML);
+
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::GetBonkd);
-		
+
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HotsLogs);
 
 		// Draw the background video.
 		$moddedHTML = setupVideoBackground($closest, $moddedHTML);
+
+		$moddedHTML = setupTime($moddedHTML);
 
 		// Character name.
 		$moddedHTML->find("h1", 0)->innertext = $closest;
@@ -132,7 +171,9 @@
 	}
 	else
 	{
-		$pageContents = $baseHTML;
+		$baseHTML		= file_get_html("empty.html");
+		$baseHTML		= addCharacterJSON($baseHTML);
+		$pageContents 	= $baseHTML;
 	}
 
 	echo $pageContents;

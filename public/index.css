@@ -1,0 +1,63 @@
+html {
+	background: 	#090110;
+}
+
+body {
+	margin:			0;
+}
+
+#search h2 {
+	margin:			0 0 10px 0;
+	color:			#FFF;
+	font-weight:	normal;
+	font-family:	consolas;
+	text-align:		left;
+}
+
+#search {
+	text-align:		center;
+}
+
+#search, #search input {
+	width:			500px;
+	height:			30px;
+
+	font-family:	consolas;
+	font-size:		18px;
+}
+
+#search {
+	margin:			0 auto;
+}
+
+#update-time {
+	position:		absolute;
+	bottom:			5px;
+	left:			10px;
+	
+	color:			#666;
+	font-family:	consolas;
+}
+
+ul.ui-autocomplete {
+	max-height:		300px;
+	overflow-y:		auto;
+	overflow-x:		hidden;
+}
+
+#outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#inner {
+    margin-left: auto;
+    margin-right: auto; 
+}

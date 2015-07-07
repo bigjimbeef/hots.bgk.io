@@ -83,8 +83,23 @@ td.talentNum {
 	transition:		opacity 1.0s ease-in-out;
 }
 
+#update-time {
+	position:		absolute;
+	bottom:			5px;
+	left:			10px;
+	
+	color:			#666;
+	font-family:	consolas;
+}
+
 @media (max-width: 1200px) {
 	#bg-video {
 		opacity:		0.3;
 	}
+}
+
+ul.ui-autocomplete {
+	max-height:		300px;
+	overflow-y:		auto;
+	overflow-x:		hidden;
 }

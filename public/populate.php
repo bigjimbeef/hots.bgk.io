@@ -137,7 +137,8 @@
 
 		echo "Getting GB information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $gbTalents, $images, ETalentSite::GetBonkd);
-		
+
+		// TODO: Heroesfire.
 	}
 
 	truncateTable(ETable::Skills);
@@ -148,3 +149,6 @@
 
 	truncateTable(ETable::GetBonkd);
 	populateTalentTable($gbTalents, ETable::GetBonkd);
+
+	truncateTable(ETable::Time);
+	populateTime();
