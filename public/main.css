@@ -1,5 +1,6 @@
 html {
 	background: 	#090110;
+	font-family:	consolas !important;
 }
 
 img {
@@ -10,6 +11,10 @@ img {
 
 	border:			1px solid #CCC;
 	background:		#000;
+}
+
+img.hovered {
+	border:			1px solid #6939f8;
 }
 
 h1, h2 {
@@ -102,4 +107,32 @@ ul.ui-autocomplete {
 	max-height:		300px;
 	overflow-y:		auto;
 	overflow-x:		hidden;
+}
+
+body .ui-autocomplete .ui-state-focus {
+	background:		#090110;
+	color:			#fff;
+	border:			1px solid #000077;
+}
+
+body .ui-tooltip {
+	padding: 		10px 20px;
+	color: 			white;
+	border-radius: 	5px;
+	font-size:		14px 				!important;
+	font-family:	consolas 			!important;
+	border:			1px solid #6939f8;
+	border-width: 	1px 				!important;
+	background:		#090110;
+}
+
+body .ui-tooltip span.number {
+	color:			#a296ff;
+	font-weight: 	bold;
+}
+
+@media (max-width: 750px) {
+	body .ui-tooltip {
+		display:	none !important;
+	}
 }

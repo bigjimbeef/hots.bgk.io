@@ -3,7 +3,7 @@
 	include("query.php");
 	include("constants.php");
 
-	function getSingleGetBonkdCharacterData($character, &$images)
+	function getSingleGetBonkdCharacterData($character, &$images, &$tooltips)
 	{
 		// Remove punctuation and replace spaces with dashes.
 		$character 	= preg_replace("/['|\.]/", "", $character);
@@ -29,7 +29,7 @@
 				$testText = htmlspecialchars_decode($text);
 
 				$matches = null;
-				$returnValue = preg_match("/<strong>(.*)<\/strong>/", $testText, $matches);
+				$returnValue = preg_match("/<strong>(.*)<\/strong><br \/> (.*)/", $testText, $matches);
 
 				if ( !empty($matches) )
 				{
@@ -39,6 +39,8 @@
 					if ( !isset($images[$talentName]) ) {
 						$images[$talentName] = $imgSrc;
 					}
+
+					$tooltips[$talentName] = $matches[2];
 				}
 
 				$count++;
@@ -52,7 +54,7 @@
 		return $talents;
 	}
 
-	function getSingleHotsLogsCharacterData($character, &$images)
+	function getSingleHotsLogsCharacterData($character, &$images, &$tooltips)
 	{
 		// Ensure the character name is capitalised, because HL needs that for some reason.
 		$character 	= ucwords($character);
@@ -90,8 +92,9 @@
 	$gbTalents 	= array();
 	$hlTalents	= array();
 	$images		= array();
+	$tooltips 	= array();
 
-	function addSingleCharacterTalents($characterName, &$targetArray, &$images, $targetSite)
+	function addSingleCharacterTalents($characterName, &$targetArray, &$images, &$tooltips, $targetSite)
 	{
 		$entry = array();
 		// Add the character name...
@@ -104,13 +107,13 @@
 			default:
 			case ETalentSite::GetBonkd:
 			{
-				$singleChar = getSingleGetBonkdCharacterData($characterName, $images);
+				$singleChar = getSingleGetBonkdCharacterData($characterName, $images, $tooltips);
 			}
 			break;
 
 			case ETalentSite::HotsLogs:
 			{
-				$singleChar = getSingleHotsLogsCharacterData($characterName, $images);
+				$singleChar = getSingleHotsLogsCharacterData($characterName, $images, $tooltips);
 			}
 			break;
 
@@ -125,22 +128,20 @@
 		$entry = array_merge($entry, $singleChar);
 
 		$targetArray[] = $entry;
-
-		$num = count($entry);
-		echo "$num entries...\n";
 	}
 
 	foreach($CHARACTERS as $characterName) {
 
-		echo "Getting HL information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $hlTalents, $images, ETalentSite::HotsLogs);
+		//echo "Getting HL information for $characterName...\n";
+		//addSingleCharacterTalents($characterName, $hlTalents, $images, ETalentSite::HotsLogs);
 
 		echo "Getting GB information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $gbTalents, $images, ETalentSite::GetBonkd);
+		addSingleCharacterTalents($characterName, $gbTalents, $images, $tooltips, ETalentSite::GetBonkd);
 
 		// TODO: Heroesfire.
 	}
 
+	/*
 	truncateTable(ETable::Skills);
 	populateSkills($images);
 
@@ -149,6 +150,12 @@
 
 	truncateTable(ETable::GetBonkd);
 	populateTalentTable($gbTalents, ETable::GetBonkd);
+	*/
 
+	truncateTable(ETable::Tooltips);
+	populateTooltips($tooltips);
+
+	/*
 	truncateTable(ETable::Time);
 	populateTime();
+	*/

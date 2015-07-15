@@ -15,6 +15,7 @@
 		const Skills		= "skills";
 		const Videos		= "videos";
 		const Time			= "time";
+		const Tooltips		= "tooltips";
 	}
 
 	$TALENT_LEVELS = array(

@@ -75,7 +75,8 @@
 	    	$html .= "<table>";
 	        foreach ( $row as $col_name => $col_val )
 	        {
-	        	$query = "SELECT * FROM hots_bgk_io.skills AS s WHERE name LIKE '%" . addslashes($col_val) . "%'";
+	        	$escaped = addslashes($col_val);
+	        	$query = "SELECT * FROM hots_bgk_io.skills AS s WHERE name LIKE '%" . $escaped . "%'";
 	        	$result = queryDB($query);
 
 	        	$res = mysql_fetch_assoc($result["res"]);
@@ -83,7 +84,14 @@
 	        	$imgpath = $res["imgpath"];
 	        	$talentNum = $TALENT_LEVELS[$col_name];
 
-	        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img src='http:$imgpath' /></tr>";
+	        	$queryTT = "SELECT * FROM hots_bgk_io.tooltips AS s WHERE name LIKE '%" . $escaped . "%'";
+	        	$resultTT = queryDB($queryTT);
+
+	        	$resTT = mysql_fetch_assoc($resultTT["res"]);
+
+	        	$tooltip = $resTT["text"];
+
+	        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http:$imgpath' /></tr>";
 	        }
 	        $html .=  "</table>";
 	    }
@@ -153,7 +161,6 @@
 	if ( !empty($character) )
 	{
 		$baseHTML 	= file_get_html("base.html");
-		$moddedHTML = addCharacterJSON($baseHTML);
 
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::GetBonkd);
 
@@ -166,6 +173,7 @@
 
 		// Character name.
 		$moddedHTML->find("h1", 0)->innertext = $closest;
+		$moddedHTML = addCharacterJSON($moddedHTML);
 
 		$pageContents .= $moddedHTML;
 	}

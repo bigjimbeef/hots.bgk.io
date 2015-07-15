@@ -84,6 +84,24 @@
 		queryDB($query);
 	}
 
+	function populateTooltips(&$tooltips) {
+		$query = "INSERT IGNORE INTO hots_bgk_io." . ETable::Tooltips . " (name, text) VALUES";
+
+		$count = 0;
+		foreach ($tooltips as $key => $value) {
+			$query .= "(\"" . addslashes($key) . "\", \"" . addslashes($value) . "\")";
+
+			++$count;
+			if ( $count < count($tooltips) ) {
+				$query .= ", ";
+			}
+		}
+
+		$query .= ";";
+
+		queryDB($query);
+	}
+
 	function populateTime() {
 		$date 	= date("g:ia \o\\n l jS F Y");
 
