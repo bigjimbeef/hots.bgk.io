@@ -123,7 +123,11 @@ body .ui-tooltip {
 	font-family:	consolas 			!important;
 	border:			1px solid #6939f8;
 	border-width: 	1px 				!important;
-	background:		#090110;
+	background:		rgba(9,1,16, 0.85);
+}
+
+body .ui-tooltip a {
+	color:			#AAA;
 }
 
 body .ui-tooltip span.number {

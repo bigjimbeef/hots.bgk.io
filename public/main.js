@@ -34,7 +34,7 @@ $(document).ready(function(){
 		doSearch();
 	});
 
-
+	
 	$( 'img' ).tooltip({
 		position: {
 			my: "left top",

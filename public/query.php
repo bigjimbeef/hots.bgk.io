@@ -109,3 +109,9 @@
 
 		queryDB($query);
 	}
+
+
+	function superescape($string) {
+
+		return $string;
+	}

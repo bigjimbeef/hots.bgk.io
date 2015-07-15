@@ -76,6 +76,7 @@
 	        foreach ( $row as $col_name => $col_val )
 	        {
 	        	$escaped = addslashes($col_val);
+
 	        	$query = "SELECT * FROM hots_bgk_io.skills AS s WHERE name LIKE '%" . $escaped . "%'";
 	        	$result = queryDB($query);
 
@@ -91,6 +92,7 @@
 
 	        	$tooltip = $resTT["text"];
 
+	        	$tooltip = htmlspecialchars($tooltip, ENT_QUOTES, 'UTF-8');
 	        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http:$imgpath' /></tr>";
 	        }
 	        $html .=  "</table>";
@@ -152,6 +154,13 @@
 		return $baseHTML;
 	}
 
+	function addTitle($baseHTML, $character) {
+
+		$baseHTML->find("title", 0)->innertext = "HotS.bgk.io: $character";
+
+		return $baseHTML;
+	}
+
 	// The base contents of the page.
 	$pageContents = "";
 
@@ -170,6 +179,8 @@
 		$moddedHTML = setupVideoBackground($closest, $moddedHTML);
 
 		$moddedHTML = setupTime($moddedHTML);
+
+		$moddedHTML = addTitle($moddedHTML, $closest);
 
 		// Character name.
 		$moddedHTML->find("h1", 0)->innertext = $closest;

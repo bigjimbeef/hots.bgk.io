@@ -72,7 +72,7 @@
 		foreach($row->find("td img") as $singleTalent)
 		{
 			$matches = null;
-			$returnValue = preg_match("/(.*):/", $singleTalent->title, $matches);
+			$returnValue = preg_match("/(.*):?:(.*)/", $singleTalent->title, $matches);
 
 			if ( !empty($matches) )
 			{
@@ -82,6 +82,10 @@
 				$imgSrc = $singleTalent->src;
 				if ( !isset($images[$talentName]) ) {
 					$images[$talentName] = $imgSrc;
+				}
+
+				if ( !isset($tooltips[$talentName]) ) {
+					$tooltips[$talentName] = html_entity_decode($matches[2], ENT_QUOTES);
 				}
 			}
 		}
@@ -132,8 +136,8 @@
 
 	foreach($CHARACTERS as $characterName) {
 
-		//echo "Getting HL information for $characterName...\n";
-		//addSingleCharacterTalents($characterName, $hlTalents, $images, ETalentSite::HotsLogs);
+		echo "Getting HL information for $characterName...\n";
+		addSingleCharacterTalents($characterName, $hlTalents, $images, $tooltips, ETalentSite::HotsLogs);
 
 		echo "Getting GB information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $gbTalents, $images, $tooltips, ETalentSite::GetBonkd);
@@ -141,7 +145,6 @@
 		// TODO: Heroesfire.
 	}
 
-	/*
 	truncateTable(ETable::Skills);
 	populateSkills($images);
 
@@ -150,12 +153,9 @@
 
 	truncateTable(ETable::GetBonkd);
 	populateTalentTable($gbTalents, ETable::GetBonkd);
-	*/
 
 	truncateTable(ETable::Tooltips);
 	populateTooltips($tooltips);
 
-	/*
 	truncateTable(ETable::Time);
 	populateTime();
-	*/
