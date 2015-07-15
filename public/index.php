@@ -92,6 +92,7 @@
 
 	        	$tooltip = $resTT["text"];
 
+	        	$tooltip = html_entity_decode($tooltip, ENT_QUOTES);
 	        	$tooltip = htmlspecialchars($tooltip, ENT_QUOTES, 'UTF-8');
 	        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http:$imgpath' /></tr>";
 	        }
