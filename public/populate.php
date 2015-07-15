@@ -166,7 +166,7 @@
 			preg_match("/i:'(\d+)'/", $class, $matches);
 
 			if ( !empty($matches) ) {
-				
+
 				$ajaxTooltipID 	= $matches[1];
 				$fullAjaxURL	= $ajaxURL . $ajaxTooltipID;
 
@@ -174,7 +174,22 @@
 
 				$name			= $skillHTML->find("h5", 0)->innertext;
 
+				if ( !isset($images[$name]) ) {
+
+					$images[$name] = "//www.heroesfire.com" . $val->src;
+				}
+
+				$pieces 		= explode("/h6>", $skillHTML);
+				$smallPieces 	= explode("<div style=", $pieces[1]);
+				$tooltip		= strip_tags($smallPieces[0]);
+				$tooltip		= ltrim(preg_replace('/\s+/', ' ', $tooltip));
+
 				$talents[]		= $name;
+
+				if ( !isset($tooltips[$name]) ) {
+
+					$tooltips[$name]	= $tooltip;
+				}
 			}
 		}
 
@@ -223,23 +238,18 @@
 		$targetArray[] = $entry;
 	}
 
-	addSingleCharacterTalents("Sylvanas", $hfTalents, $images, $tooltips, ETalentSite::HeroesFire);
-
 	foreach($CHARACTERS as $characterName) {
-
-		/*
+		
 		echo "Getting HL information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $hlTalents, $images, $tooltips, ETalentSite::HotsLogs);
 
 		echo "Getting GB information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $gbTalents, $images, $tooltips, ETalentSite::GetBonkd);
-		*/
-
+		
 		echo "Getting HF information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $hfTalents, $images, $tooltips, ETalentSite::HeroesFire);
 	}
 
-	/*
 	truncateTable(ETable::Skills);
 	populateSkills($images);
 
@@ -248,13 +258,12 @@
 
 	truncateTable(ETable::GetBonkd);
 	populateTalentTable($gbTalents, ETable::GetBonkd);
-	*/
+	
 	truncateTable(ETable::HeroesFire);
 	populateTalentTable($hfTalents, ETable::HeroesFire);
-	/*
+	
 	truncateTable(ETable::Tooltips);
 	populateTooltips($tooltips);
 
 	truncateTable(ETable::Time);
 	populateTime();
-	*/

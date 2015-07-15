@@ -97,6 +97,15 @@ td.talentNum {
 	font-family:	consolas;
 }
 
+#copyright {
+	position:		absolute;
+	bottom:			5px;
+	right:			10px;
+	color:			#FFF;
+
+	font-family:	consolas;
+}
+
 @media (max-width: 1200px) {
 	#bg-video {
 		opacity:		0.3;
