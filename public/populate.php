@@ -93,6 +93,108 @@
 		return $talents;
 	}
 
+	/*<?php
+
+    include('simple_html_dom.php');
+    include('constants.php');
+    include("index.php");
+
+    CONST HEROES_URL = 'http://www.heroesfire.com';
+
+    $debug = in_array('--debug', $argv);
+
+    $chars = [];
+
+    $file1 = file_get_html(HEROES_URL);
+    $everything= [];
+
+    foreach ($file1->find('.hero a') as $heroKey => $hero) {
+        $file2 = file_get_html(HEROES_URL . $hero->href);
+        $name = explode('/', $hero->href)[4];
+        $guide = $file2->find('.browse-table a')[0]->href;
+
+        $file3 = file_get_html(HEROES_URL . $guide);
+        $skills = $file3->find('.skills', 0);
+
+        $everything[$heroKey][] = $name;
+
+        foreach ($skills->find('.skill') as $level => $skill) {
+            $imgUrl = $skill->find('.level .pic img', 0)->src;
+            $nameArray = explode("-", explode('.png', explode('/', $imgUrl)[5])[0]);
+            $nameArray = array_map(function ($str) {
+                return  ucfirst($str);
+            }, $nameArray);
+
+            $name = implode(' ', $nameArray);
+            $points = $skill->find('.points', 0);
+            foreach ($points->find('div') as $key => $point) {
+                if (isset($point->class) && $point->class == 'selected') {
+                    $everything[$heroKey][] = [$name, HEROES_URL . $imgUrl];
+                    break;
+                }
+            }
+        }
+
+		break;
+    }
+print_r($everything);
+*/
+
+	function doHeroesFireCharFormat($character) {
+
+		$output = strtolower($character);
+		$output = preg_replace("#[[:punct:]]#", "", $output);
+		$output = preg_replace("/[\s]/", "-", $output);
+
+		return $output;
+	}
+
+	// BLOODY HEROESFIRE JESUS COME ON
+	function findCharacterID($character) {
+
+		$html = file_get_html("http://www.heroesfire.com/hots/guides");
+
+		$id = -1;
+		foreach ( $html->find(".select-guides .heroes img") as $val ) {
+
+			$src 			= $val->src;
+			$charFromSrc 	= preg_match("/heroes\/([\w-]+).png/", $src, $matches);
+
+			if ( empty($matches) ) {
+				continue;
+			}
+
+			if ( $matches[1] == $character )
+			{
+				$parent = $val->parent();
+				$id 	= $parent->{"data-id"};
+				break;
+			}
+		}
+
+		return $id;
+	}
+
+	function getSingleHeroesfireCharacterData($character, &$images, &$tooltips)
+	{
+		$hfCharacter 	= doHeroesFireCharFormat($character);
+		$id 			= findCharacterID($hfCharacter);
+
+		if ( $id < 0 ) {
+			error_log("SOMETHING WENT BADLY WRONG WITH HEROESFIRE.");
+		}
+
+		// Build the new, and proper, URL.
+		$url			= "http://www.heroesfire.com/hots/guides?s=t&fHeroes=" . $id . "&fMaps=&fCategory=";
+		$html 			= file_get_html($url);
+
+		$bestGuide		= $html->find(".browse-item-list a", 0);
+		$bestGuideURL	= "http://www.heroesfire.com" . $bestGuide->href;
+
+
+		return "hello";
+	}
+
 	$gbTalents 	= array();
 	$hlTalents	= array();
 	$images		= array();
@@ -123,7 +225,7 @@
 
 			case ETalentSite::HeroesFire:
 			{
-				// TODO!
+				$singleChar = getSingleHeroesfireCharacterData($characterName, $images, $tooltips);
 			}
 			break;
 		}
@@ -136,15 +238,21 @@
 
 	foreach($CHARACTERS as $characterName) {
 
+		/*
 		echo "Getting HL information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $hlTalents, $images, $tooltips, ETalentSite::HotsLogs);
 
 		echo "Getting GB information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $gbTalents, $images, $tooltips, ETalentSite::GetBonkd);
+		*/
 
-		// TODO: Heroesfire.
+		echo "Getting HF information for $characterName...\n";
+		addSingleCharacterTalents($characterName, $gbTalents, $images, $tooltips, ETalentSite::HeroesFire);
+
+		break;
 	}
 
+	/*
 	truncateTable(ETable::Skills);
 	populateSkills($images);
 
@@ -159,3 +267,4 @@
 
 	truncateTable(ETable::Time);
 	populateTime();
+	*/
