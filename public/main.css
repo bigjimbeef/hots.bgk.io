@@ -22,7 +22,7 @@ h1, h2 {
 	color:			#FFF;
 }
 
-#getBonkd, #hotslogs {
+#getBonkd, #hotslogs, #heroesfire {
 	float:			left;
 	min-height: 	500px;
 	min-width: 		350px;

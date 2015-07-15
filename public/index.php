@@ -176,6 +176,8 @@
 
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HotsLogs);
 
+		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HeroesFire);
+
 		// Draw the background video.
 		$moddedHTML = setupVideoBackground($closest, $moddedHTML);
 

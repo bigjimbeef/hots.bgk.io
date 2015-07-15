@@ -93,54 +93,14 @@
 		return $talents;
 	}
 
-	/*<?php
-
-    include('simple_html_dom.php');
-    include('constants.php');
-    include("index.php");
-
-    CONST HEROES_URL = 'http://www.heroesfire.com';
-
-    $debug = in_array('--debug', $argv);
-
-    $chars = [];
-
-    $file1 = file_get_html(HEROES_URL);
-    $everything= [];
-
-    foreach ($file1->find('.hero a') as $heroKey => $hero) {
-        $file2 = file_get_html(HEROES_URL . $hero->href);
-        $name = explode('/', $hero->href)[4];
-        $guide = $file2->find('.browse-table a')[0]->href;
-
-        $file3 = file_get_html(HEROES_URL . $guide);
-        $skills = $file3->find('.skills', 0);
-
-        $everything[$heroKey][] = $name;
-
-        foreach ($skills->find('.skill') as $level => $skill) {
-            $imgUrl = $skill->find('.level .pic img', 0)->src;
-            $nameArray = explode("-", explode('.png', explode('/', $imgUrl)[5])[0]);
-            $nameArray = array_map(function ($str) {
-                return  ucfirst($str);
-            }, $nameArray);
-
-            $name = implode(' ', $nameArray);
-            $points = $skill->find('.points', 0);
-            foreach ($points->find('div') as $key => $point) {
-                if (isset($point->class) && $point->class == 'selected') {
-                    $everything[$heroKey][] = [$name, HEROES_URL . $imgUrl];
-                    break;
-                }
-            }
-        }
-
-		break;
-    }
-print_r($everything);
-*/
-
 	function doHeroesFireCharFormat($character) {
+
+		if ( $character == "Sgt. Hammer" ) {
+			return "sergeant-hammer";
+		}
+		else if ( $character == "E.T.C." ) {
+			return "elite-tauren-chieftain";
+		}
 
 		$output = strtolower($character);
 		$output = preg_replace("#[[:punct:]]#", "", $output);
@@ -175,28 +135,55 @@ print_r($everything);
 		return $id;
 	}
 
+
 	function getSingleHeroesfireCharacterData($character, &$images, &$tooltips)
 	{
+		$talents 		= array();
+
 		$hfCharacter 	= doHeroesFireCharFormat($character);
 		$id 			= findCharacterID($hfCharacter);
+		$baseURL		= "http://www.heroesfire.com";
+		$ajaxURL		= $baseURL . "/ajax/tooltip?relation_type=WikibaseArticle&relation_id=";
 
 		if ( $id < 0 ) {
 			error_log("SOMETHING WENT BADLY WRONG WITH HEROESFIRE.");
 		}
 
-		// Build the new, and proper, URL.
-		$url			= "http://www.heroesfire.com/hots/guides?s=t&fHeroes=" . $id . "&fMaps=&fCategory=";
+		// Build the new URL for the character's list of guides.
+		$url			= "$baseURL/hots/guides?s=t&fHeroes=" . $id . "&fMaps=&fCategory=";
 		$html 			= file_get_html($url);
 
+		// Build the URL for the top guide.
 		$bestGuide		= $html->find(".browse-item-list a", 0);
-		$bestGuideURL	= "http://www.heroesfire.com" . $bestGuide->href;
+		$bestGuideURL	= $baseURL . $bestGuide->href;
+		
+		// Get the top guide's HTML.
+		$guideHTML		= file_get_html($bestGuideURL);
 
+		foreach( $guideHTML->find("article.selected .skills img") as $val ) {
 
-		return "hello";
+			$class 			= $val->class;
+			preg_match("/i:'(\d+)'/", $class, $matches);
+
+			if ( !empty($matches) ) {
+				
+				$ajaxTooltipID 	= $matches[1];
+				$fullAjaxURL	= $ajaxURL . $ajaxTooltipID;
+
+				$skillHTML		= file_get_html($fullAjaxURL);
+
+				$name			= $skillHTML->find("h5", 0)->innertext;
+
+				$talents[]		= $name;
+			}
+		}
+
+		return $talents;
 	}
 
 	$gbTalents 	= array();
 	$hlTalents	= array();
+	$hfTalents	= array();
 	$images		= array();
 	$tooltips 	= array();
 
@@ -236,6 +223,8 @@ print_r($everything);
 		$targetArray[] = $entry;
 	}
 
+	addSingleCharacterTalents("Sylvanas", $hfTalents, $images, $tooltips, ETalentSite::HeroesFire);
+
 	foreach($CHARACTERS as $characterName) {
 
 		/*
@@ -247,9 +236,7 @@ print_r($everything);
 		*/
 
 		echo "Getting HF information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $gbTalents, $images, $tooltips, ETalentSite::HeroesFire);
-
-		break;
+		addSingleCharacterTalents($characterName, $hfTalents, $images, $tooltips, ETalentSite::HeroesFire);
 	}
 
 	/*
@@ -261,7 +248,10 @@ print_r($everything);
 
 	truncateTable(ETable::GetBonkd);
 	populateTalentTable($gbTalents, ETable::GetBonkd);
-
+	*/
+	truncateTable(ETable::HeroesFire);
+	populateTalentTable($hfTalents, ETable::HeroesFire);
+	/*
 	truncateTable(ETable::Tooltips);
 	populateTooltips($tooltips);
 
