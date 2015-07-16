@@ -259,7 +259,6 @@
 		addSingleCharacterTalents($characterName, $hfTalents, $images, $tooltips, $hfUrls, ETalentSite::HeroesFire);
 	}
 
-	/*
 	truncateTable(ETable::Skills);
 	populateSkills($images);
 
@@ -277,7 +276,6 @@
 
 	truncateTable(ETable::Time);
 	populateTime();
-	*/
 
 	truncateTable(ETable::Urls);
 	populateUrls($hlUrls, $gbUrls, $hfUrls, $CHARACTERS);

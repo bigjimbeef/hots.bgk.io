@@ -4,6 +4,17 @@ html {
 
 body {
 	margin:			0;
+	height:			100%;
+	width:			100%;
+
+	background:		#090110; /* Old browsers */
+	background:		-moz-linear-gradient(top, #090110 0%, #150720 100%); /* FF3.6+ */
+	background:		-webkit-gradient(linear, left top, left bottom, color-stop(0%,#090110), color-stop(100%,#150720)); /* Chrome,Safari4+ */
+	background:		-webkit-linear-gradient(top, #090110 0%,#150720 100%); /* Chrome10+,Safari5.1+ */
+	background:		-o-linear-gradient(top, #090110 0%,#150720 100%); /* Opera 11.10+ */
+	background:		-ms-linear-gradient(top, #090110 0%,#150720 100%); /* IE10+ */
+	background:		linear-gradient(to bottom, #090110 0%,#150720 100%); /* W3C */
+	filter: 		progid:DXImageTransform.Microsoft.gradient( startColorstr='#090110', endColorstr='#150720',GradientType=0 ); /* IE6-9 */
 }
 
 #search h2 {
@@ -16,18 +27,21 @@ body {
 
 #search {
 	text-align:		center;
+	height:			150px;
+	
+	margin:			0 auto;
+	margin-top:		150px;
 }
 
 #search, #search input {
 	width:			500px;
-	height:			30px;
 
 	font-family:	consolas;
 	font-size:		18px;
 }
 
-#search {
-	margin:			0 auto;
+#search input {
+	height:			30px;
 }
 
 #update-time {
@@ -45,25 +59,75 @@ ul.ui-autocomplete {
 	overflow-x:		hidden;
 }
 
-#outer {
-    display: table;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-
-#middle {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-#inner {
-    margin-left: auto;
-    margin-right: auto; 
-}
-
 body .ui-autocomplete .ui-state-focus {
 	background:		#090110;
 	color:			#fff;
 	border:			1px solid #000077;
+}
+
+#copyright {
+	position:		absolute;
+	bottom:			5px;
+	right:			10px;
+	color:			#FFF;
+
+	font-family:	consolas;
+}
+
+#copyright a {
+	color:			#FFF;
+}
+
+#images .container {
+	text-align: 	center;
+	margin:			0 auto;
+	width:			700px;
+}
+
+#images img {
+	width:			75px;
+	height:			75px;
+	opacity:		0.5;
+
+	border:			4px solid transparent;
+	border-radius: 	40px;
+
+	cursor:			pointer;
+}
+
+#images img:hover {
+	opacity:		1;
+	border:			4px solid #6939f8;
+}
+
+body .ui-tooltip {
+	padding: 		10px 20px;
+	color: 			white;
+	border-radius: 	5px;
+	font-size:		14px 				!important;
+	font-family:	consolas 			!important;
+	border:			1px solid #6939f8;
+	border-width: 	1px 				!important;
+	background:		rgba(9,1,16, 0.85);
+}
+
+
+
+
+#images .container div {
+	width:		75px;
+	height: 	75px;
+	position: 	relative;
+	float: 		left;
+}
+
+#images .container div label {
+	color: 			#FFF;
+	font-family: 	consolas;
+	position: 		absolute;
+	bottom: 		0;
+	left: 			0;
+	text-align: 	center;
+	width: 			83px;
+	font-size: 		11px;
 }

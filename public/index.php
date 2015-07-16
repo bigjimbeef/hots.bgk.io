@@ -157,7 +157,7 @@
 
 	function addTitle($baseHTML, $character) {
 
-		$baseHTML->find("title", 0)->innertext = "HotS.bgk.io: $character";
+		$baseHTML->find("title", 0)->innertext = "Heroes of the Storm builds: $character";
 
 		return $baseHTML;
 	}

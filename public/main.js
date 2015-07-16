@@ -29,8 +29,7 @@ $(document).ready(function(){
 	});
 
 
-	$("li.ui-menu-item").click(function() {
-		console.log("GO");
+	$('ul.ui-autocomplete').on("click", "li.ui-menu-item", function() {
 		doSearch();
 	});
 
@@ -56,20 +55,12 @@ $(document).ready(function(){
 		hide: false
 	});
 
-	function removeHovered() {
-		$('img').removeClass('hovered');
-	}
+	$('#images').on("click", "img", function() {
 
-	$('img').hover(
-		function() {
-			removeHovered();
+		var title = $(this).attr('data-name');
 
-			$(this).addClass('hovered');
-		}, 
-		function() {
-
-			removeHovered();
-		}
-	);
+		$('#search input').val(title);
+		doSearch();
+	});
 	//
 });
