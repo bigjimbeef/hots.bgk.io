@@ -110,8 +110,32 @@
 		queryDB($query);
 	}
 
+	function populateUrls($hlUrls, $gbUrls, $hfUrls, $CHARACTERS) {
 
-	function superescape($string) {
+		$query = "INSERT IGNORE INTO hots_bgk_io." . ETable::Urls . " (name, hotslogs, getbonkd, heroesfire) VALUES";
 
-		return $string;
+		$count = 0;
+		foreach($CHARACTERS as $characterName) {
+
+			++$count;
+			if ( !isset($hlUrls[$characterName]) || !isset($gbUrls[$characterName]) || !isset($hfUrls[$characterName]) ) {
+				continue;
+			}
+
+			$hl = $hlUrls[$characterName];
+			$gb = $gbUrls[$characterName];
+			$hf = $hfUrls[$characterName];
+
+			$query .= "(\"" . $characterName . "\", \"" . addslashes($hl) . "\", \"" . addslashes($gb) . "\", \"" . addslashes($hf) . "\")";
+
+			if ( $count < count($CHARACTERS) ) {
+				$query .= ", ";
+			}
+		}
+
+		$query .= ";";
+
+		echo $query;
+
+		queryDB($query);
 	}

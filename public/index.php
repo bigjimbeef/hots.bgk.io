@@ -162,6 +162,19 @@
 		return $baseHTML;
 	}
 
+	function setUrl($character, $moddedHTML, $targetTable) {
+
+		$query = "SELECT $targetTable FROM hots_bgk_io." . ETable::Urls . " AS u WHERE u.name LIKE '%" . addslashes($character) . "%'";
+		$result = queryDB($query);
+
+		$res = mysql_fetch_assoc($result["res"]);
+		$url = $res[$targetTable];
+
+		$moddedHTML->find("#$targetTable h2 a", 0)->href = $url;
+
+		return $moddedHTML;
+	}
+
 	// The base contents of the page.
 	$pageContents = "";
 
@@ -172,11 +185,15 @@
 	{
 		$baseHTML 	= file_get_html("base.html");
 
+		// Add the talents.
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::GetBonkd);
-
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HotsLogs);
-
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HeroesFire);
+
+		// Add the URLs.
+		$moddedHTML = setUrl($closest, $moddedHTML, ETable::GetBonkd);
+		$moddedHTML = setUrl($closest, $moddedHTML, ETable::HotsLogs);
+		$moddedHTML = setUrl($closest, $moddedHTML, ETable::HeroesFire);
 
 		// Draw the background video.
 		$moddedHTML = setupVideoBackground($closest, $moddedHTML);

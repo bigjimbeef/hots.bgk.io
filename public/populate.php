@@ -1,14 +1,16 @@
 <?php
-	include("simple_html_dom.php");
-	include("query.php");
-	include("constants.php");
+	include_once("simple_html_dom.php");
+	include_once("constants.php");
+	include_once("query.php");
 
-	function getSingleGetBonkdCharacterData($character, &$images, &$tooltips)
+	function getSingleGetBonkdCharacterData($character, &$images, &$tooltips, &$urls)
 	{
 		// Remove punctuation and replace spaces with dashes.
 		$character 	= preg_replace("/['|\.]/", "", $character);
 		$character 	= preg_replace("/ /", "-", $character);
 		$url		= "http://getbonkd.com/guides/$character/";
+
+		$urls[$character] = $url;
 
 		$html = file_get_html($url);
 
@@ -54,12 +56,14 @@
 		return $talents;
 	}
 
-	function getSingleHotsLogsCharacterData($character, &$images, &$tooltips)
+	function getSingleHotsLogsCharacterData($character, &$images, &$tooltips, &$urls)
 	{
 		// Ensure the character name is capitalised, because HL needs that for some reason.
 		$character 	= ucwords($character);
 		$character 	= rawurlencode($character);
 		$url		= "https://www.hotslogs.com/Sitewide/HeroDetails?Hero=$character";
+
+		$urls[$character] = $url;
 
 		$talents = array();
 
@@ -136,7 +140,7 @@
 	}
 
 
-	function getSingleHeroesfireCharacterData($character, &$images, &$tooltips)
+	function getSingleHeroesfireCharacterData($character, &$images, &$tooltips, &$urls)
 	{
 		$talents 		= array();
 
@@ -156,6 +160,8 @@
 		// Build the URL for the top guide.
 		$bestGuide		= $html->find(".browse-item-list a", 0);
 		$bestGuideURL	= $baseURL . $bestGuide->href;
+
+		$urls[$character] = $bestGuideURL;
 		
 		// Get the top guide's HTML.
 		$guideHTML		= file_get_html($bestGuideURL);
@@ -201,8 +207,11 @@
 	$hfTalents	= array();
 	$images		= array();
 	$tooltips 	= array();
+	$hlUrls 	= array();
+	$gbUrls 	= array();
+	$hfUrls 	= array();
 
-	function addSingleCharacterTalents($characterName, &$targetArray, &$images, &$tooltips, $targetSite)
+	function addSingleCharacterTalents($characterName, &$targetArray, &$images, &$tooltips, &$urls, $targetSite)
 	{
 		$entry = array();
 		// Add the character name...
@@ -215,19 +224,19 @@
 			default:
 			case ETalentSite::GetBonkd:
 			{
-				$singleChar = getSingleGetBonkdCharacterData($characterName, $images, $tooltips);
+				$singleChar = getSingleGetBonkdCharacterData($characterName, $images, $tooltips, $urls);
 			}
 			break;
 
 			case ETalentSite::HotsLogs:
 			{
-				$singleChar = getSingleHotsLogsCharacterData($characterName, $images, $tooltips);
+				$singleChar = getSingleHotsLogsCharacterData($characterName, $images, $tooltips, $urls);
 			}
 			break;
 
 			case ETalentSite::HeroesFire:
 			{
-				$singleChar = getSingleHeroesfireCharacterData($characterName, $images, $tooltips);
+				$singleChar = getSingleHeroesfireCharacterData($characterName, $images, $tooltips, $urls);
 			}
 			break;
 		}
@@ -241,15 +250,16 @@
 	foreach($CHARACTERS as $characterName) {
 		
 		echo "Getting HL information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $hlTalents, $images, $tooltips, ETalentSite::HotsLogs);
+		addSingleCharacterTalents($characterName, $hlTalents, $images, $tooltips, $hlUrls, ETalentSite::HotsLogs);
 
 		echo "Getting GB information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $gbTalents, $images, $tooltips, ETalentSite::GetBonkd);
+		addSingleCharacterTalents($characterName, $gbTalents, $images, $tooltips, $gbUrls, ETalentSite::GetBonkd);
 		
 		echo "Getting HF information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $hfTalents, $images, $tooltips, ETalentSite::HeroesFire);
+		addSingleCharacterTalents($characterName, $hfTalents, $images, $tooltips, $hfUrls, ETalentSite::HeroesFire);
 	}
 
+	/*
 	truncateTable(ETable::Skills);
 	populateSkills($images);
 
@@ -267,3 +277,7 @@
 
 	truncateTable(ETable::Time);
 	populateTime();
+	*/
+
+	truncateTable(ETable::Urls);
+	populateUrls($hlUrls, $gbUrls, $hfUrls, $CHARACTERS);

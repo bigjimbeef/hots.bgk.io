@@ -9,3 +9,5 @@ CREATE TABLE videos ( hero VARCHAR(32) PRIMARY KEY, videopath VARCHAR(256) );
 CREATE TABLE time ( updated VARCHAR(64) PRIMARY KEY );
 
 CREATE TABLE tooltips ( name VARCHAR(64) PRIMARY KEY, text VARCHAR(512) );
+
+CREATE TABLE urls ( name VARCHAR(64) PRIMARY KEY, hotslogs VARCHAR(512), getbonkd VARCHAR(512), heroesfire VARCHAR(512) );
