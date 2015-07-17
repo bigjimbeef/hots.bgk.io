@@ -6,6 +6,9 @@ body {
 	margin:			0;
 	height:			100%;
 	width:			100%;
+	position:		absolute;
+	top:			0;
+	left:			0;
 
 	background:		#090110; /* Old browsers */
 	background:		-moz-linear-gradient(top, #090110 0%, #150720 100%); /* FF3.6+ */

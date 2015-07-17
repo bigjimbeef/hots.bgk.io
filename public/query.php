@@ -119,6 +119,17 @@
 
 			++$count;
 			if ( !isset($hlUrls[$characterName]) || !isset($gbUrls[$characterName]) || !isset($hfUrls[$characterName]) ) {
+				
+				if ( !isset($hlUrls[$characterName]) ) {
+					echo "Character name not set: '$characterName' in hlUrls.";
+				}
+				if ( !isset($gbUrls[$characterName]) ) {
+					echo "Character name not set: '$characterName' in gbUrls.";
+				}
+				if ( !isset($hfUrls[$characterName]) ) {
+					echo "Character name not set: '$characterName' in hfUrls.";
+				}
+
 				continue;
 			}
 
@@ -134,8 +145,6 @@
 		}
 
 		$query .= ";";
-
-		echo $query;
 
 		queryDB($query);
 	}

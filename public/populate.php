@@ -5,12 +5,14 @@
 
 	function getSingleGetBonkdCharacterData($character, &$images, &$tooltips, &$urls)
 	{
+		$charCache 	= $character;
+
 		// Remove punctuation and replace spaces with dashes.
 		$character 	= preg_replace("/['|\.]/", "", $character);
 		$character 	= preg_replace("/ /", "-", $character);
 		$url		= "http://getbonkd.com/guides/$character/";
 
-		$urls[$character] = $url;
+		$urls[$charCache] = $url;
 
 		$html = file_get_html($url);
 
@@ -58,12 +60,14 @@
 
 	function getSingleHotsLogsCharacterData($character, &$images, &$tooltips, &$urls)
 	{
+		$charCache 	= $character;
+
 		// Ensure the character name is capitalised, because HL needs that for some reason.
 		$character 	= ucwords($character);
 		$character 	= rawurlencode($character);
 		$url		= "https://www.hotslogs.com/Sitewide/HeroDetails?Hero=$character";
 
-		$urls[$character] = $url;
+		$urls[$charCache] = $url;
 
 		$talents = array();
 
@@ -144,6 +148,8 @@
 	{
 		$talents 		= array();
 
+		$charCache		= $character;
+
 		$hfCharacter 	= doHeroesFireCharFormat($character);
 		$id 			= findCharacterID($hfCharacter);
 		$baseURL		= "http://www.heroesfire.com";
@@ -161,7 +167,7 @@
 		$bestGuide		= $html->find(".browse-item-list a", 0);
 		$bestGuideURL	= $baseURL . $bestGuide->href;
 
-		$urls[$character] = $bestGuideURL;
+		$urls[$charCache] = $bestGuideURL;
 		
 		// Get the top guide's HTML.
 		$guideHTML		= file_get_html($bestGuideURL);
@@ -258,7 +264,7 @@
 		echo "Getting HF information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $hfTalents, $images, $tooltips, $hfUrls, ETalentSite::HeroesFire);
 	}
-
+	
 	truncateTable(ETable::Skills);
 	populateSkills($images);
 
