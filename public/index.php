@@ -37,7 +37,7 @@
 	        {
 	        	$escaped = addslashes($col_val);
 
-	        	$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%$character%' AND t.name LIKE '%" . $escaped . "%'";
+	        	$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND t.name LIKE '%" . $escaped . "%'";
 	        	$result = queryDB($query);
 
 	        	$res = mysql_fetch_assoc($result["res"]);
@@ -46,18 +46,6 @@
 	        	$talentNum = $TALENT_LEVELS[$col_name];
 
 	        	$tooltip = $res["description"];
-
-	        	/*
-	        	$queryTT = "SELECT * FROM hots_bgk_io.tooltips AS s WHERE name LIKE '%" . $escaped . "%'";
-	        	$resultTT = queryDB($queryTT);
-
-	        	$resTT = mysql_fetch_assoc($resultTT["res"]);
-
-	        	$tooltip = $resTT["text"];
-
-	        	$tooltip = html_entity_decode($tooltip, ENT_QUOTES);
-	        	$tooltip = htmlspecialchars($tooltip, ENT_QUOTES, 'UTF-8');
-				*/
 
 	        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http:$imgpath' /></tr>";
 	        }
