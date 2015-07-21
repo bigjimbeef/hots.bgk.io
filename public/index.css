@@ -6,9 +6,7 @@ body {
 	margin:			0;
 	height:			100%;
 	width:			100%;
-	position:		absolute;
 	top:			0;
-	left:			0;
 
 	background:		#090110; /* Old browsers */
 	background:		-moz-linear-gradient(top, #090110 0%, #150720 100%); /* FF3.6+ */
@@ -33,7 +31,7 @@ body {
 	height:			150px;
 	
 	margin:			0 auto;
-	margin-top:		150px;
+	padding-top:	150px;
 }
 
 #search, #search input {
@@ -84,7 +82,8 @@ body .ui-autocomplete .ui-state-focus {
 #images .container {
 	text-align: 	center;
 	margin:			0 auto;
-	width:			700px;
+	max-width:		750px;
+	min-width:		100px;
 }
 
 #images img {
@@ -114,9 +113,6 @@ body .ui-tooltip {
 	background:		rgba(9,1,16, 0.85);
 }
 
-
-
-
 #images .container div {
 	width:		75px;
 	height: 	75px;
@@ -133,4 +129,36 @@ body .ui-tooltip {
 	text-align: 	center;
 	width: 			83px;
 	font-size: 		11px;
+}
+
+html, body {
+	height: 		100%;
+	margin:			0;
+}
+
+#wrap {
+	min-height: 	100%;
+}
+
+#main {
+	padding-bottom: 50px;
+
+	margin:			0 10px 0 10px;
+}
+
+#footer {
+	position: 		relative;
+	margin-top: 	-50px; /* negative value of footer height */
+	height: 		50px;
+	clear:			both;
+}
+
+@media (max-width: 625px) {
+	#search {
+		display:	none;
+	}
+}
+
+* {
+	margin-top:		0;
 }
