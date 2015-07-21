@@ -1,48 +1,8 @@
 <?php
-	include("simple_html_dom.php");
-	include("constants.php");
-	include("query.php");
-
-	function getClosestName($input)
-	{
-		if ( empty($input) ) {
-			return "";
-		}
-
-		// We remove periods from search terms if none are present in the input.
-		$keepPeriods = strpos($input, '.') !== false;
-
-		global $CHARACTERS;
-
-		$closest = "";
-		$shortest = -1;
-
-		foreach ( $CHARACTERS as $character )
-		{
-			$temp = $character;
-			if ( !$keepPeriods )
-			{
-				$temp = str_replace(".", "", $character);
-			}
-
-		    $lev = levenshtein($input, $temp);
-
-		    // Check for exact match.
-		    if ($lev == 0) {
-		        $closest = $character;
-		        $shortest = 0;
-
-		        break;
-		    }
-
-		    if ($lev <= $shortest || $shortest < 0) {
-		        $closest  = $character;
-		        $shortest = $lev;
-		    }
-		}
-
-		return $closest;
-	}
+	include_once("simple_html_dom.php");
+	include_once("constants.php");
+	include_once("query.php");
+	include_once("utils.php");
 
 	function getCharacterFromURL()
 	{
@@ -77,14 +37,17 @@
 	        {
 	        	$escaped = addslashes($col_val);
 
-	        	$query = "SELECT * FROM hots_bgk_io.skills AS s WHERE name LIKE '%" . $escaped . "%'";
+	        	$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%$character%' AND t.name LIKE '%" . $escaped . "%'";
 	        	$result = queryDB($query);
 
 	        	$res = mysql_fetch_assoc($result["res"]);
 
-	        	$imgpath = $res["imgpath"];
+	        	$imgpath = $res["imgurl"];
 	        	$talentNum = $TALENT_LEVELS[$col_name];
 
+	        	$tooltip = $res["description"];
+
+	        	/*
 	        	$queryTT = "SELECT * FROM hots_bgk_io.tooltips AS s WHERE name LIKE '%" . $escaped . "%'";
 	        	$resultTT = queryDB($queryTT);
 
@@ -94,6 +57,8 @@
 
 	        	$tooltip = html_entity_decode($tooltip, ENT_QUOTES);
 	        	$tooltip = htmlspecialchars($tooltip, ENT_QUOTES, 'UTF-8');
+				*/
+
 	        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http:$imgpath' /></tr>";
 	        }
 	        $html .=  "</table>";
@@ -157,7 +122,7 @@
 
 	function addTitle($baseHTML, $character) {
 
-		$baseHTML->find("title", 0)->innertext = "Heroes of the Storm builds: $character";
+		$baseHTML->find("title", 0)->innertext = "HotS builds: $character";
 
 		return $baseHTML;
 	}
@@ -179,7 +144,7 @@
 	$pageContents = "";
 
 	$character 	= getCharacterFromURL();
-	$closest 	= getClosestName($character);
+	$closest 	= getClosestString($character, $CHARACTERS);
 
 	if ( !empty($character) )
 	{

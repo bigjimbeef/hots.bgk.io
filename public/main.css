@@ -123,6 +123,25 @@ td.talentNum {
 	}
 }
 
+@media (max-width: 1000px) {
+	#bg-video {
+		opacity:		0;
+	}
+
+	html, body {
+		background:		#150720;
+	}
+
+	table {
+		margin:			0 auto;
+	}
+
+	#getBonkd, #hotslogs, #heroesfire {
+		width:			100%;
+		text-align: 	center;
+	}
+}
+
 ul.ui-autocomplete {
 	max-height:		300px;
 	overflow-y:		auto;
@@ -160,3 +179,30 @@ body .ui-tooltip span.number {
 		display:	none !important;
 	}
 }
+
+@media (max-width: 1000px) {
+	#update-time {
+		display:	none;
+	}
+}
+
+html, body {
+	height: 		100%;
+	margin:			0;
+}
+
+#wrap {
+	min-height: 	100%;
+}
+
+#main {
+	overflow:		auto;
+	padding-bottom: 50px;
+}
+
+#footer {
+	position: 		relative;
+	margin-top: 	-50px; /* negative value of footer height */
+	height: 		50px;
+	clear:			both;
+} 

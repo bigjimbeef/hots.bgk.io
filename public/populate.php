@@ -3,7 +3,7 @@
 	include_once("constants.php");
 	include_once("query.php");
 
-	function getSingleGetBonkdCharacterData($character, &$images, &$tooltips, &$urls)
+	function getSingleGetBonkdCharacterData($character, &$urls)
 	{
 		$charCache 	= $character;
 
@@ -22,29 +22,38 @@
 		foreach($html->find("#toptalents span.tooltips") as $singleTalent) 
 		{
 			$text 	= $singleTalent->title;
-
 			$img 	= $singleTalent->find("img", 0);
-			$img->description = $text;
 
-			$imgSrc = $img->src;
+			$useImgBackup = false;
 
-			if ( !empty($text) )
-			{
+			// Fall back to scraping the image name.
+			if ( empty($text) ) {
+
+				$nameFromImg = preg_match("/^.*\/([\w_]+)/", $img->src, $matches);
+				if ( !empty($matches) ) {
+
+					$imgName 	= $matches[1];
+					$text		= preg_replace("/_/", " ", $imgName);
+
+					$useImgBackup = true;
+				}
+			}
+
+			if ( !empty($text) ) {
+
 				$testText = htmlspecialchars_decode($text);
 
 				$matches = null;
 				$returnValue = preg_match("/<strong>(.*)<\/strong><br \/> (.*)/", $testText, $matches);
 
-				if ( !empty($matches) )
-				{
+				if ( !empty($matches) ) {
+
 					$talentName = $matches[1];
 					$talents[] 	= $talentName;
+				}
+				else if ( $useImgBackup ) {
 
-					if ( !isset($images[$talentName]) ) {
-						$images[$talentName] = $imgSrc;
-					}
-
-					$tooltips[$talentName] = $matches[2];
+					$talents[]	= $text;
 				}
 
 				$count++;
@@ -58,7 +67,7 @@
 		return $talents;
 	}
 
-	function getSingleHotsLogsCharacterData($character, &$images, &$tooltips, &$urls)
+	function getSingleHotsLogsCharacterData($character, &$urls)
 	{
 		$charCache 	= $character;
 
@@ -79,22 +88,15 @@
 		$count = 0;
 		foreach($row->find("td img") as $singleTalent)
 		{
+			$decoded = html_entity_decode($singleTalent->title, ENT_QUOTES);
+
 			$matches = null;
-			$returnValue = preg_match("/(.*):?:(.*)/", $singleTalent->title, $matches);
+			$returnValue = preg_match("/([\w\s'!,\.]+:?[\w\s!',]+):(.*)/", $decoded, $matches);
 
 			if ( !empty($matches) )
 			{
-				$talentName = html_entity_decode($matches[1], ENT_QUOTES);
+				$talentName = $matches[1];
 				$talents[] = $talentName;
-
-				$imgSrc = $singleTalent->src;
-				if ( !isset($images[$talentName]) ) {
-					$images[$talentName] = $imgSrc;
-				}
-
-				if ( !isset($tooltips[$talentName]) ) {
-					$tooltips[$talentName] = html_entity_decode($matches[2], ENT_QUOTES);
-				}
 			}
 		}
 
@@ -144,7 +146,7 @@
 	}
 
 
-	function getSingleHeroesfireCharacterData($character, &$images, &$tooltips, &$urls)
+	function getSingleHeroesfireCharacterData($character, &$urls)
 	{
 		$talents 		= array();
 
@@ -183,25 +185,8 @@
 				$fullAjaxURL	= $ajaxURL . $ajaxTooltipID;
 
 				$skillHTML		= file_get_html($fullAjaxURL);
-
 				$name			= $skillHTML->find("h5", 0)->innertext;
-
-				if ( !isset($images[$name]) ) {
-
-					$images[$name] = "//www.heroesfire.com" . $val->src;
-				}
-
-				$pieces 		= explode("/h6>", $skillHTML);
-				$smallPieces 	= explode("<div style=", $pieces[1]);
-				$tooltip		= strip_tags($smallPieces[0]);
-				$tooltip		= ltrim(preg_replace('/\s+/', ' ', $tooltip));
-
 				$talents[]		= $name;
-
-				if ( !isset($tooltips[$name]) ) {
-
-					$tooltips[$name]	= $tooltip;
-				}
 			}
 		}
 
@@ -211,17 +196,19 @@
 	$gbTalents 	= array();
 	$hlTalents	= array();
 	$hfTalents	= array();
+/*
 	$images		= array();
 	$tooltips 	= array();
+*/
 	$hlUrls 	= array();
 	$gbUrls 	= array();
 	$hfUrls 	= array();
 
-	function addSingleCharacterTalents($characterName, &$targetArray, &$images, &$tooltips, &$urls, $targetSite)
+	function addSingleCharacterTalents($characterName, &$targetArray, &$urls, $targetSite)
 	{
 		$entry = array();
 		// Add the character name...
-		$entry[] = $characterName;
+		$entry["hero"] = $characterName;
 
 		// ... and the character talent data ...
 		$singleChar = null;
@@ -230,55 +217,49 @@
 			default:
 			case ETalentSite::GetBonkd:
 			{
-				$singleChar = getSingleGetBonkdCharacterData($characterName, $images, $tooltips, $urls);
+				$singleChar = getSingleGetBonkdCharacterData($characterName, $urls);
 			}
 			break;
 
 			case ETalentSite::HotsLogs:
 			{
-				$singleChar = getSingleHotsLogsCharacterData($characterName, $images, $tooltips, $urls);
+				$singleChar = getSingleHotsLogsCharacterData($characterName, $urls);
 			}
 			break;
 
 			case ETalentSite::HeroesFire:
 			{
-				$singleChar = getSingleHeroesfireCharacterData($characterName, $images, $tooltips, $urls);
+				$singleChar = getSingleHeroesfireCharacterData($characterName, $urls);
 			}
 			break;
 		}
 
 		// ... to a single array.
-		$entry = array_merge($entry, $singleChar);
+		$entry["talents"] = $singleChar;
 
 		$targetArray[] = $entry;
 	}
 
 	foreach($CHARACTERS as $characterName) {
-		
-		echo "Getting HL information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $hlTalents, $images, $tooltips, $hlUrls, ETalentSite::HotsLogs);
 
-		echo "Getting GB information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $gbTalents, $images, $tooltips, $gbUrls, ETalentSite::GetBonkd);
+		echo "Getting HL information for $characterName...\n";
+		addSingleCharacterTalents($characterName, $hlTalents, $hlUrls, ETalentSite::HotsLogs);
 		
+		echo "Getting GB information for $characterName...\n";
+		addSingleCharacterTalents($characterName, $gbTalents, $gbUrls, ETalentSite::GetBonkd);
+
 		echo "Getting HF information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $hfTalents, $images, $tooltips, $hfUrls, ETalentSite::HeroesFire);
+		addSingleCharacterTalents($characterName, $hfTalents, $hfUrls, ETalentSite::HeroesFire);
 	}
-	
-	truncateTable(ETable::Skills);
-	populateSkills($images);
 
 	truncateTable(ETable::HotsLogs);
 	populateTalentTable($hlTalents, ETable::HotsLogs);
 
 	truncateTable(ETable::GetBonkd);
 	populateTalentTable($gbTalents, ETable::GetBonkd);
-	
+
 	truncateTable(ETable::HeroesFire);
 	populateTalentTable($hfTalents, ETable::HeroesFire);
-	
-	truncateTable(ETable::Tooltips);
-	populateTooltips($tooltips);
 
 	truncateTable(ETable::Time);
 	populateTime();

@@ -12,11 +12,10 @@
 		const GetBonkd 		= "getbonkd";
 		const HotsLogs 		= "hotslogs";
 		const HeroesFire 	= "heroesfire";
-		const Skills		= "skills";
 		const Videos		= "videos";
 		const Time			= "time";
-		const Tooltips		= "tooltips";
 		const Urls			= "urls";
+		const Talents		= "talents";
 	}
 
 	$TALENT_LEVELS = array(
