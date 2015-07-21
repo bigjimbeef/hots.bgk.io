@@ -207,4 +207,13 @@ html, body {
 	margin-top: 	-50px; /* negative value of footer height */
 	height: 		50px;
 	clear:			both;
-} 
+}
+
+#home {
+	font-family: 	consolas;
+	color:			#FFF;
+}
+
+#home a:visited {
+	color:			#AAA;
+}
