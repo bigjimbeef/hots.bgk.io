@@ -174,7 +174,41 @@
 		// Get the top guide's HTML.
 		$guideHTML		= file_get_html($bestGuideURL);
 
-		foreach( $guideHTML->find("article.selected .skills img") as $val ) {
+		// Get the PHP simple DOM node for the selected article.
+		$article		= $guideHTML->find("article.selected .skills img");
+
+		// Check if this guide is for the correct character.
+		$articleH2		= $guideHTML->find("article.selected h2", 0);
+		$name			= trim(strip_tags($articleH2->innertext));
+
+		$isCorrect		= strcasecmp($name, $character) == 0;
+
+		if ( !$isCorrect ) {
+
+			echo "WARNING: Wanted $character and got $name...\n";
+
+			foreach ( $guideHTML->find("article") as $singleArticle ) {
+
+				$h2 = $singleArticle->find("h2", 0);
+				$testName = trim(strip_tags($h2->innertext));
+
+				if ( strcasecmp($testName, $character) == 0 ) {
+
+					echo "Found matching article, using this instead.\n";
+
+					$article 	= $singleArticle->find(".skills img");
+					$isCorrect 	= true;
+					break;
+				}
+			}
+		}
+
+		if ( !$isCorrect ) {
+			error_log("Unable to find guide for $characterName from HeroesFire!\n");
+			return $talents;
+		}
+
+		foreach( $article as $val ) {
 
 			$class 			= $val->class;
 			preg_match("/i:'(\d+)'/", $class, $matches);
@@ -196,10 +230,6 @@
 	$gbTalents 	= array();
 	$hlTalents	= array();
 	$hfTalents	= array();
-/*
-	$images		= array();
-	$tooltips 	= array();
-*/
 	$hlUrls 	= array();
 	$gbUrls 	= array();
 	$hfUrls 	= array();
