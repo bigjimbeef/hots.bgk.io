@@ -45,7 +45,7 @@
 	        	$imgpath = $res["imgurl"];
 	        	$talentNum = $TALENT_LEVELS[$col_name];
 
-	        	$tooltip = $res["description"];
+	        	$tooltip = htmlspecialchars($res["description"], ENT_QUOTES);
 
 	        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http:$imgpath' /></tr>";
 	        }
