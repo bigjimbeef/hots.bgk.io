@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+	// Remove the movie if we're on mobile, because it doesn't work.
+	if ( $(document).width() < 1000 ) {
+		$('#bg-video').remove();
+	}
+
 	var search = $('#char-name');
 
 	// Search
@@ -17,27 +22,20 @@ $(document).ready(function(){
 		}
 	});
 
-	$(search).focusout(function() {
-		$(this).focus();
-		
-		return false;
-	});
-	$(search).focus();
-
 	$(search).autocomplete({
 		source: characterJson
 	});
 
-
 	$('ul.ui-autocomplete').on("click", "li.ui-menu-item", function() {
 		doSearch();
 	});
-
 	
+	var targetPos = $(document).width() > 500 ? "right+5px top" : "left bottom";
+
 	$( 'img' ).tooltip({
 		position: {
 			my: "left top",
-			at:	"right+5px top"
+			at:	targetPos
 		},
 		content: function() {
 			var element = $(this);

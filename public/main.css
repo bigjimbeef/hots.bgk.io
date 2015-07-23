@@ -1,6 +1,6 @@
 html {
 	background: 	#090110;
-	font-family:	consolas !important;
+	font-family:	consolas, Helvetica !important;
 }
 
 img {
@@ -18,7 +18,7 @@ img:hover {
 }
 
 h1, h2 {
-	font-family:	consolas;
+	font-family:	consolas, Helvetica;
 	color:			#FFF;
 }
 
@@ -29,10 +29,10 @@ h2 a:visited {
 	color:			#AAA;
 }
 
-#getBonkd, #hotslogs, #heroesfire {
+#getbonkd, #hotslogs, #heroesfire {
 	float:			left;
 	min-height: 	500px;
-	min-width: 		350px;
+	min-width: 		300px;
 	margin-right:	20px;
 	color:			#FFF;
 }
@@ -59,12 +59,11 @@ td {
 	padding:		0;
 	margin:			0;
 
-	font-family: 	consolas;
+	font-family: 	consolas, Helvetica;
 }
 
 td.talentNum {
 	width:			50px;
-	padding-right:	30px;
 	text-align: 	center;
 
 	font-size:		24px;
@@ -72,10 +71,10 @@ td.talentNum {
 }
 
 #search, #search input {
-	width:			350px;
+	min-width:		250px;
 	height:			30px;
 
-	font-family:	consolas;
+	font-family:	consolas, Helvetica;
 	font-size:		18px;
 }
 
@@ -101,7 +100,7 @@ td.talentNum {
 	left:			10px;
 	
 	color:			#666;
-	font-family:	consolas;
+	font-family:	consolas, Helvetica;
 }
 
 #copyright {
@@ -110,36 +109,11 @@ td.talentNum {
 	right:			10px;
 	color:			#FFF;
 
-	font-family:	consolas;
+	font-family:	consolas, Helvetica;
 }
 
 #copyright a {
 	color:			#FFF;
-}
-
-@media (max-width: 1300px) {
-	#bg-video {
-		opacity:		0.3;
-	}
-}
-
-@media (max-width: 1000px) {
-	#bg-video {
-		opacity:		0;
-	}
-
-	html, body {
-		background:		#150720;
-	}
-
-	table {
-		margin:			0 auto;
-	}
-
-	#getBonkd, #hotslogs, #heroesfire {
-		width:			100%;
-		text-align: 	center;
-	}
 }
 
 ul.ui-autocomplete {
@@ -159,7 +133,7 @@ body .ui-tooltip {
 	color: 			white;
 	border-radius: 	5px;
 	font-size:		14px 				!important;
-	font-family:	consolas 			!important;
+	font-family:	consolas, Helvetica !important;
 	border:			1px solid #6939f8;
 	border-width: 	1px 				!important;
 	background:		rgba(9,1,16, 0.85);
@@ -174,17 +148,7 @@ body .ui-tooltip span.number {
 	font-weight: 	bold;
 }
 
-@media (max-width: 750px) {
-	body .ui-tooltip {
-		display:	none !important;
-	}
-}
 
-@media (max-width: 1000px) {
-	#update-time {
-		display:	none;
-	}
-}
 
 html, body {
 	height: 		100%;
@@ -210,10 +174,72 @@ html, body {
 }
 
 #home {
-	font-family: 	consolas;
+	font-family: 	consolas, Helvetica;
 	color:			#FFF;
+	margin-top:		10px;
 }
 
 #home a:visited {
 	color:			#AAA;
+}
+
+table {
+	transition:		min-width 0.5s ease-out;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1300px) {
+	#bg-video {
+		opacity:		0.3;
+	}
+
+	table {
+		min-width:		300px;
+	}
+}
+
+@media (max-width: 1000px) {
+
+	h1 {
+		text-align: 	center;
+	}
+
+	#search input {
+		width:			100%;
+		margin:			10px 0;
+	}
+
+	#bg-video {
+		opacity:		0;
+	}
+
+	#update-time {
+		display:	none;
+	}
+
+	table {
+		margin:			0 auto;
+		min-width:		300px;
+	}
+
+	#getbonkd, #hotslogs, #heroesfire {
+		width:			100%;
+		text-align: 	center;
+	}
+
+	#footer {
+		display:		none;
+	}
+}
+
+/* iPhone size, roughly. */
+@media (max-width: 480px) {
+
+	body {
+		text-overflow:	none;
+	}
+
+	table {
+		margin:			0 auto;
+	}
 }
