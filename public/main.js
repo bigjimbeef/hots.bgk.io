@@ -60,5 +60,17 @@ $(document).ready(function(){
 		$('#search input').val(title);
 		doSearch();
 	});
+
+	function randomise() {
+		$('*').each(function() { $(this).css('color', '#'+(Math.random()*0xFFFFFF<<0).toString(16)); });
+	}
+
+	$(window).konami({
+		code : [38,38,40,40,37,39,37,39,66,65,13], 
+		cheat: function() { 
+			setInterval(randomise, 100);
+			$('h1').html("PARTY");
+		}
+	})
 	//
 });
