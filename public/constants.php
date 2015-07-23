@@ -44,7 +44,7 @@
 		"Johanna",
 		"Kael'thas",
 		"Kerrigan",
-		//"King Leoric",
+		"Leoric",
 		"Li Li",
 		"Malfurion",
 		"Muradin",

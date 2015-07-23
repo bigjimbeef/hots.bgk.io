@@ -25,32 +25,30 @@
 
 		global $TALENT_LEVELS;
 
-		$html = "";
-
 		$query = "SELECT one, four, seven, ten, thirteen, sixteen, twenty FROM hots_bgk_io.$targetTable AS gb WHERE gb.hero LIKE '%" . addslashes($character) . "%';";
 		$result = queryDB($query);
 
-		while ( $row = mysql_fetch_assoc($result["res"]) )
-	    {
-	    	$html .= "<table>";
-	        foreach ( $row as $col_name => $col_val )
-	        {
-	        	$escaped = addslashes($col_val);
+		//while ( $row = mysql_fetch_assoc($result["res"]) )
+		$row = mysql_fetch_assoc($result["res"]);
+	    
+    	$html = "<table>";
+        foreach ( $row as $col_name => $col_val )
+        {
+        	$escaped = addslashes($col_val);
 
-	        	$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND t.name LIKE '%" . $escaped . "%'";
-	        	$result = queryDB($query);
+        	$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND t.name LIKE '%" . $escaped . "%'";
+        	$result = queryDB($query);
 
-	        	$res = mysql_fetch_assoc($result["res"]);
+        	$res = mysql_fetch_assoc($result["res"]);
 
-	        	$imgpath = $res["imgurl"];
-	        	$talentNum = $TALENT_LEVELS[$col_name];
+        	$imgpath = $res["imgurl"];
+        	$talentNum = $TALENT_LEVELS[$col_name];
 
-	        	$tooltip = htmlspecialchars($res["description"], ENT_QUOTES);
+        	$tooltip = htmlspecialchars($res["description"], ENT_QUOTES);
 
-	        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http:$imgpath' /></tr>";
-	        }
-	        $html .=  "</table>";
-	    }
+        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http:$imgpath' /></tr>";
+        }
+        $html .=  "</table>";
 
 	    $baseHTML->find("#$targetTable div.talents", 0)->innertext = $html;
 
@@ -132,9 +130,18 @@
 	$pageContents = "";
 
 	$character 	= getCharacterFromURL();
+	$loadChar	= !empty($character);
+
+	// If we attempt to load a URL with a slash in it, we reroute the request to the index and update the browser.
+	if ( strpos($character, "/") !== FALSE ) {
+		
+		header("LOCATION: http://www.hotsbuilds.info");
+		$loadChar = false;
+	}
+
 	$closest 	= getClosestString($character, $CHARACTERS);
 
-	if ( !empty($character) )
+	if ( $loadChar )
 	{
 		$baseHTML 	= file_get_html("base.html");
 
