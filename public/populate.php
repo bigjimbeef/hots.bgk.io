@@ -3,6 +3,17 @@
 	include_once("constants.php");
 	include_once("query.php");
 
+	function urlOk($url) {
+	    $headers = @get_headers($url);
+
+	    if ( $headers[0] == 'HTTP/1.1 200 OK' ) {
+	    	return true;
+	    }
+	    else {
+	    	return false;
+	    }
+	}
+
 	function getSingleGetBonkdCharacterData($character, &$urls)
 	{
 		$charCache 	= $character;
@@ -13,10 +24,13 @@
 		$url		= "http://getbonkd.com/guides/$character/";
 
 		$urls[$charCache] = $url;
+		$talents = array();
+
+		if ( !urlOk($url) ) {
+			return $talents;
+		}
 
 		$html = file_get_html($url);
-
-		$talents = array();
 
 		$count = 0;
 		foreach($html->find("#toptalents span.tooltips") as $singleTalent) 
@@ -79,6 +93,10 @@
 		$urls[$charCache] = $url;
 
 		$talents = array();
+
+		if ( !urlOk($url) ) {
+			return $talents;
+		}
 
 		$html = file_get_html($url);
 
@@ -265,9 +283,11 @@
 		}
 
 		// ... to a single array.
-		$entry["talents"] = $singleChar;
-
-		$targetArray[] = $entry;
+		if ( !empty($singleChar) && count($singleChar) == MAX_TALENTS ) {
+			$entry["talents"] = $singleChar;			
+		
+			$targetArray[] = $entry;
+		}
 	}
 
 	foreach($CHARACTERS as $characterName) {
@@ -281,6 +301,7 @@
 		echo "Getting HF information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $hfTalents, $hfUrls, ETalentSite::HeroesFire);
 	}
+
 
 	truncateTable(ETable::HotsLogs);
 	populateTalentTable($hlTalents, ETable::HotsLogs);

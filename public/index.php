@@ -28,8 +28,13 @@
 		$query = "SELECT one, four, seven, ten, thirteen, sixteen, twenty FROM hots_bgk_io.$targetTable AS gb WHERE gb.hero LIKE '%" . addslashes($character) . "%';";
 		$result = queryDB($query);
 
-		//while ( $row = mysql_fetch_assoc($result["res"]) )
 		$row = mysql_fetch_assoc($result["res"]);
+
+		if ( !isset($row) || empty($row) ) {
+			
+			$baseHTML->find("#$targetTable", 0)->outertext = "";
+			return $baseHTML;
+		}
 	    
     	$html = "<table>";
         foreach ( $row as $col_name => $col_val )
@@ -46,7 +51,7 @@
 
         	$tooltip = htmlspecialchars($res["description"], ENT_QUOTES);
 
-        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http:$imgpath' /></tr>";
+        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http://www.hotsbuilds.info$imgpath' /></tr>";
         }
         $html .=  "</table>";
 

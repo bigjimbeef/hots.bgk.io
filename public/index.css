@@ -151,11 +151,18 @@ html, body {
 	margin-top: 	-50px; /* negative value of footer height */
 	height: 		50px;
 	clear:			both;
+
+	font-size: 		10px;
+	background:		#150720;
 }
 
 @media (max-width: 625px) {
 	#search {
 		display:	none;
+	}
+
+	#images img {
+		opacity:	0.9;
 	}
 }
 
