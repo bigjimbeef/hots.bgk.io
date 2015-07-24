@@ -5,6 +5,7 @@
 		const GetBonkd 		= 0;
 		const HotsLogs 		= 1;
 		const HeroesFire 	= 2;
+		const IcyVeins		= 3;
 	}
 
 	abstract class ETable
@@ -12,6 +13,7 @@
 		const GetBonkd 		= "getbonkd";
 		const HotsLogs 		= "hotslogs";
 		const HeroesFire 	= "heroesfire";
+		const IcyVeins		= "icyveins";
 		const Videos		= "videos";
 		const Time			= "time";
 		const Urls			= "urls";

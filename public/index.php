@@ -153,11 +153,13 @@
 		// Add the talents.
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::GetBonkd);
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HotsLogs);
+		$moddedHTML = drawTalents($closest, $baseHTML, ETable::IcyVeins);		
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HeroesFire);
 
 		// Add the URLs.
 		$moddedHTML = setUrl($closest, $moddedHTML, ETable::GetBonkd);
 		$moddedHTML = setUrl($closest, $moddedHTML, ETable::HotsLogs);
+		$moddedHTML = setUrl($closest, $moddedHTML, ETable::IcyVeins);
 		$moddedHTML = setUrl($closest, $moddedHTML, ETable::HeroesFire);
 
 		// Draw the background video.

@@ -29,7 +29,7 @@ h2 a:visited {
 	color:			#AAA;
 }
 
-#getbonkd, #hotslogs, #heroesfire {
+#getbonkd, #hotslogs, #icyveins, #heroesfire {
 	float:			left;
 	min-height: 	500px;
 	min-width: 		300px;
@@ -52,7 +52,7 @@ div.right {
 }
 
 table {
-	min-width:		350px;
+	min-width:		300px;
 }
 
 td {
@@ -87,7 +87,7 @@ td.talentNum {
 }
 
 #bg-video {
-	position: 		absolute;
+	position: 		fixed;
 	bottom:			0;
 	right:			0;
 	z-index:		-100;
@@ -219,6 +219,12 @@ table {
 	color: 			#009cff;
 }
 
+#toggle-bg {
+	float:				right;
+	color:				#FFF;
+	padding-top: 		10px;
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 1300px) {
 	#bg-video {
@@ -254,13 +260,17 @@ table {
 		min-width:		300px;
 	}
 
-	#getbonkd, #hotslogs, #heroesfire {
+	#getbonkd, #hotslogs, #heroesfire, #icyveins {
 		width:			100%;
 		text-align: 	center;
 	}
 
 	#footer {
 		display:		none;
+	}
+
+	#toggle-bg {
+		display: 		none;
 	}
 }
 
@@ -295,11 +305,5 @@ table {
 	#home span.hotsbuilds {
 		font-size:		36pt;
 	}
-}
-
-#toggle-bg {
-	float:				right;
-	color:				#FFF;
-	padding-top: 		10px;
 }
 

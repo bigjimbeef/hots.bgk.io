@@ -245,12 +245,75 @@
 		return $talents;
 	}
 
+	function getSingleIcyVeinsCharacterData($character, &$urls) {
+
+		$talents 	= array();
+
+		$baseURL 	= "http://www.icy-veins.com/heroes/";
+		$target		= "Talent Build";
+
+		$baseHTML 	= file_get_html($baseURL);
+
+		foreach( $baseHTML->find(".nav_content_hero") as $span ) {
+
+			$link = $span->find("a", 0);
+			$hero = $link->find("span", 0);
+
+			if ( strcmp($character, $hero->innertext) != 0 ) {
+				continue;
+			}
+
+			$heroHTML = file_get_html($link->href);
+
+			foreach( $heroHTML->find('#right .box_content .expandable a') as $anchor ) {
+
+				if ( strcmp($anchor->innertext, $target) != 0 ) {
+					continue;
+				}
+
+				$buildURL 			= $anchor->href;
+				$urls[$character] 	= $buildURL;
+
+				$buildHTML 			= file_get_html($buildURL);
+
+				// For each talent tier.
+				foreach ( $buildHTML->find("table.talent_table tr") as $tr ) {
+
+					// For each talent...
+					foreach ( $tr->find("span.talent_container") as $talent ) {
+
+						// For each talent in that tier...
+						$goodTalent = $talent->find("span.talent_marker_yes", 0);
+
+						if ( $goodTalent ) {
+							
+							$talentImg = $talent->find("img.talent_image", 0);
+
+							$talents[] = $talentImg->alt;
+
+							// We only want a single talent per talent tier.
+							break;
+						}
+					}
+				}
+
+				break;
+			}
+
+			break;
+		}
+
+		return $talents;
+	}
+
 	$gbTalents 	= array();
 	$hlTalents	= array();
 	$hfTalents	= array();
+	$ivTalents	= array();
 	$hlUrls 	= array();
 	$gbUrls 	= array();
 	$hfUrls 	= array();
+	$ivUrls		= array();
 
 	function addSingleCharacterTalents($characterName, &$targetArray, &$urls, $targetSite)
 	{
@@ -280,6 +343,12 @@
 				$singleChar = getSingleHeroesfireCharacterData($characterName, $urls);
 			}
 			break;
+
+			case ETalentSite::IcyVeins:
+			{	
+				$singleChar = getSingleIcyVeinsCharacterData($characterName, $urls);
+			}
+			break;
 		}
 
 		// ... to a single array.
@@ -300,9 +369,12 @@
 
 		echo "Getting HF information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $hfTalents, $hfUrls, ETalentSite::HeroesFire);
+
+		echo "Getting IV information for $characterName...\n";
+		addSingleCharacterTalents($characterName, $ivTalents, $ivUrls, ETalentSite::IcyVeins);
 	}
 
-
+/*
 	truncateTable(ETable::HotsLogs);
 	populateTalentTable($hlTalents, ETable::HotsLogs);
 
@@ -312,8 +384,12 @@
 	truncateTable(ETable::HeroesFire);
 	populateTalentTable($hfTalents, ETable::HeroesFire);
 
+	truncateTable(ETable::IcyVeins);
+	populateTalentTable($ivTalents, ETable::IcyVeins);
+
 	truncateTable(ETable::Time);
 	populateTime();
+*/
 
 	truncateTable(ETable::Urls);
-	populateUrls($hlUrls, $gbUrls, $hfUrls, $CHARACTERS);
+	populateUrls($hlUrls, $gbUrls, $hfUrls, $ivUrls, $CHARACTERS);

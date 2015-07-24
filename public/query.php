@@ -119,40 +119,21 @@
 		queryDB($query);
 	}
 
-	function populateUrls($hlUrls, $gbUrls, $hfUrls, $CHARACTERS) {
+	function populateUrls($hlUrls, $gbUrls, $hfUrls, $ivUrls, $CHARACTERS) {
 
-		$query = "INSERT IGNORE INTO hots_bgk_io." . ETable::Urls . " (name, hotslogs, getbonkd, heroesfire) VALUES";
+		$query = "INSERT IGNORE INTO hots_bgk_io." . ETable::Urls . " (name, hotslogs, getbonkd, heroesfire, icyveins) VALUES";
 
-		$count = 0;
 		foreach($CHARACTERS as $characterName) {
 
-			++$count;
-			if ( !isset($hlUrls[$characterName]) || !isset($gbUrls[$characterName]) || !isset($hfUrls[$characterName]) ) {
-				
-				if ( !isset($hlUrls[$characterName]) ) {
-					echo "Character name not set: '$characterName' in hlUrls.";
-				}
-				if ( !isset($gbUrls[$characterName]) ) {
-					echo "Character name not set: '$characterName' in gbUrls.";
-				}
-				if ( !isset($hfUrls[$characterName]) ) {
-					echo "Character name not set: '$characterName' in hfUrls.";
-				}
+			$hl = isset($hlUrls[$characterName]) ? $hlUrls[$characterName] : "";
+			$gb = isset($gbUrls[$characterName]) ? $gbUrls[$characterName] : "";
+			$hf = isset($hfUrls[$characterName]) ? $hfUrls[$characterName] : "";
+			$iv = isset($ivUrls[$characterName]) ? $ivUrls[$characterName] : "";
 
-				continue;
-			}
-
-			$hl = $hlUrls[$characterName];
-			$gb = $gbUrls[$characterName];
-			$hf = $hfUrls[$characterName];
-
-			$query .= "(\"" . $characterName . "\", \"" . addslashes($hl) . "\", \"" . addslashes($gb) . "\", \"" . addslashes($hf) . "\")";
-
-			if ( $count < count($CHARACTERS) ) {
-				$query .= ", ";
-			}
+			$query .= "(\"" . $characterName . "\", \"" . addslashes($hl) . "\", \"" . addslashes($gb) . "\", \"" . addslashes($hf) . "\", \"" . addslashes($iv) . "\"), ";
 		}
 
+		$query = rtrim($query, ", ");
 		$query .= ";";
 
 		queryDB($query);
