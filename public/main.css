@@ -296,3 +296,10 @@ table {
 		font-size:		36pt;
 	}
 }
+
+#toggle-bg {
+	float:				right;
+	color:				#FFF;
+	padding-top: 		10px;
+}
+

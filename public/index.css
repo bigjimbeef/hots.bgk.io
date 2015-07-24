@@ -22,7 +22,7 @@ body {
 	height:			150px;
 	
 	margin:			0 auto;
-	padding-top:	150px;
+	padding-top:	50px;
 }
 
 #search, #search input {
@@ -143,7 +143,7 @@ html, body {
 	height: 		50px;
 	clear:			both;
 
-	font-size: 		10px;
+	font-size: 		16px;
 }
 
 @media (max-width: 625px) {
@@ -217,5 +217,9 @@ html, body {
 
 	#home span.hotsbuilds {
 		font-size:		36pt;
+	}
+
+	#footer {
+		font-size:		10px;
 	}
 }

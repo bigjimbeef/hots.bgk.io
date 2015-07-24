@@ -61,6 +61,27 @@ $(document).ready(function(){
 		doSearch();
 	});
 
+	$(search).focus();
+
+	// Manage animated background.
+	//
+
+	var hideBG = localStorage.getItem("hide-anim-bg") == "true";
+	if ( hideBG ) {
+		$('#bg-video').hide();
+
+		$('#low-spec').attr('checked', false);
+	}
+
+	$('#low-spec').change(function() { 
+		var on = $(this)[0].checked; 
+		var targetFn = on ? "show" : "hide"; 
+	
+		$('#bg-video')[targetFn]();
+
+		localStorage.setItem("hide-anim-bg", !on);
+	});
+
 	function randomise() {
 		$('*').each(function() { $(this).css('color', '#'+(Math.random()*0xFFFFFF<<0).toString(16)); });
 	}
