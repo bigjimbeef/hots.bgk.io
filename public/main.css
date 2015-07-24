@@ -172,18 +172,51 @@ html, body {
 	clear:			both;
 }
 
+table {
+	transition:		min-width 0.5s ease-out;
+}
+
 #home {
 	font-family: 	consolas, Helvetica;
 	color:			#FFF;
-	margin-top:		10px;
 }
 
-#home a:visited {
-	color:			#AAA;
+#home a {
+	text-decoration: none;
 }
 
-table {
-	transition:		min-width 0.5s ease-out;
+#home {
+	cursor:			pointer;
+
+	padding-top:	70px;
+}
+
+#home div {
+	-webkit-user-select:	none;
+	-moz-user-select:		none;
+	user-select:			none;
+}
+
+#home img {
+	width:			800px;
+	height:			120px;
+	border:			none;
+
+	position:		absolute;
+	top:			0;
+	left:			0;
+	z-index:		-1;
+}
+
+#home .hotsbuilds {
+	color: 			#FFF;
+	font-size: 		48pt;
+	text-shadow: 	0px 0px 1rem #009cff;
+}
+
+#home .info {
+	font-size: 		18pt;
+	color: 			#009cff;
 }
 
 /* MEDIA QUERIES */
@@ -240,5 +273,26 @@ table {
 
 	table {
 		margin:			0 auto;
+	}
+}
+
+@media (max-width:	800px) {
+
+	body {
+		overflow-x:		hidden;
+	}
+
+	#home span.hotsbuilds {
+		width:			100%;
+		display:		block;
+		text-align: 	center;
+	}
+
+	#home span.info {
+		display:		none;
+	}
+
+	#home span.hotsbuilds {
+		font-size:		36pt;
 	}
 }
