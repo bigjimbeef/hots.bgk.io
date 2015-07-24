@@ -242,3 +242,8 @@ table {
 		margin:			0 auto;
 	}
 }
+
+#toggle-bg {
+	float:				right;
+	color:				#FFF;
+}

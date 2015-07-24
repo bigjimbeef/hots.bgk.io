@@ -61,6 +61,10 @@ $(document).ready(function(){
 		doSearch();
 	});
 
+	$(search).focus();
+
+	$('#low-spec').change(function() { var on = $(this)[0].checked; var targetFn = on ? "show" : "hide"; $('#bg-video')[targetFn](); });
+
 	function randomise() {
 		$('*').each(function() { $(this).css('color', '#'+(Math.random()*0xFFFFFF<<0).toString(16)); });
 	}
