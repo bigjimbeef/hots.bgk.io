@@ -46,6 +46,7 @@
 		"Johanna",
 		"Kael'thas",
 		"Kerrigan",
+		"Kharazim",
 		"Leoric",
 		"Li Li",
 		"Malfurion",

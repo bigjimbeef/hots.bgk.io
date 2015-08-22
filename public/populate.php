@@ -374,7 +374,6 @@
 		addSingleCharacterTalents($characterName, $ivTalents, $ivUrls, ETalentSite::IcyVeins);
 	}
 
-/*
 	truncateTable(ETable::HotsLogs);
 	populateTalentTable($hlTalents, ETable::HotsLogs);
 
@@ -389,7 +388,6 @@
 
 	truncateTable(ETable::Time);
 	populateTime();
-*/
 
 	truncateTable(ETable::Urls);
 	populateUrls($hlUrls, $gbUrls, $hfUrls, $ivUrls, $CHARACTERS);
