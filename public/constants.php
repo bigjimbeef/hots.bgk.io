@@ -20,6 +20,18 @@
 		const Talents		= "talents";
 	}
 
+	abstract class ETable_DEBUG
+	{
+		const GetBonkd 		= "getbonkd_debug";
+		const HotsLogs 		= "hotslogs_debug";
+		const HeroesFire 	= "heroesfire_debug";
+		const IcyVeins		= "icyveins_debug";
+		const Videos		= "videos_debug";
+		const Time			= "time_debug";
+		const Urls			= "urls_debug";
+		const Talents		= "talents_debug";
+	}
+
 	$TALENT_LEVELS = array(
 		"one" => "1",
 		"four" => "4",
@@ -56,6 +68,7 @@
 		"Nova",
 		"Raynor",
 		"Rehgar",
+		"Rexxar",
 		"Sgt. Hammer",
 		"Sonya",
 		"Stitches",

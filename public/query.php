@@ -145,7 +145,10 @@
 	//
 	function populateTalents($talents) {
 
-		$query 	= "INSERT IGNORE INTO hots_bgk_io." . ETable::Talents . "(hero, name, tier, description, imgurl) VALUES ";
+		$query 	= "INSERT IGNORE INTO hots_bgk_io." . ETable::Talents . "(hero, name, tier, description, imgurl, number) VALUES ";
+
+		// DEBUG
+		//$query 	= "INSERT IGNORE INTO hots_bgk_io." . ETable_DEBUG::Talents . "(hero, name, tier, description, imgurl, number) VALUES ";
 
 		foreach ( $talents as $heroName => $talentTiers ) {
 
@@ -160,6 +163,7 @@
 
 					$talentName = $singleTalent["name"];
 					$talentDesc = $singleTalent["desc"];
+					$talentNum	= $singleTalent["num"];
 
 					$imgurl		= "/images/talents/" . prepImageName($talentName) . ".png";
 					$query 		.= 
@@ -168,6 +172,7 @@
 							"\", \"" 	. addslashes($tierName) 	. 
 							"\", \"" 	. addslashes($talentDesc) 	. 
 							"\", \"" 	. addslashes($imgurl) 		. 
+							"\", \"" 	. addslashes($talentNum) 		. 
 						"\"), ";
 				}
 			}

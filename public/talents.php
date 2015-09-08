@@ -31,6 +31,8 @@
 
 			$tiers		= array();
 
+			// The counts, per tier, for getting the talent "number".
+			$counts		= array();
 			foreach ( $talentHtml->find("li.talent") as $talent ) {
 
 				$talentTier = $talent->{"data-tier"};
@@ -43,6 +45,9 @@
 				if ( !isset($tiers[$tierName]) ) {
 					$tiers[$tierName] = array();
 				}
+				if ( !isset($counts[$tierName]) ) {
+					$counts[$tierName] = 0;
+				}
 
 				$tipHtml	= file_get_html($baseURL . $tipHref);
 
@@ -52,13 +57,16 @@
 
 				array_push($tiers[$tierName], [
 					"name" => $talentName,
-					"desc" => $tooltip
+					"desc" => $tooltip,
+					"num" => $counts[$tierName]
 				]);
 
 				// Strip the image, for later snaffling.
 				$img					= $tipSection->find('img', 0);
 				$imgPath				= $img->src;
 				$images[$talentName] 	= $imgPath;
+
+				++$counts[$tierName];
 			}
 
 			$talents[$heroName] = $tiers;
