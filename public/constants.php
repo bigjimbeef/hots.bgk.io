@@ -61,6 +61,7 @@
 		"Kharazim",
 		"Leoric",
 		"Li Li",
+		"Lt. Morales",
 		"Malfurion",
 		"Muradin",
 		"Murky",

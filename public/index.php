@@ -51,13 +51,41 @@
 
         	$tooltip = htmlspecialchars($res["description"], ENT_QUOTES);
 
-        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http://www.hotsbuilds.info$imgpath' /></tr>";
+        	// Create talent hotkey indicator.
+        	$talentHotkey 	= $res["number"];
+        	$hotkeyHTML		= createTalentHotkeyIndicator($character, $talentHotkey, $col_name);
+
+        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http://www.hotsbuilds.info$imgpath' /></td><td>$hotkeyHTML</td></tr>";
         }
         $html .=  "</table>";
 
 	    $baseHTML->find("#$targetTable div.talents", 0)->innertext = $html;
 
 	    return $baseHTML;
+	}
+
+	function createTalentHotkeyIndicator($character, $hotkey, $tier) {
+
+		$colName = "count";
+		$query = "SELECT count(*) AS $colName FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND t.tier LIKE '%" . $tier . "%'";
+        $result = queryDB($query);
+
+        $res = mysql_fetch_assoc($result["res"]);
+
+        $numTalents = intval($res[$colName]);
+
+		$outHTML = "<div class='talent-numbers'>";
+		for ( $i = 0; $i < $numTalents; ++$i ) {
+
+			$outHTML .= "\t<div class='talent-number ";
+			if ( $i == intval($hotkey) ) {
+				$outHTML .= "highlighted";
+			}
+			$outHTML .= "'>" . ($i + 1) . "</div>\n";
+		}
+		$outHTML .= "</div>";
+
+		return $outHTML;
 	}
 
 	function setupVideoBackground($character, $baseHTML) {

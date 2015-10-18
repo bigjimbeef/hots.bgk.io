@@ -38,7 +38,12 @@ h2 a:visited {
 }
 
 table {
-	color:			#FFF;
+	color:				#FFF;
+	border-collapse: 	collapse;
+}
+
+table tr {
+	height:			75px;
 }
 
 div.left {
@@ -223,6 +228,36 @@ table {
 	float:				right;
 	color:				#FFF;
 	padding-top: 		10px;
+}
+
+div.talent-numbers div.talent-number {
+	width:			12px;
+	height:			12px;
+	
+	margin:			0;
+
+	font-size:		11px;
+	text-align:		center;
+	color:			#777;
+
+	-webkit-user-select:	none;
+	-moz-user-select:		none;
+	user-select:			none;
+	cursor:					default;
+}
+
+div.talent-numbers div.highlighted {
+	color:			#FFF;
+	background:		#6939f8;
+	/*
+	color:			#090110;
+	background:		#00aeef;
+	*/
+	border-radius: 	10px;
+}
+
+div.talent-numbers div.hidden {
+	visibility:		hidden;
 }
 
 /* MEDIA QUERIES */
