@@ -67,6 +67,10 @@ td {
 	font-family: 	consolas, Helvetica;
 }
 
+td:nth-child(2) {
+	min-width:		200px;
+}
+
 td.talentNum {
 	width:			50px;
 	text-align: 	center;

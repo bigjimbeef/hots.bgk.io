@@ -16,10 +16,15 @@
 
 	foreach($CHARACTERS as $characterName) {
 
-		$character = $characterName;
+		$character = (string)$characterName;
+
+		$isChogall = $characterName == "Cho" || $characterName == "Gall";
 
 		if ( $characterName == "Li Li" ) {
 			$character = "lili";
+		}
+		else if ( $isChogall ) {
+			$character = "chogall";
 		}
 		else {
 			$character = getBlizzName($characterName);
@@ -38,7 +43,18 @@
 
 		if ( !empty($matches) )
 		{
-			$videoUrl = "http://media.blizzard.com/heroes/videos/heroes/skins/" . $character . "_" . $matches[1] . ".webm";
+			if ( !$isChogall ) {
+				$videoUrl = "http://media.blizzard.com/heroes/videos/heroes/skins/" . $character . "_" . $matches[1] . ".webm";
+			}
+			else {
+				$lowerCharName = strtolower($characterName);
+				$videoUrl = "http://media.blizzard.com/heroes/videos/heroes/skins/" . $lowerCharName . "_" . $matches[1] . ".webm";
+
+				// More fixup for Cho'Gall!
+				if ( $characterName == "Gall" ) {
+					$videoUrl = preg_replace("/Cho/", "Gall", $videoUrl);
+				}
+			}
 
 			echo "Adding video path for $characterName...\n";
 			$videos[$characterName] = $videoUrl;

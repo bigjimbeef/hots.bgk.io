@@ -88,7 +88,7 @@
 		// Ensure the character name is capitalised, because HL needs that for some reason.
 		$character 	= ucwords($character);
 		$character 	= rawurlencode($character);
-		$url		= "https://www.hotslogs.com/Sitewide/HeroDetails?Hero=$character";
+		$url		= "http://www.hotslogs.com/Sitewide/HeroDetails?Hero=$character";
 
 		$urls[$charCache] = $url;
 
@@ -363,7 +363,7 @@
 
 		echo "Getting HL information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $hlTalents, $hlUrls, ETalentSite::HotsLogs);
-		
+
 		echo "Getting GB information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $gbTalents, $gbUrls, ETalentSite::GetBonkd);
 
