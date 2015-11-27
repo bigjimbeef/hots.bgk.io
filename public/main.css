@@ -3,7 +3,7 @@ html {
 	font-family:	consolas, Helvetica !important;
 }
 
-img {
+#wrap img {
 	width:			48px;
 	height:			48px;
 
@@ -346,3 +346,12 @@ div.talent-numbers div.hidden {
 	}
 }
 
+#donate {
+	float:				right;
+}
+
+#donate input[type="image"] {
+	width:				60px;
+	margin-left:		10px;
+	margin-top:			2px;
+}

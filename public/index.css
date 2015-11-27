@@ -223,3 +223,13 @@ html, body {
 		font-size:		10px;
 	}
 }
+
+#donate {
+	float:				right;
+}
+
+#donate input[type="image"] {
+	width:				60px;
+	margin-left:		10px;
+	margin-top:			2px;
+}
