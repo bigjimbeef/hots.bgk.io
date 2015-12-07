@@ -82,6 +82,13 @@ $(document).ready(function(){
 		localStorage.setItem("hide-anim-bg", !on);
 	});
 
+	// Manage Icy-veins builds.
+	$("input[type='radio']").change(function() {
+		
+		$('#icyveins tbody').hide();
+		$("#" + $(this).attr("value")).show();
+	});
+
 	function randomise() {
 		$('*').each(function() { $(this).css('color', '#'+(Math.random()*0xFFFFFF<<0).toString(16)); });
 	}

@@ -4,6 +4,15 @@
 	include_once("query.php");
 	include_once("utils.php");
 
+	function getBlizzName($character) {
+
+		$character 	= strtolower($character);
+		$character 	= preg_replace("/['|\.]/", "", $character);
+		$character 	= preg_replace("/ /", "-", $character);
+
+		return $character;
+	}
+
 	function getCharacterFromURL()
 	{
 		$retVal = "";
@@ -159,6 +168,83 @@
 		return $moddedHTML;
 	}
 
+	function stripBuildName($name) {
+
+		$name = strtolower($name);
+		$name = preg_replace("/ /", "", $name);
+
+		return $name;
+	}
+
+	function doIcyVeins($character, $baseHTML) {
+
+		global $TALENT_LEVELS;
+		$talentLevelKeys = array_keys($TALENT_LEVELS);
+		$talentLevelValues = array_values($TALENT_LEVELS);
+
+		$blizzName = getBlizzName($character);
+
+		// Get the JSON.
+		$baseUrl = "http://www.icy-veins.com/heroes/";
+		$targetUrl = $baseUrl . $blizzName . ".json";
+
+		$jsonStr = file_get_contents($targetUrl);
+		$json = json_decode($jsonStr, true);
+
+		// Tables and tables and tables.
+		$html = "<table>";
+
+		// Add the table header to switch builds.
+		$html .= "<thead>";
+		$isFirst = true;
+		foreach ($json as $singleBuild) {
+
+			$buildName = $singleBuild["name"];
+			$strippedBuild = stripBuildName($buildName);
+
+			$html .= "<tr><th colspan=3><input type='radio' name='iv-builds' id='$strippedBuild-input' value='$strippedBuild'";
+			if ( $isFirst ) {
+				$html .= " checked";
+				$isFirst = false;
+			}
+			$html .= (" /><label for='$strippedBuild-input'>" . trim($buildName) . "</label></th></tr>");
+		}
+		$html .= "</thead>";
+
+		foreach ($json as $singleBuild) {
+
+			$buildName = stripBuildName($singleBuild["name"]);
+			$talents = $singleBuild["talents"];
+
+			$html .= "<tbody id='$buildName'>";
+			foreach ( $talents as $index => $talent ) {
+
+				$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND t.shortname LIKE '%" . $talent . "%'";
+	        	$result = queryDB($query);
+
+	        	$res = mysql_fetch_assoc($result["res"]);
+
+	        	$talentName = $res["name"];
+	        	$imgpath = $res["imgurl"];
+	        	$tooltip = htmlspecialchars($res["description"], ENT_QUOTES);
+
+	        	// Create talent hotkey indicator.
+	        	$talentHotkey 	= $res["number"];
+	        	$talentLevel	= $talentLevelKeys[$index];
+	        	$hotkeyHTML		= createTalentHotkeyIndicator($character, $talentHotkey, $talentLevel);
+
+				$talentNum = $talentLevelValues[$index];
+				$html .= "<tr><td class='talentNum'>$talentNum</td><td>$talentName</td><td><img title='$tooltip' src='http://www.hotsbuilds.info$imgpath' /></td><td>$hotkeyHTML</td></tr>";
+			}
+			$html .= "</tbody>";
+		}
+		$html .= "</table>";
+
+		$baseHTML->find("#icyveins div.talents", 0)->innertext = $html;
+
+		return $baseHTML;
+	}
+
 	// The base contents of the page.
 	$pageContents = "";
 
@@ -181,7 +267,11 @@
 		// Add the talents.
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::GetBonkd);
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HotsLogs);
-		$moddedHTML = drawTalents($closest, $baseHTML, ETable::IcyVeins);		
+		//$moddedHTML = drawTalents($closest, $baseHTML, ETable::IcyVeins);
+
+		// IV is bespoke.
+		$moddedHTML = doIcyVeins($closest, $baseHTML);
+
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HeroesFire);
 
 		// Add the URLs.

@@ -60,18 +60,56 @@ table {
 	min-width:		300px;
 }
 
-td {
+thead tr {
+	height:			25px;
+}
+
+#icyveins tbody {
+	display: 		none;
+}
+
+#icyveins tbody:nth-of-type(1) {
+	display:		block;
+}
+
+#icyveins th input, #icyveins th label {
+	cursor:			pointer;
+}
+
+#icyveins th {
+	text-align: 	right;
+}
+
+#icyveins th input[type="radio"] {
+	display:		none;
+}
+
+#icyveins th label {
+	font-size:		12px;
+	font-weight:	normal;
+	color:			#777;
+}
+
+#icyveins th input:checked + label {
+	color:			#00AEEF;
+}
+
+#icyveins thead {
+	margin-bottom:	20px;
+}
+
+tbody td {
 	padding:		0;
 	margin:			0;
 
 	font-family: 	consolas, Helvetica;
 }
 
-td:nth-child(2) {
-	min-width:		200px;
+tbody td:nth-child(2) {
+	min-width:		225px;
 }
 
-td.talentNum {
+tbody td.talentNum {
 	width:			50px;
 	text-align: 	center;
 
@@ -200,7 +238,7 @@ table {
 	padding-top:	70px;
 }
 
-#home div {
+#home div, th {
 	-webkit-user-select:	none;
 	-moz-user-select:		none;
 	user-select:			none;

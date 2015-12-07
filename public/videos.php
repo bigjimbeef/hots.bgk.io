@@ -1,7 +1,7 @@
 <?php
-	include("simple_html_dom.php");
-	include("constants.php");
-	include("query.php");
+	include_once("simple_html_dom.php");
+	include_once("constants.php");
+	include_once("query.php");
 
 	function getBlizzName($character) {
 
