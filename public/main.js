@@ -86,7 +86,9 @@ $(document).ready(function(){
 	$("input[type='radio']").change(function() {
 		
 		$('#icyveins tbody').hide();
-		$("#" + $(this).attr("value")).show();
+		$("#" + $(this).attr("value")).css({
+			display: "block"
+		});
 	});
 
 	function randomise() {
