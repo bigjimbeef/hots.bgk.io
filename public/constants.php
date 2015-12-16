@@ -65,6 +65,7 @@
 		"Leoric",
 		"Li Li",
 		"Lt. Morales",
+		"Lunara",
 		"Malfurion",
 		"Muradin",
 		"Murky",
