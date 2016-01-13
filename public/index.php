@@ -4,6 +4,17 @@
 	include_once("query.php");
 	include_once("utils.php");
 
+	function urlOk($url) {
+	    $headers = @get_headers($url);
+
+	    if ( $headers[0] == 'HTTP/1.1 200 OK' ) {
+	    	return true;
+	    }
+	    else {
+	    	return false;
+	    }
+	}
+
 	function getBlizzName($character) {
 
 		$character 	= strtolower($character);
@@ -187,6 +198,9 @@
 		// Get the JSON.
 		$baseUrl = "http://www.icy-veins.com/heroes/";
 		$targetUrl = $baseUrl . $blizzName . ".json";
+		if ( !urlOk($targetUrl) ) {
+			return $baseHtml;
+		}
 
 		$jsonStr = file_get_contents($targetUrl);
 		$json = json_decode($jsonStr, true);
