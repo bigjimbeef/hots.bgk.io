@@ -4,7 +4,7 @@
 	include_once("constants.php");
 
 	function queryDB($sQueryString) {
-		$link = mysql_connect('localhost', 'root', 'root');
+		$link = mysql_connect('localhost', 'minikeen', 'test');
 		if (!$link) {
 		    die('Could not connect: ' . mysql_error());
 		}

@@ -278,6 +278,10 @@
 	{
 		$baseHTML 	= file_get_html("base.html");
 
+		if ( file_exists("is_beta") ) {
+			$baseHTML->find("#splash", 0)->innertext = "<div id='beta'>BETA</div>";
+		}
+
 		// Add the talents.
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::GetBonkd);
 		$moddedHTML = drawTalents($closest, $baseHTML, ETable::HotsLogs);
@@ -310,6 +314,11 @@
 	else
 	{
 		$baseHTML		= file_get_html("empty.html");
+
+		if ( file_exists("is_beta") ) {
+			$baseHTML->find("#splash", 0)->innertext = "<div id='beta'>BETA</div>";
+		}
+
 		$baseHTML		= addCharacterJSON($baseHTML);
 		$pageContents 	= $baseHTML;
 	}

@@ -3,6 +3,24 @@ html {
 	font-family:	consolas, Helvetica !important;
 }
 
+#beta {
+	position: 		fixed;
+	top:			0;
+	left:			0;
+
+	height:			20px;
+	width:			100%;
+
+	background:		#00AEEF !important;
+	color:			#FFF !important;
+
+	font-size:		20px;
+	font-weight: 	bold;
+
+	z-index:		100;
+	padding: 		5px;
+}
+
 #wrap img {
 	width:			48px;
 	height:			48px;
