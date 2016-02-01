@@ -39,7 +39,7 @@
 		$targetAttr = $video->{"data-ng-class"};
 		$targetAttr = htmlspecialchars_decode($targetAttr);
 
-		preg_match("/currentSkin.slug == \"(\w+)\"/", $targetAttr, $matches);
+		preg_match("/currentSkin.slug == '(\w+)'/", $targetAttr, $matches);
 
 		if ( !empty($matches) )
 		{
@@ -61,4 +61,4 @@
 		}
 	}
 
-	populateVideos($videos);
+	//populateVideos($videos);
