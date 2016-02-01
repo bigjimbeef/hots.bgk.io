@@ -44,6 +44,11 @@
 		if ( !empty($matches) )
 		{
 			if ( !$isChogall ) {
+				// Greymane special casing.
+				if ( $characterName == "Greymane" ) {
+					$character = "greymane-human";
+				}
+
 				$videoUrl = "http://media.blizzard.com/heroes/videos/heroes/skins/" . $character . "_" . $matches[1] . ".webm";
 			}
 			else {
@@ -61,4 +66,4 @@
 		}
 	}
 
-	//populateVideos($videos);
+	populateVideos($videos);

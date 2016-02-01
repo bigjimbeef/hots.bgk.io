@@ -52,3 +52,11 @@ writeTextAfterCharacter("characters", "$newChar", $prevCharacter);
 writeTextAfterCharacter("constants.php", "\t\t\"$newChar\",", $prevCharacter);
 writeTextAfterCharacter("empty.html", "\t\t\t\t\t\t<a href='/$newChar'><img data-name='$newChar' title='$newChar' src='/images/$newChar.png' /></a>", $prevCharacter);
 
+// Populate the new talents, and images, for the new guy.
+system("php talents.php --images");
+
+// Get the video path for the new guy.
+system("php videos.php");
+
+// Get the data!
+system("php populate.php");

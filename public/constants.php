@@ -56,6 +56,7 @@
 		"Falstad",
 		"Gall",
 		"Gazlowe",
+		"Greymane",
 		"Illidan",
 		"Jaina",
 		"Johanna",
