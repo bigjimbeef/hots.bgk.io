@@ -364,30 +364,34 @@
 		echo "Getting HL information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $hlTalents, $hlUrls, ETalentSite::HotsLogs);
 
-		echo "Getting GB information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $gbTalents, $gbUrls, ETalentSite::GetBonkd);
+// No longer getting data for GetBonkd.
+//		echo "Getting GB information for $characterName...\n";
+//		addSingleCharacterTalents($characterName, $gbTalents, $gbUrls, ETalentSite::GetBonkd);
 
 		echo "Getting HF information for $characterName...\n";
 		addSingleCharacterTalents($characterName, $hfTalents, $hfUrls, ETalentSite::HeroesFire);
 
-		echo "Getting IV information for $characterName...\n";
-		addSingleCharacterTalents($characterName, $ivTalents, $ivUrls, ETalentSite::IcyVeins);
+// IcyVeins is done differently now.
+//		echo "Getting IV information for $characterName...\n";
+//		addSingleCharacterTalents($characterName, $ivTalents, $ivUrls, ETalentSite::IcyVeins);
 	}
 
 	truncateTable(ETable::HotsLogs);
 	populateTalentTable($hlTalents, ETable::HotsLogs);
 
-	truncateTable(ETable::GetBonkd);
-	populateTalentTable($gbTalents, ETable::GetBonkd);
+//	truncateTable(ETable::GetBonkd);
+//	populateTalentTable($gbTalents, ETable::GetBonkd);
 
 	truncateTable(ETable::HeroesFire);
 	populateTalentTable($hfTalents, ETable::HeroesFire);
 
-	truncateTable(ETable::IcyVeins);
-	populateTalentTable($ivTalents, ETable::IcyVeins);
+//	truncateTable(ETable::IcyVeins);
+//	populateTalentTable($ivTalents, ETable::IcyVeins);
 
 	truncateTable(ETable::Time);
 	populateTime();
 
 	truncateTable(ETable::Urls);
 	populateUrls($hlUrls, $gbUrls, $hfUrls, $ivUrls, $CHARACTERS);
+
+	exec("php postpro.php");
