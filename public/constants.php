@@ -65,6 +65,7 @@
 		"Kharazim",
 		"Leoric",
 		"Li Li",
+		"Li-Ming",
 		"Lt. Morales",
 		"Lunara",
 		"Malfurion",
