@@ -199,7 +199,9 @@
 		$baseUrl = "http://www.icy-veins.com/heroes/";
 		$targetUrl = $baseUrl . $blizzName . ".json";
 		if ( !urlOk($targetUrl) ) {
-			return $baseHtml;
+
+			$iv = $baseHTML->find("#icyveins", 0)->outertext = '';
+			return $baseHTML;
 		}
 
 		$jsonStr = file_get_contents($targetUrl);

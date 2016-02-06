@@ -78,8 +78,18 @@ table {
 	min-width:		300px;
 }
 
+thead {
+	position:		absolute;
+	top:			0;
+	right:			0;
+}
+
 thead tr {
-	height:			25px;
+	height:			18px;
+}
+
+#icyveins {
+	position:		relative;
 }
 
 #icyveins tbody {
