@@ -25,7 +25,8 @@
 			echo "Scraping " . $heroName . "...\n";
 
 			$anchor		= $li->find("a", 0);
-			$url		= $baseURL . $anchor->href;
+			$url		= $baseURL . $anchor->href . "?filter-ptr=1";
+			echo "URL: $url...\n";
 
 			$talentHtml = file_get_html($url);
 

@@ -75,7 +75,7 @@
         	$talentHotkey 	= $res["number"];
         	$hotkeyHTML		= createTalentHotkeyIndicator($character, $talentHotkey, $col_name);
 
-        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='http://www.hotsbuilds.info$imgpath' /></td><td>$hotkeyHTML</td></tr>";
+        	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='$imgpath' /></td><td>$hotkeyHTML</td></tr>";
         }
         $html .=  "</table>";
 
@@ -248,7 +248,7 @@
 	        	$hotkeyHTML		= createTalentHotkeyIndicator($character, $talentHotkey, $talentLevel);
 
 				$talentNum = $talentLevelValues[$index];
-				$html .= "<tr><td class='talentNum'>$talentNum</td><td>$talentName</td><td><img title='$tooltip' src='http://www.hotsbuilds.info$imgpath' /></td><td>$hotkeyHTML</td></tr>";
+				$html .= "<tr><td class='talentNum'>$talentNum</td><td>$talentName</td><td><img title='$tooltip' src='$imgpath' /></td><td>$hotkeyHTML</td></tr>";
 			}
 			$html .= "</tbody>";
 		}
