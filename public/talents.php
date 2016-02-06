@@ -7,9 +7,13 @@
 	$talents 	= array();
 	$images 	= array();
 
+	define("USE_PTR", 1);
+	$ptrFilter	= USE_PTR ? "?filter-ptr=1" : "";
+
 	function scrapeData(&$talents, &$images) {
 
 		global $TALENT_LEVELS;
+		global $ptrFilter;
 
 		$tierNames	= array_keys($TALENT_LEVELS);
 		$baseURL 	= "http://www.heroesnexus.com/";
@@ -25,7 +29,7 @@
 			echo "Scraping " . $heroName . "...\n";
 
 			$anchor		= $li->find("a", 0);
-			$url		= $baseURL . $anchor->href . "?filter-ptr=1";
+			$url		= $baseURL . $anchor->href . $ptrFilter;
 			echo "URL: $url...\n";
 
 			$talentHtml = file_get_html($url);
@@ -50,7 +54,7 @@
 					$counts[$tierName] = 0;
 				}
 
-				$tipHtml	= file_get_html($baseURL . $tipHref);
+				$tipHtml	= file_get_html($baseURL . $tipHref . $ptrFilter);
 
 				$tipSection	= $tipHtml->find('.t-talent-desc', 0);
 				$tooltip	= $tipSection->find('.db-description div', 0);
@@ -94,11 +98,13 @@
 	scrapeData($talents, $images);
 
 	$doImages = in_array('--images', $argv);
+	$skipSql = in_array('--nosql', $argv);
 
 	// Don't want to repopulate the images table unless we're specifically being told to.
 	if ( $doImages ) {
 		getImages($images);
 	}
-
-	truncateTable(ETable::Talents);
-	populateTalents($talents);
+	if ( !$skipSql ) {
+		truncateTable(ETable::Talents);
+		populateTalents($talents);
+	}
