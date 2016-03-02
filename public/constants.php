@@ -89,6 +89,7 @@
 		"Tyrande",
 		"Uther",
 		"Valla",
+		"Xul",
 		"Zagara",
 		"Zeratul"
 	);
