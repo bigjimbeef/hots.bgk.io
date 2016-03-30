@@ -51,6 +51,7 @@
 		"Brightwing",
 		"Chen",
 		"Cho",
+		"Dehaka",
 		"Diablo",
 		"E.T.C.",
 		"Falstad",
