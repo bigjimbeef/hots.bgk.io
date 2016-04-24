@@ -85,6 +85,7 @@
 		"The Butcher",
 		"The Lost Vikings",
 		"Thrall",
+		"Tracer",
 		"Tychus",
 		"Tyrael",
 		"Tyrande",

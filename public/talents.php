@@ -7,7 +7,7 @@
 	$talents 	= array();
 	$images 	= array();
 
-	define("USE_PTR", 1);
+	define("USE_PTR", 0);
 	$ptrFilter	= USE_PTR ? "?filter-ptr=1" : "";
 
 	function scrapeData(&$talents, &$images) {

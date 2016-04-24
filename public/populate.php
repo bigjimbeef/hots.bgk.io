@@ -103,6 +103,14 @@
 		$table 	= $html->find("table", 2);
 		$row 	= $table->find("tr.rgRow", 0);
 
+		if(!is_object($row))
+		    return $talents;
+
+		$imgs = $row->find("td img");
+
+		if(empty($imgs))
+                    return $talents;
+
 		$count = 0;
 		foreach($row->find("td img") as $singleTalent)
 		{
