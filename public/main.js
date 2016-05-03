@@ -30,7 +30,7 @@ $(document).ready(function(){
 		doSearch();
 	});
 	
-	var targetPos = $(document).width() > 500 ? "right+5px top" : "left bottom";
+	var targetPos = $(document).width() > 500 ? "right+15px top-15px" : "left bottom";
 
 	$( 'img' ).tooltip({
 		position: {

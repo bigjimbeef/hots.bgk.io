@@ -155,10 +155,24 @@ tbody td.talentNum {
 
 #search {
 	height:			50px;
+
+	position:		fixed;
+	top:			20px;
+	right:			20px;
+
+	
+	transition:		opacity 0.2s ease-in-out;
+}
+
+#search input:focus {
+	opacity:		1;
 }
 
 #search input {
 	margin:			20px 0;
+	opacity:		0.3;
+
+	transition:		opacity 0.2s ease-in-out;
 }
 
 #bg-video {
@@ -263,7 +277,7 @@ table {
 #home {
 	cursor:			pointer;
 
-	padding-top:	70px;
+	padding-top:	30px;
 }
 
 #home div, th {
@@ -409,6 +423,10 @@ div.talent-numbers div.hidden {
 
 	#home span.hotsbuilds {
 		font-size:		36pt;
+	}
+
+	#search {
+		opacity:		0;
 	}
 }
 

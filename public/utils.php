@@ -54,3 +54,13 @@
 
 		return $closest;
 	}
+
+	function getBlizzName($character) {
+
+		$character 	= strtolower($character);
+		$character 	= preg_replace("/['|\.]/", "", $character);
+		$character 	= preg_replace("/ /", "-", $character);
+
+		return $character;
+	}
+	
