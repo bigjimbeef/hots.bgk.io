@@ -109,20 +109,39 @@
 		$imgs = $row->find("td img");
 
 		if(empty($imgs))
-                    return $talents;
+			return $talents;
 
 		$count = 0;
-		foreach($row->find("td img") as $singleTalent)
+		foreach($row->find("td") as $td)
 		{
-			$decoded = html_entity_decode($singleTalent->title, ENT_QUOTES);
+			++$count;
+			if ($count <= 2)
+				continue;
 
-			$matches = null;
-			$returnValue = preg_match("/([\w\s'!,\.]+:?[\w\s!',]+):(.*)/", $decoded, $matches);
+			$img = $td->find("img", 0);
 
-			if ( !empty($matches) )
+			if (is_object($img))
 			{
-				$talentName = $matches[1];
+				$decoded = html_entity_decode($img->title, ENT_QUOTES);
+
+				$matches = null;
+				$returnValue = preg_match("/([\w\s'!,\.-]+:?[\w\s!',-]+):(.*)/", $decoded, $matches);
+
+				if ( !empty($matches) )
+				{
+					$talentName = $matches[1];
+					$talents[] = $talentName;
+				}
+			}
+			else
+			{
+				$talentName = "Player's Choice";
 				$talents[] = $talentName;
+			}
+			
+			if (count($talents) >= MAX_TALENTS)
+			{
+				break;
 			}
 		}
 

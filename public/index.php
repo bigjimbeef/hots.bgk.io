@@ -52,7 +52,9 @@
         {
         	$escaped = addslashes($col_val);
 
-        	$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND t.name LIKE '%" . $escaped . "%'";
+        	$playersChoice = ($col_val === "Player's Choice");
+
+        	$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . (!$playersChoice ? addslashes($character) : "any") . "%' AND t.name LIKE '%" . $escaped . "%'";
         	$result = queryDB($query);
 
         	$res = mysql_fetch_assoc($result["res"]);
@@ -64,7 +66,7 @@
 
         	// Create talent hotkey indicator.
         	$talentHotkey 	= $res["number"];
-        	$hotkeyHTML		= createTalentHotkeyIndicator($character, $talentHotkey, $col_name);
+        	$hotkeyHTML		= !$playersChoice ? createTalentHotkeyIndicator($character, $talentHotkey, $col_name) : "";
 
         	$html .= "<tr><td class='talentNum'>$talentNum</td><td>$col_val</td><td><img title='$tooltip' src='$imgpath' /></td><td>$hotkeyHTML</td></tr>";
         }

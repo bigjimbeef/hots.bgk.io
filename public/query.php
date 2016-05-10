@@ -24,6 +24,12 @@
 
 	function getClosestTalent($heroName, $talentName, $talentTier) {
 
+		// Special-casing for HotsLogs.
+		// TODO: This is awful.
+		if ( $talentName == "Player's Choice" ) {
+			return $talentName;
+		}
+
 		// We get the matching talent from the talents DB.
 		$matchQuery = "SELECT name FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero =\"$heroName\" AND t.tier=\"$talentTier\";";
 
@@ -177,6 +183,9 @@
 				}
 			}
 		}
+
+		// Add in the "Player's Choice" talent.
+		$query .= "('any', 'Player\'s Choice', 'any', 'Up to you what to pick. All talents are viable.', '/images/talents/playerschoice.png', '?'), ";
 
 		$query = rtrim($query, ", ");
 		$query .= ";";
