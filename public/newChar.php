@@ -50,7 +50,7 @@ $prevCharacter = trim($prevCharacter);
 // We now have the previous character, so read until we hit that character, then add our new one.
 writeTextAfterCharacter("characters", "$newChar", $prevCharacter);
 writeTextAfterCharacter("constants.php", "\t\t\"$newChar\",", $prevCharacter);
-writeTextAfterCharacter("empty.html", "\t\t\t\t\t\t<a href='/$newChar'><img data-name='$newChar' title='$newChar' src='/images/$newChar.png' /></a>", $prevCharacter);
+writeTextAfterCharacter("empty.html", "\t\t\t\t\t\t<a href='/$newChar'><img data-name='$newChar' title='$newChar' src='/images/busts/$newChar.jpg' /></a>", $prevCharacter);
 
 // Populate the new talents, and images, for the new guy.
 system("php talents.php --images");

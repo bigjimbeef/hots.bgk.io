@@ -175,7 +175,7 @@
 	function stripBuildName($name) {
 
 		$name = strtolower($name);
-		$name = preg_replace("/ /", "", $name);
+		$name = preg_replace("/[^a-z\d]+/i", "", $name);
 
 		return $name;
 	}

@@ -28,7 +28,7 @@ foreach($html->find("a.hero-champion") as $heroLink) {
 		exec("mv $imgName images/busts/$heroName.jpg");
 
 		// Now get all information for this hero.
-		//exec("php newChar.php $heroName");
+		exec("php newChar.php $heroName");
 	}
 }
 
