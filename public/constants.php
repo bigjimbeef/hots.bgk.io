@@ -51,6 +51,7 @@
 		"Brightwing",
 		"Chen",
 		"Cho",
+		"Chromie",
 		"Dehaka",
 		"Diablo",
 		"E.T.C.",

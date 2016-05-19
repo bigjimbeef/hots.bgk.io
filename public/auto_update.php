@@ -3,11 +3,11 @@
 include_once("simple_html_dom.php");
 include_once("utils.php");
 
+chdir("/var/www/hotsbuilds.info/public");
+
 $html = file_get_html("http://www.heroesnexus.com/heroes");
 
-$characters = file_get_contents("characters");
-
-$charArray = explode("\n", rtrim($characters));
+$charArray = getCharacterList();
 
 foreach($html->find("a.hero-champion") as $heroLink) {
 
@@ -15,7 +15,7 @@ foreach($html->find("a.hero-champion") as $heroLink) {
 
 	if ( !in_array($heroName, $charArray) ) {
 
-		echo "Missing $heroName from the list!\n";
+		printWithDate("Missing $heroName from the list!");
 
 		// Get blizz image.
 		$blizzName = getBlizzName($heroName);
@@ -28,7 +28,7 @@ foreach($html->find("a.hero-champion") as $heroLink) {
 		exec("mv $imgName images/busts/$heroName.jpg");
 
 		// Now get all information for this hero.
-		exec("php newChar.php $heroName");
+		exec("/usr/bin/php newChar.php $heroName");
 	}
 }
 

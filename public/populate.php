@@ -2,6 +2,7 @@
 	include_once("simple_html_dom.php");
 	include_once("constants.php");
 	include_once("query.php");
+	include_once("utils.php");
 
 	function urlOk($url) {
 	    $headers = @get_headers($url);
@@ -230,7 +231,7 @@
 
 		if ( !$isCorrect ) {
 
-			echo "WARNING: Wanted $character and got $name...\n";
+			printWithDate("WARNING: Wanted $character and got $name...");
 
 			foreach ( $guideHTML->find("article") as $singleArticle ) {
 
@@ -239,7 +240,7 @@
 
 				if ( strcasecmp($testName, $character) == 0 ) {
 
-					echo "Found matching article, using this instead.\n";
+					printWithDate("Found matching article, using this instead.");
 
 					$article 	= $singleArticle->find(".skills img");
 					$isCorrect 	= true;
@@ -386,20 +387,22 @@
 		}
 	}
 
-	foreach($CHARACTERS as $characterName) {
+	$characterList = getCharacterList();
 
-		echo "Getting HL information for $characterName...\n";
+	foreach($characterList as $characterName) {
+
+		printWithDate("Getting HL information for $characterName...");
 		addSingleCharacterTalents($characterName, $hlTalents, $hlUrls, ETalentSite::HotsLogs);
 
 // No longer getting data for GetBonkd.
-//		echo "Getting GB information for $characterName...\n";
+//		printWithDate("Getting GB information for $characterName...");
 //		addSingleCharacterTalents($characterName, $gbTalents, $gbUrls, ETalentSite::GetBonkd);
 
-		echo "Getting HF information for $characterName...\n";
+		printWithDate("Getting HF information for $characterName...");
 		addSingleCharacterTalents($characterName, $hfTalents, $hfUrls, ETalentSite::HeroesFire);
 
 // IcyVeins is done differently now.
-//		echo "Getting IV information for $characterName...\n";
+//		printWithDate("Getting IV information for $characterName...");
 //		addSingleCharacterTalents($characterName, $ivTalents, $ivUrls, ETalentSite::IcyVeins);
 	}
 
@@ -419,6 +422,8 @@
 	populateTime();
 
 	truncateTable(ETable::Urls);
-	populateUrls($hlUrls, $gbUrls, $hfUrls, $ivUrls, $CHARACTERS);
+	populateUrls($hlUrls, $gbUrls, $hfUrls, $ivUrls, $characterList);
 
-	exec("php postpro.php");
+	exec("/usr/bin/php postpro.php");
+
+?>

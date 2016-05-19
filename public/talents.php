@@ -108,3 +108,5 @@
 		truncateTable(ETable::Talents);
 		populateTalents($talents);
 	}
+
+?>

@@ -64,3 +64,18 @@
 		return $character;
 	}
 	
+	function printWithDate($text) {
+
+		$date = date("F j, Y, H:i");
+
+		echo ("[" . $date . "] " . $text . "\n");
+	}
+
+	function getCharacterList() {
+
+		$characters = file_get_contents("characters");
+
+		$charArray = explode("\n", rtrim($characters));
+
+		return $charArray;
+	}

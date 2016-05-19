@@ -3,18 +3,10 @@
 	include_once("constants.php");
 	include_once("query.php");
 
-	function getBlizzName($character) {
-
-		$character 	= strtolower($character);
-		$character 	= preg_replace("/['|\.]/", "", $character);
-		$character 	= preg_replace("/ /", "-", $character);
-
-		return $character;
-	}
-
 	$videos = array();
+	$characterList = getCharacterList();
 
-	foreach($CHARACTERS as $characterName) {
+	foreach($characterList as $characterName) {
 
 		$character = (string)$characterName;
 
@@ -67,3 +59,5 @@
 	}
 
 	populateVideos($videos);
+
+?>
