@@ -73,7 +73,8 @@
 
 	function getCharacterList() {
 
-		$characters = file_get_contents("characters");
+		$filepath = dirname(__FILE__) . "/characters";
+		$characters = file_get_contents($filepath);
 
 		$charArray = explode("\n", rtrim($characters));
 
