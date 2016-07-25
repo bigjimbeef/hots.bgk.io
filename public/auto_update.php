@@ -15,6 +15,8 @@ foreach($html->find("a.hero-champion") as $heroLink) {
 
 	if ( !in_array($heroName, $charArray) ) {
 
+		$heroName = addslashes($heroName);
+
 		printWithDate("Missing $heroName from the list!");
 
 		// Get blizz image.
