@@ -31,6 +31,8 @@ foreach($html->find("a.hero-champion") as $heroLink) {
 
 		// Now get all information for this hero.
 		exec("/usr/bin/php newChar.php $heroName");
+
+		exec("/usr/bin/php postpro.php");
 	}
 }
 

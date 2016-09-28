@@ -44,13 +44,21 @@
 
 	$CHARACTERS = array(
 		"Abathur",
+		"Alarak",
+		"Alarak",
+		"Alarak",
 		"Anub'arak",
 		"Artanis",
 		"Arthas",
+		"Auriel",
+		"Auriel",
 		"Azmodan",
 		"Brightwing",
 		"Chen",
 		"Cho",
+		"Cho'gall",
+		"Cho'gall",
+		"Cho'gall",
 		"Chromie",
 		"Dehaka",
 		"Diablo",
@@ -96,6 +104,8 @@
 		"Valla",
 		"Xul",
 		"Zagara",
+		"Zarya",
+		"Zarya",
 		"Zeratul"
 	);
 
