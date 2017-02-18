@@ -44,9 +44,11 @@
 
 	$CHARACTERS = array(
 		"Abathur",
+		"Alarak",
 		"Anub'arak",
 		"Artanis",
 		"Arthas",
+		"Auriel",
 		"Azmodan",
 		"Brightwing",
 		"Chen",

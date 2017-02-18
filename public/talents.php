@@ -7,74 +7,107 @@
 	$talents 	= array();
 	$images 	= array();
 
-	define("USE_PTR", 0);
-	$ptrFilter	= USE_PTR ? "?filter-ptr=1" : "";
+	function getSingleTalent($url) {
+
+		global $TALENT_LEVELS;
+		$tierNames = array_keys($TALENT_LEVELS);
+
+		if (!isUrlOk($url) ) {
+			error_log("URL is busted: $url");
+			return;
+		}
+
+		$content = file_get_html($url);
+		$textBoxObj = $content->find("div.text-box", 0);
+		if (!is_object($textBoxObj)) {
+			error_log("Text box is busted at [$url].");
+			return;
+		}
+
+		$talentImgObj	= $textBoxObj->find("img", 0);
+		$talentTierObj 	= $textBoxObj->find("span", 0);
+		$talentNameObj 	= $textBoxObj->find("h4", 0);
+		$talentDescObj 	= $textBoxObj->find("p", 0);
+		if (!is_object($talentImgObj) || !is_object($talentTierObj) || !is_object($talentNameObj) || !is_object($talentDescObj)) {
+			error_log("Talent is busted at [$url].");
+			return;
+		}
+
+		// image stuff
+		$talentImgUrl = $talentImgObj->{"src"};
+
+		// talent stuff
+		$talentTier = $talentTierObj->innertext;
+		$talentNum 	= intval(preg_replace("/[^0-9]/", "", $talentTier)) - 1;
+		$tierName	= $tierNames[$talentNum];
+
+		$talentName = strip_tags($talentNameObj->innertext);
+		$talentDesc = strip_tags($talentDescObj->innertext);
+ 
+		return [$talentImgUrl, $talentName, $talentDesc];
+	}
 
 	function scrapeData(&$talents, &$images) {
 
 		global $TALENT_LEVELS;
-		global $ptrFilter;
 
 		$tierNames	= array_keys($TALENT_LEVELS);
-		$baseURL 	= "http://www.heroesnexus.com/";
-		$talentCalc = "talent-calculator";
+		$baseURL	= "http://www.heroesfire.com";
+		$heroesURL 	= "/hots/wiki/heroes/";
+		$abilities	= "/abilities-talents";
 
-		$html 		= file_get_html($baseURL . $talentCalc);
+		$characters = file_get_contents("characters");
+		$charArray 	= explode("\n", rtrim($characters));
 
-		foreach( $html->find("li.hero-champion") as $li ) {
+		foreach ($charArray as $charName) {
+			
+			$blizzName 	= getBlizzName($charName);
+			$url 		= $baseURL . $heroesURL . $blizzName . $abilities;
 
-			$hero 		= $li->find("figcaption", 0);
-			$heroName 	= decode($hero->innertext);
-
-			echo "Scraping " . $heroName . "...\n";
-
-			$anchor		= $li->find("a", 0);
-			$url		= $baseURL . $anchor->href . $ptrFilter;
-			echo "URL: $url...\n";
-
-			$talentHtml = file_get_html($url);
+			echo "Scraping " . $blizzName . "talents from [$url]...\n";
+			
+			$content	= file_get_html($url);
 
 			$tiers		= array();
 
-			// The counts, per tier, for getting the talent "number".
-			$counts		= array();
-			foreach ( $talentHtml->find("li.talent") as $talent ) {
+			// The talents, per "level" (tier)
+			$currentTier = 0;
 
-				$talentTier = $talent->{"data-tier"};
-				// Ensuring we remove HTML special chars from the talent names.
-				$talentName = decode($talent->{"data-talent-name"});
-				$tipHref	= $talent->{"data-tooltip-href"};
+			foreach ( $content->find(".talents .level") as $levelTalents ) {
 
-				$tierName	= $tierNames[$talentTier];
+				$singleTier = array();
 
-				if ( !isset($tiers[$tierName]) ) {
-					$tiers[$tierName] = array();
+				$currentIndex = 0;
+				foreach ( $levelTalents->find("a") as $singleTalent ) {
+				
+					$href = $singleTalent->{"href"};
+
+					$talURL = $baseURL . $href;
+
+					// Get the talent information.
+					list($imgUrl, $talentName, $talentDesc) = getSingleTalent($talURL, $talents, $images);
+
+					// Image
+					$images[$talentName] = $baseURL . $imgUrl;
+
+					// Talent
+					$singleTalent = [
+						"name" => decode($talentName),
+						"desc" => decode($talentDesc),
+						"num" => $currentIndex
+					];
+					array_push($singleTier, $singleTalent);
+
+					++$currentIndex;
 				}
-				if ( !isset($counts[$tierName]) ) {
-					$counts[$tierName] = 0;
-				}
 
-				$tipHtml	= file_get_html($baseURL . $tipHref . $ptrFilter);
+				$tierName = $tierNames[$currentTier];
+				$tiers[$tierName] = $singleTier;
 
-				$tipSection	= $tipHtml->find('.t-talent-desc', 0);
-				$tooltip	= $tipSection->find('.db-description div', 0);
-				$tooltip	= strip_tags($tooltip);
-
-				array_push($tiers[$tierName], [
-					"name" => $talentName,
-					"desc" => $tooltip,
-					"num" => $counts[$tierName]
-				]);
-
-				// Strip the image, for later snaffling.
-				$img					= $tipSection->find('img', 0);
-				$imgPath				= $img->src;
-				$images[$talentName] 	= $imgPath;
-
-				++$counts[$tierName];
+				++$currentTier;
 			}
 
-			$talents[$heroName] = $tiers;
+			$talents[$charName] = $tiers;
 		}
 	}
 

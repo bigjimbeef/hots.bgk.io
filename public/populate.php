@@ -118,8 +118,6 @@
 			if ($count <= 2)
 				continue;
 
-			$img = $td->find("img", 0);
-
 			if (is_object($img))
 			{
 				$decoded = html_entity_decode($img->title, ENT_QUOTES);

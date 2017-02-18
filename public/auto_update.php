@@ -3,15 +3,16 @@
 include_once("simple_html_dom.php");
 include_once("utils.php");
 
-$html = file_get_html("http://www.heroesnexus.com/heroes");
+$html = file_get_html("http://www.heroesfire.com/hots/wiki/heroes");
 
 $characters = file_get_contents("characters");
 
 $charArray = explode("\n", rtrim($characters));
 
-foreach($html->find("a.hero-champion") as $heroLink) {
+foreach($html->find(".card-wrap a div") as $heroText) {
 
-	$heroName = html_entity_decode($heroLink->innertext, ENT_QUOTES, 'UTF-8');
+	$heroName = html_entity_decode($heroText->innertext, ENT_QUOTES, 'UTF-8');
+	$heroName = replaceAccents($heroName);
 
 	if ( !in_array($heroName, $charArray) ) {
 
