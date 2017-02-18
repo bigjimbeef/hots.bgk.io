@@ -3,11 +3,11 @@
 include_once("simple_html_dom.php");
 include_once("utils.php");
 
+chdir("/var/www/hotsbuilds.info/public");
+
 $html = file_get_html("http://www.heroesfire.com/hots/wiki/heroes");
 
-$characters = file_get_contents("characters");
-
-$charArray = explode("\n", rtrim($characters));
+$charArray = getCharacterList();
 
 foreach($html->find(".card-wrap a div") as $heroText) {
 
@@ -16,7 +16,9 @@ foreach($html->find(".card-wrap a div") as $heroText) {
 
 	if ( !in_array($heroName, $charArray) ) {
 
-		echo "Missing $heroName from the list!\n";
+		$heroName = addslashes($heroName);
+
+		printWithDate("Missing $heroName from the list!");
 
 		// Get blizz image.
 		$blizzName = getBlizzName($heroName);
@@ -29,7 +31,9 @@ foreach($html->find(".card-wrap a div") as $heroText) {
 		exec("mv $imgName images/busts/$heroName.jpg");
 
 		// Now get all information for this hero.
-		exec("php newChar.php $heroName");
+		exec("/usr/bin/php newChar.php $heroName");
+
+		exec("/usr/bin/php postpro.php");
 	}
 }
 

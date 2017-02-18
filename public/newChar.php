@@ -50,13 +50,15 @@ $prevCharacter = trim($prevCharacter);
 // We now have the previous character, so read until we hit that character, then add our new one.
 writeTextAfterCharacter("characters", "$newChar", $prevCharacter);
 writeTextAfterCharacter("constants.php", "\t\t\"$newChar\",", $prevCharacter);
-writeTextAfterCharacter("empty.html", "\t\t\t\t\t\t<a href='/$newChar'><img data-name='$newChar' title='$newChar' src='/images/busts/$newChar.jpg' /></a>", $prevCharacter);
+writeTextAfterCharacter("empty.html", "\t\t\t\t\t\t<a href=\"/$newChar\"><img data-name=\"$newChar\" title=\"$newChar\" src=\"/images/busts/$newChar.jpg\" /></a>", $prevCharacter);
 
 // Populate the new talents, and images, for the new guy.
-system("php talents.php --images");
+system("/usr/bin/php talents.php --images > /home/minikeen/hotsbuilds_talents");
 
 // Get the video path for the new guy.
-system("php videos.php");
+system("/usr/bin/php videos.php > /home/minikeen/hotsbuilds_videos");
 
 // Get the data!
-system("php populate.php");
+system("/usr/bin/php populate.php > /home/minikeen/hotsbuilds_pop");
+
+?>

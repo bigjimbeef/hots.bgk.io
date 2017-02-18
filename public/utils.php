@@ -83,3 +83,19 @@
 		return $character;
 	}
 	
+	function printWithDate($text) {
+
+		$date = date("F j, Y, H:i");
+
+		echo ("[" . $date . "] " . $text . "\n");
+	}
+
+	function getCharacterList() {
+
+		$filepath = dirname(__FILE__) . "/characters";
+		$characters = file_get_contents($filepath);
+
+		$charArray = explode("\n", rtrim($characters));
+
+		return $charArray;
+	}

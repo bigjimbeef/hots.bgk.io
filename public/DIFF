@@ -1,0 +1,134 @@
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   auto_update.php
+#	modified:   characters
+#	modified:   constants.php
+#	modified:   empty.html
+#	modified:   images/talents/arcanebrilliance.png
+#	modified:   images/talents/bloodfrenzy.png
+#	modified:   images/talents/chitinousplating.png
+#	modified:   images/talents/crowdcontrol.png
+#	modified:   images/talents/endlesscreep.png
+#	modified:   images/talents/evenindeath.png
+#	modified:   images/talents/flamethrower.png
+#	modified:   images/talents/infest.png
+#	modified:   images/talents/punishment.png
+#	modified:   images/talents/repeatingarrow.png
+#	modified:   images/talents/shotoffury.png
+#	modified:   images/talents/siphoningarrow.png
+#	modified:   images/talents/sixthsense.png
+#	modified:   images/talents/staticshield.png
+#	modified:   images/talents/thunderburn.png
+#	modified:   images/talents/totemicprojection.png
+#	modified:   images/talents/triumvirate.png
+#	modified:   images/talents/urticatingspines.png
+#	modified:   images/talents/volatilemutation.png
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	DIFF
+#	images/busts/Alarak.jpg
+#	images/busts/Auriel.jpg
+#	images/busts/Cho'gall.jpg
+#	images/talents/angelicflight.png
+#	images/talents/appliedforce.png
+#	images/talents/arcanedynamo.png
+#	images/talents/beaconoflight.png
+#	images/talents/blindingflash.png
+#	images/talents/borninbattle.png
+#	images/talents/burstinglight.png
+#	images/talents/chaosreigns.png
+#	images/talents/cleansingshield.png
+#	images/talents/clearout.png
+#	images/talents/cleaver.png
+#	images/talents/convergingforce.png
+#	images/talents/corrosivesaliva.png
+#	images/talents/counterstrike.png
+#	images/talents/covertmission.png
+#	images/talents/creedofthehunter.png
+#	images/talents/crystalaegis.png
+#	images/talents/cycleofdiscord.png
+#	images/talents/deadlycharge.png
+#	images/talents/deathdealer.png
+#	images/talents/defensiveshielding.png
+#	images/talents/demolitionsexpert.png
+#	images/talents/diamondresolve.png
+#	images/talents/dissonance.png
+#	images/talents/doublecross.png
+#	images/talents/eagerwolf.png
+#	images/talents/empathiclink.png
+#	images/talents/endlessenergy.png
+#	images/talents/endurancetraining.png
+#	images/talents/energizedcord.png
+#	images/talents/explosivebarrier.png
+#	images/talents/expulsionzone.png
+#	images/talents/extendedlightning.png
+#	images/talents/farflightquiver.png
+#	images/talents/feeltheheat.png
+#	images/talents/fleabag.png
+#	images/talents/gaintrain.png
+#	images/talents/givemetwenty.png
+#	images/talents/glimmerofhope.png
+#	images/talents/gloom.png
+#	images/talents/gravitonsurge.png
+#	images/talents/gravitykills.png
+#	images/talents/grenadier.png
+#	images/talents/hastybargain.png
+#	images/talents/heavyburden.png
+#	images/talents/hinderedmotion.png
+#	images/talents/hitme.png
+#	images/talents/hydralisktransfusion.png
+#	images/talents/iamthestrongest.png
+#	images/talents/increasingclarity.png
+#	images/talents/lastlaugh.png
+#	images/talents/lightspeed.png
+#	images/talents/majesticspan.png
+#	images/talents/maximumcharge.png
+#	images/talents/meatshield.png
+#	images/talents/monsterhunter.png
+#	images/talents/negativelycharged.png
+#	images/talents/painistemporary.png
+#	images/talents/piercinglash.png
+#	images/talents/pinpointaccuracy.png
+#	images/talents/pixiecharm.png
+#	images/talents/plasmashock.png
+#	images/talents/powerconduit.png
+#	images/talents/projectedforce.png
+#	images/talents/protectivecoating.png
+#	images/talents/psychokinesis.png
+#	images/talents/puremalice.png
+#	images/talents/quickmind.png
+#	images/talents/recklessstrike.png
+#	images/talents/repeatedoffense.png
+#	images/talents/repellingstrike.png
+#	images/talents/reservoirofhope.png
+#	images/talents/restorativefumes.png
+#	images/talents/resurrect.png
+#	images/talents/righteousassault.png
+#	images/talents/righteousdefense.png
+#	images/talents/searinglight.png
+#	images/talents/seethinghatred.png
+#	images/talents/serratedspines.png
+#	images/talents/shieldofhope.png
+#	images/talents/sinforsin.png
+#	images/talents/speedbarrier.png
+#	images/talents/spellbarrier.png
+#	images/talents/sustainingpower.png
+#	images/talents/swiftretribution.png
+#	images/talents/swiftsweep.png
+#	images/talents/thunderstruck.png
+#	images/talents/togetherwearestrong.png
+#	images/talents/tothelimit.png
+#	images/talents/unstoppablecompetitor.png
+#	images/talents/unyieldingdefender.png
+#	images/talents/viscousacid.png
+#	images/talents/widelightning.png
+#	images/talents/willofheaven.png
+#	images/talents/wingman.png
+#	images/talents/withouteffort.png
+#	images/talents/wrathofheaven.png
+no changes added to commit (use "git add" and/or "git commit -a")
