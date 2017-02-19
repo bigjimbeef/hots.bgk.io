@@ -117,13 +117,14 @@
 
 		foreach ( $images as $talentName => $url ) {
 
+			$imageTarget = end(explode('/', $url));
 			$imageName 	= prepImageName($talentName);
 
 			$cmd		= "wget $url";
 			exec($cmd);
 
 			$dest		= dirname(__FILE__) . $imagePath . $imageName . ".png";
-			$cmd		= "mv icon.png " . $dest;
+			$cmd		= "mv $imageTarget $dest";
 			exec($cmd);
 		}
 	}
@@ -141,5 +142,3 @@
 		truncateTable(ETable::Talents);
 		populateTalents($talents);
 	}
-
-?>

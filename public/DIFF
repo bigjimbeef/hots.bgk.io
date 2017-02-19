@@ -1,134 +1,1329 @@
 # On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   images/busts/Lucio.jpg
+#	new file:   images/busts/Ragnaros.jpg
+#	new file:   images/busts/Samuro.jpg
+#	new file:   images/busts/Valeera.jpg
+#	new file:   images/busts/Varian.jpg
+#	new file:   images/busts/Zul'jin.jpg
+#	modified:   images/talents/64kbmarathon.png
+#	modified:   images/talents/abattoir.png
+#	modified:   images/talents/abolishmagic.png
+#	modified:   images/talents/absolutezero.png
+#	modified:   images/talents/acardtoplay.png
+#	new file:   images/talents/accelerando.png
+#	new file:   images/talents/accumulatingflame.png
+#	modified:   images/talents/adaptation.png
+#	modified:   images/talents/adrenalineboost.png
+#	new file:   images/talents/adrenalinerush.png
+#	modified:   images/talents/adrenaloverload.png
+#	new file:   images/talents/adunswisdom.png
+#	modified:   images/talents/advancedartillery.png
+#	modified:   images/talents/advancedcloaking.png
+#	modified:   images/talents/advancedlavastrike.png
+#	modified:   images/talents/aeriegusts.png
+#	modified:   images/talents/aetherwalker.png
+#	new file:   images/talents/afishydeal.png
+#	modified:   images/talents/afterburner.png
+#	modified:   images/talents/aftershock.png
+#	modified:   images/talents/aggressivedefense.png
+#	new file:   images/talents/aggressiveshredding.png
+#	new file:   images/talents/airally.png
+#	modified:   images/talents/alphakiller.png
+#	modified:   images/talents/amateuropponent.png
+#	modified:   images/talents/ambush.png
+#	modified:   images/talents/amplifiedhealing.png
+#	modified:   images/talents/amplifydamage.png
+#	modified:   images/talents/ancestralhealing.png
+#	modified:   images/talents/andasharktoo.png
+#	modified:   images/talents/andorhalanomaly.png
+#	modified:   images/talents/angelicabsorption.png
+#	modified:   images/talents/angelicflight.png
+#	modified:   images/talents/angelicmight.png
+#	modified:   images/talents/angelofjustice.png
+#	modified:   images/talents/angelsgrace.png
+#	modified:   images/talents/angermanagement.png
+#	new file:   images/talents/animalhusbandry.png
+#	modified:   images/talents/annihilatingspirit.png
+#	new file:   images/talents/anotherround.png
+#	modified:   images/talents/antiarmorshells.png
+#	modified:   images/talents/antimagicshell.png
+#	modified:   images/talents/apexpredator.png
+#	modified:   images/talents/apocalypse.png
+#	modified:   images/talents/appliedforce.png
+#	modified:   images/talents/arcanebarrage.png
+#	modified:   images/talents/arcanebrilliance.png
+#	modified:   images/talents/arcanecharge.png
+#	modified:   images/talents/arcanedynamo.png
+#	modified:   images/talents/arcaneexplosion.png
+#	modified:   images/talents/arcaneintellect.png
+#	modified:   images/talents/arcaneorbit.png
+#	modified:   images/talents/arcanepower.png
+#	modified:   images/talents/archon.png
+#	modified:   images/talents/archonpurepower.png
+#	modified:   images/talents/arkreaktor.png
+#	modified:   images/talents/armorpiercingrounds.png
+#	modified:   images/talents/armyofhell.png
+#	modified:   images/talents/armyofthedead.png
+#	modified:   images/talents/arreatcrater.png
+#	modified:   images/talents/arsenal.png
+#	modified:   images/talents/aspectofthebeast.png
+#	modified:   images/talents/aspectofthehawk.png
+#	new file:   images/talents/assassinate.png
+#	modified:   images/talents/assaultscarab.png
+#	modified:   images/talents/assaultstrain.png
+#	modified:   images/talents/assimilationmastery.png
+#	modified:   images/talents/astralpresence.png
+#	modified:   images/talents/astralprojection.png
+#	modified:   images/talents/atouchofhoney.png
+#	modified:   images/talents/automatedblock.png
+#	modified:   images/talents/avatar.png
+#	modified:   images/talents/backdraft.png
+#	new file:   images/talents/backinthemix.png
+#	modified:   images/talents/backlash.png
+#	modified:   images/talents/baleogthefierce.png
+#	modified:   images/talents/ballistospores.png
+#	modified:   images/talents/banelingmassacre.png
+#	new file:   images/talents/bannerofdalaran.png
+#	new file:   images/talents/bannerofironforge.png
+#	new file:   images/talents/bannerofstormwind.png
+#	modified:   images/talents/barbedshot.png
+#	modified:   images/talents/barricade.png
+#	modified:   images/talents/batteredassault.png
+#	modified:   images/talents/battleborn.png
+#	modified:   images/talents/beaconoflight.png
+#	new file:   images/talents/beatmixing.png
+#	modified:   images/talents/bedofbarbs.png
+#	modified:   images/talents/beetlejuiced.png
+#	modified:   images/talents/benediction.png
+#	modified:   images/talents/bestialwrath.png
+#	modified:   images/talents/bigredbutton.png
+#	new file:   images/talents/bigtunakahuna.png
+#	new file:   images/talents/bigvoodoo.png
+#	modified:   images/talents/biledrop.png
+#	modified:   images/talents/bioshield.png
+#	modified:   images/talents/birdofprey.png
+#	modified:   images/talents/birdseyeview.png
+#	modified:   images/talents/bitingcold.png
+#	new file:   images/talents/blacklagoon.png
+#	modified:   images/talents/blackpool.png
+#	modified:   images/talents/bladedmomentum.png
+#	new file:   images/talents/blademasterspursuit.png
+#	modified:   images/talents/bladeofjustice.png
+#	modified:   images/talents/bladesofazzinoth.png
+#	new file:   images/talents/bladestorm.png
+#	modified:   images/talents/bladetorrent.png
+#	new file:   images/talents/blastecho.png
+#	modified:   images/talents/blazingbulwark.png
+#	modified:   images/talents/blazingfists.png
+#	modified:   images/talents/blessedchampion.png
+#	modified:   images/talents/blessedhammer.png
+#	modified:   images/talents/blessedmomentum.png
+#	modified:   images/talents/blessedshield.png
+#	new file:   images/talents/blind.png
+#	modified:   images/talents/blindingflash.png
+#	modified:   images/talents/blindingspeed.png
+#	modified:   images/talents/blinkheal.png
+#	modified:   images/talents/block.png
+#	new file:   images/talents/blockparty.png
+#	modified:   images/talents/bloodandthunder.png
+#	modified:   images/talents/bloodforblood.png
+#	modified:   images/talents/bloodfrenzy.png
+#	modified:   images/talents/bloodlust.png
+#	modified:   images/talents/bloodritual.png
+#	modified:   images/talents/blossomswell.png
+#	modified:   images/talents/bluntforcegun.png
+#	modified:   images/talents/bobandweave.png
+#	modified:   images/talents/bolderflavor.png
+#	modified:   images/talents/boltofthestorm.png
+#	modified:   images/talents/bombardstrain.png
+#	modified:   images/talents/bombsaway.png
+#	modified:   images/talents/bonespear.png
+#	new file:   images/talents/bonustrack.png
+#	new file:   images/talents/boombox.png
+#	modified:   images/talents/boomerang.png
+#	modified:   images/talents/borninbattle.png
+#	new file:   images/talents/bossanova.png
+#	modified:   images/talents/bouncydust.png
+#	modified:   images/talents/boundbyshadow.png
+#	modified:   images/talents/boundlessconviction.png
+#	modified:   images/talents/boundlessstride.png
+#	modified:   images/talents/boundminion.png
+#	modified:   images/talents/breakitdown.png
+#	modified:   images/talents/brewmastersbalance.png
+#	new file:   images/talents/bringittogether.png
+#	modified:   images/talents/bronzetalons.png
+#	modified:   images/talents/broodexpansion.png
+#	modified:   images/talents/brutalstrike.png
+#	modified:   images/talents/bulletspray.png
+#	modified:   images/talents/bullettime.png
+#	modified:   images/talents/bullheadmines.png
+#	modified:   images/talents/bullseye.png
+#	new file:   images/talents/bulwark.png
+#	modified:   images/talents/bulwarkoflight.png
+#	modified:   images/talents/burdenofguilt.png
+#	modified:   images/talents/buriedalive.png
+#	modified:   images/talents/burnedflesh.png
+#	new file:   images/talents/burningblade.png
+#	modified:   images/talents/burningrage.png
+#	modified:   images/talents/burstinglight.png
+#	modified:   images/talents/byebye.png
+#	modified:   images/talents/caduceusreactor20.png
+#	modified:   images/talents/calamity.png
+#	modified:   images/talents/calldownmule.png
+#	modified:   images/talents/callofthegrave.png
+#	modified:   images/talents/callofthewildhammer.png
+#	modified:   images/talents/caltrops.png
+#	modified:   images/talents/cannoneer.png
+#	new file:   images/talents/cantstopwontstop.png
+#	new file:   images/talents/catchingfire.png
+#	new file:   images/talents/cauterizewounds.png
+#	modified:   images/talents/celestialattunement.png
+#	modified:   images/talents/celestialwrath.png
+#	modified:   images/talents/changeissurvival.png
+#	modified:   images/talents/chaosreigns.png
+#	modified:   images/talents/chaoticenergy.png
+#	modified:   images/talents/chargedblast.png
+#	modified:   images/talents/chargedup.png
+#	new file:   images/talents/chasethebass.png
+#	modified:   images/talents/cheapshot.png
+#	modified:   images/talents/checkpointreached.png
+#	modified:   images/talents/chewyourfood.png
+#	modified:   images/talents/chitinousplating.png
+#	modified:   images/talents/chokingpollen.png
+#	modified:   images/talents/chopmeat.png
+#	modified:   images/talents/chronosickness.png
+#	modified:   images/talents/chronosurge.png
+#	modified:   images/talents/circleofprotection.png
+#	modified:   images/talents/cleankill.png
+#	modified:   images/talents/cleanse.png
+#	modified:   images/talents/cleansingshield.png
+#	new file:   images/talents/cleansingtouch.png
+#	modified:   images/talents/clear.png
+#	modified:   images/talents/clearout.png
+#	modified:   images/talents/cleaver.png
+#	new file:   images/talents/cloakofshadows.png
+#	modified:   images/talents/clockwerksteamfists.png
+#	modified:   images/talents/clusterround.png
+#	modified:   images/talents/cocoon.png
+#	new file:   images/talents/coldblood.png
+#	modified:   images/talents/coldembrace.png
+#	modified:   images/talents/coldsnap.png
+#	modified:   images/talents/colossaltotem.png
+#	new file:   images/talents/colossussmash.png
+#	new file:   images/talents/combatreadiness.png
+#	modified:   images/talents/combattactician.png
+#	new file:   images/talents/comboslash.png
+#	modified:   images/talents/commandeerodin.png
+#	modified:   images/talents/compositespear.png
+#	modified:   images/talents/compositionb.png
+#	modified:   images/talents/compoundingaether.png
+#	modified:   images/talents/concussiongrenade.png
+#	modified:   images/talents/confidentaim.png
+#	modified:   images/talents/conjurerspursuit.png
+#	modified:   images/talents/constriction.png
+#	modified:   images/talents/consumesoul.png
+#	modified:   images/talents/consumevitality.png
+#	modified:   images/talents/contagion.png
+#	modified:   images/talents/continuouswinds.png
+#	modified:   images/talents/convection.png
+#	modified:   images/talents/convergingforce.png
+#	modified:   images/talents/conviction.png
+#	modified:   images/talents/corpseexplosion.png
+#	modified:   images/talents/corpsefeeders.png
+#	modified:   images/talents/corrosivesaliva.png
+#	modified:   images/talents/counterstrike.png
+#	modified:   images/talents/couplestherapy.png
+#	modified:   images/talents/covertmission.png
+#	modified:   images/talents/covertops.png
+#	modified:   images/talents/creedofthehunter.png
+#	modified:   images/talents/cripplingblow.png
+#	modified:   images/talents/cripplinghammer.png
+#	new file:   images/talents/cripplingpoison.png
+#	modified:   images/talents/cripplingshot.png
+#	modified:   images/talents/cripplingslam.png
+#	modified:   images/talents/cripplingtalons.png
+#	modified:   images/talents/critterize.png
+#	modified:   images/talents/crowdcontrol.png
+#	modified:   images/talents/crowdpleaser.png
+#	new file:   images/talents/crowdsurfer.png
+#	modified:   images/talents/cruelspores.png
+#	new file:   images/talents/crushingblows.png
+#	modified:   images/talents/crushinghope.png
+#	modified:   images/talents/cryptweave.png
+#	modified:   images/talents/crystalaegis.png
+#	modified:   images/talents/cthunsgift.png
+#	new file:   images/talents/cursedbullet.png
+#	modified:   images/talents/curseofexhaustion.png
+#	modified:   images/talents/cycleofdiscord.png
+#	modified:   images/talents/dampenmagic.png
+#	new file:   images/talents/danceofdeath.png
+#	modified:   images/talents/darkbargain.png
+#	modified:   images/talents/darkdescent.png
+#	modified:   images/talents/darkladyscall.png
+#	modified:   images/talents/darknesswithin.png
+#	modified:   images/talents/dash.png
+#	new file:   images/talents/dashoflight.png
+#	modified:   images/talents/deadlycharge.png
+#	modified:   images/talents/deadlystrike.png
+#	modified:   images/talents/deadrush.png
+#	modified:   images/talents/deafeningblast.png
+#	modified:   images/talents/deathdealer.png
+#	new file:   images/talents/deathfromabove.png
+#	modified:   images/talents/deathlord.png
+#	modified:   images/talents/deathmarch.png
+#	modified:   images/talents/deathmetal.png
+#	modified:   images/talents/deathsadvance.png
+#	new file:   images/talents/deathsiphon.png
+#	modified:   images/talents/deathsreach.png
+#	new file:   images/talents/debilitatingflames.png
+#	modified:   images/talents/decrepify.png
+#	modified:   images/talents/deepbreathing.png
+#	modified:   images/talents/deepchill.png
+#	modified:   images/talents/deepimpact.png
+#	modified:   images/talents/deepshift.png
+#	modified:   images/talents/defensiveshielding.png
+#	new file:   images/talents/deflection.png
+#	modified:   images/talents/demolitionsexpert.png
+#	modified:   images/talents/demoniccircle.png
+#	modified:   images/talents/demonicform.png
+#	modified:   images/talents/demonicinvasion.png
+#	modified:   images/talents/demonicsmite.png
+#	modified:   images/talents/demonicstrength.png
+#	new file:   images/talents/demoralizingshout.png
+#	modified:   images/talents/devastatingcharge.png
+#	modified:   images/talents/devilsdue.png
+#	modified:   images/talents/devouringmaw.png
+#	modified:   images/talents/devourthefrail.png
+#	modified:   images/talents/diabolicalmomentum.png
+#	modified:   images/talents/diamondresolve.png
+#	modified:   images/talents/diamondskin.png
+#	new file:   images/talents/direbeast.png
+#	modified:   images/talents/disintegrate.png
+#	modified:   images/talents/dissonance.png
+#	modified:   images/talents/dividingwisp.png
+#	modified:   images/talents/divinehurricane.png
+#	modified:   images/talents/divinepalm.png
+#	modified:   images/talents/divineshield.png
+#	modified:   images/talents/divinestorm.png
+#	modified:   images/talents/dominance.png
+#	modified:   images/talents/domination.png
+#	modified:   images/talents/doubleback.png
+#	modified:   images/talents/doublebarreled.png
+#	modified:   images/talents/doublecross.png
+#	modified:   images/talents/doubledragon.png
+#	modified:   images/talents/doublestrike.png
+#	modified:   images/talents/doubletap.png
+#	modified:   images/talents/doubletrouble.png
+#	modified:   images/talents/doublewyrmhole.png
+#	new file:   images/talents/dragonseye.png
+#	modified:   images/talents/drainmomentum.png
+#	modified:   images/talents/drakkenlaserdrill.png
+#	modified:   images/talents/draughtoverflow.png
+#	new file:   images/talents/dreadfulwake.png
+#	modified:   images/talents/dreadshield.png
+#	modified:   images/talents/dreamshot.png
+#	modified:   images/talents/duskwings.png
+#	modified:   images/talents/dustofappearance.png
+#	modified:   images/talents/dwarflaunch.png
+#	modified:   images/talents/dyingbreath.png
+#	modified:   images/talents/eagerwolf.png
+#	new file:   images/talents/earthally.png
+#	modified:   images/talents/earthenshields.png
+#	modified:   images/talents/earthgrasptotem.png
+#	modified:   images/talents/earthlivingenchant.png
+#	modified:   images/talents/earthquake.png
+#	modified:   images/talents/earthshield.png
+#	modified:   images/talents/easyprey.png
+#	modified:   images/talents/echoedcorruption.png
+#	modified:   images/talents/echoofheaven.png
+#	modified:   images/talents/echopedal.png
+#	modified:   images/talents/edgeofmadness.png
+#	new file:   images/talents/egghunt.png
+#	new file:   images/talents/eggshell.png
+#	modified:   images/talents/electriccharge.png
+#	modified:   images/talents/elementalconduit.png
+#	modified:   images/talents/elongatedtongue.png
+#	modified:   images/talents/elunesgrace.png
+#	new file:   images/talents/elusivebrawler.png
+#	modified:   images/talents/elusivefeet.png
+#	new file:   images/talents/elusiveness.png
+#	modified:   images/talents/elusivestrike.png
+#	modified:   images/talents/embracedeath.png
+#	modified:   images/talents/emeraldwind.png
+#	modified:   images/talents/empathiclink.png
+#	modified:   images/talents/empower.png
+#	modified:   images/talents/encore.png
+#	modified:   images/talents/endlesscreep.png
+#	modified:   images/talents/endlessenergy.png
+#	modified:   images/talents/endurancetraining.png
+#	modified:   images/talents/enduringswarm.png
+#	modified:   images/talents/enduringwill.png
+#	modified:   images/talents/energizedcord.png
+#	modified:   images/talents/energizinggrasp.png
+#	modified:   images/talents/energyroil.png
+#	modified:   images/talents/enginegunk.png
+#	new file:   images/talents/engulfingflame.png
+#	modified:   images/talents/enhancedagility.png
+#	modified:   images/talents/enoughtoshare.png
+#	modified:   images/talents/enraged.png
+#	modified:   images/talents/entomb.png
+#	modified:   images/talents/envelopingassault.png
+#	new file:   images/talents/envelopingshadows.png
+#	modified:   images/talents/envenom.png
+#	modified:   images/talents/envenomednest.png
+#	modified:   images/talents/envenomedspikes.png
+#	modified:   images/talents/envenomedspines.png
+#	modified:   images/talents/epicenter.png
+#	modified:   images/talents/epicmount.png
+#	modified:   images/talents/epiphany.png
+#	modified:   images/talents/eriktheswift.png
+#	new file:   images/talents/essenceclaws.png
+#	modified:   images/talents/essencedevourer.png
+#	modified:   images/talents/essenceforessence.png
+#	modified:   images/talents/eternalhunger.png
+#	modified:   images/talents/eternalretaliation.png
+#	modified:   images/talents/evasivefire.png
+#	modified:   images/talents/evenindeath.png
+#	modified:   images/talents/eviscerate.png
+#	modified:   images/talents/evolutionarylink.png
+#	modified:   images/talents/evolutioncomplete.png
+#	modified:   images/talents/evolvemonstrosity.png
+#	modified:   images/talents/excessiveforce.png
+#	modified:   images/talents/executioner.png
+#	modified:   images/talents/explosiveattacks.png
+#	modified:   images/talents/explosivebarrier.png
+#	modified:   images/talents/explosiveround.png
+#	new file:   images/talents/exposearmor.png
+#	modified:   images/talents/expulsionzone.png
+#	modified:   images/talents/extendedlightning.png
+#	modified:   images/talents/extendedspikes.png
+#	modified:   images/talents/extratnt.png
+#	modified:   images/talents/eyeofkilrogg.png
+#	modified:   images/talents/eyesinthedark.png
+#	modified:   images/talents/ezpzdimensionalripper.png
+#	modified:   images/talents/facesmelt.png
+#	modified:   images/talents/fallingsword.png
+#	modified:   images/talents/fanaticism.png
+#	modified:   images/talents/farflightquiver.png
+#	modified:   images/talents/farseersblessing.png
+#	modified:   images/talents/farsight.png
+#	modified:   images/talents/fastforward.png
+#	modified:   images/talents/fastreload.png
+#	new file:   images/talents/fatalfinesse.png
+#	modified:   images/talents/favoroftheoldgods.png
+#	modified:   images/talents/fealtyuntodeath.png
+#	new file:   images/talents/fearfulpresence.png
+#	modified:   images/talents/feedbackloop.png
+#	modified:   images/talents/feedingfrenzy.png
+#	modified:   images/talents/feeltheheat.png
+#	modified:   images/talents/feigndeath.png
+#	modified:   images/talents/felarmor.png
+#	modified:   images/talents/felinfusion.png
+#	modified:   images/talents/feralheart.png
+#	modified:   images/talents/ferocioushealing.png
+#	modified:   images/talents/ferociousstalker.png
+#	modified:   images/talents/fierybrand.png
+#	modified:   images/talents/fifthcircle.png
+#	modified:   images/talents/fightorflight.png
+#	modified:   images/talents/firedevil.png
+#	modified:   images/talents/fireeater.png
+#	modified:   images/talents/fireflies.png
+#	modified:   images/talents/firesofhell.png
+#	new file:   images/talents/fireward.png
+#	modified:   images/talents/firinmahlazorz.png
+#	modified:   images/talents/firstaid.png
+#	modified:   images/talents/firststrike.png
+#	new file:   images/talents/fisheye.png
+#	modified:   images/talents/fishinghook.png
+#	new file:   images/talents/fishoil.png
+#	modified:   images/talents/fishtank.png
+#	modified:   images/talents/fissionbomb.png
+#	modified:   images/talents/fistofjustice.png
+#	modified:   images/talents/fistsoffury.png
+#	modified:   images/talents/flailaxe.png
+#	new file:   images/talents/flamesofsulfuron.png
+#	modified:   images/talents/flamethrower.png
+#	modified:   images/talents/flare.png
+#	modified:   images/talents/fleabag.png
+#	modified:   images/talents/flowingwounds.png
+#	modified:   images/talents/flowrider.png
+#	new file:   images/talents/flyingleap.png
+#	modified:   images/talents/focusedattack.png
+#	new file:   images/talents/focusedbeam.png
+#	modified:   images/talents/focusfire.png
+#	modified:   images/talents/focusingdiodes.png
+#	modified:   images/talents/followthrough.png
+#	modified:   images/talents/forcearmor.png
+#	modified:   images/talents/forcebarrier.png
+#	modified:   images/talents/forcedrecruitment.png
+#	modified:   images/talents/forceofwill.png
+#	modified:   images/talents/forcewall.png
+#	modified:   images/talents/forestswrath.png
+#	modified:   images/talents/forkedlightning.png
+#	modified:   images/talents/frenziedfists.png
+#	new file:   images/talents/frenzy.png
+#	modified:   images/talents/frenzyofkalimdor.png
+#	new file:   images/talents/freshestingredients.png
+#	modified:   images/talents/friendorfoe.png
+#	modified:   images/talents/frigidwinds.png
+#	modified:   images/talents/fromtheshadows.png
+#	modified:   images/talents/frostarmor.png
+#	modified:   images/talents/frostbitten.png
+#	modified:   images/talents/frostmournefeeds.png
+#	modified:   images/talents/frostpresence.png
+#	modified:   images/talents/frostshards.png
+#	modified:   images/talents/frostshot.png
+#	modified:   images/talents/froststrike.png
+#	modified:   images/talents/frostwolfsgrace.png
+#	modified:   images/talents/frozenwastes.png
+#	modified:   images/talents/fuelfortheflame.png
+#	modified:   images/talents/fullmoonfire.png
+#	modified:   images/talents/fullyloaded.png
+#	modified:   images/talents/furiousblow.png
+#	modified:   images/talents/furnaceblast.png
+#	modified:   images/talents/furyofthestorm.png
+#	modified:   images/talents/furyofthesunwell.png
+#	modified:   images/talents/furyoftheswarm.png
+#	modified:   images/talents/gaintrain.png
+#	modified:   images/talents/galeforce.png
+#	modified:   images/talents/gallopinggait.png
+#	modified:   images/talents/gargantuan.png
+#	modified:   images/talents/gatheringradiance.png
+#	modified:   images/talents/gatheringstorm.png
+#	modified:   images/talents/getstuffed.png
+#	modified:   images/talents/ghastlyreach.png
+#	modified:   images/talents/ghostprotocol.png
+#	modified:   images/talents/giantkiller.png
+#	modified:   images/talents/giantscorcher.png
+#	modified:   images/talents/giantscurse.png
+#	new file:   images/talents/giftofthexelnaga.png
+#	modified:   images/talents/gilneanroulette.png
+#	modified:   images/talents/giveemtheaxe.png
+#	modified:   images/talents/givememore.png
+#	modified:   images/talents/givemetwenty.png
+#	modified:   images/talents/gladiatorswarshout.png
+#	modified:   images/talents/glasscannon.png
+#	modified:   images/talents/glimmerofhope.png
+#	modified:   images/talents/gloom.png
+#	new file:   images/talents/glorytothealliance.png
+#	modified:   images/talents/gluttonousward.png
+#	modified:   images/talents/gluttony.png
+#	modified:   images/talents/glyphofdrainlife.png
+#	modified:   images/talents/glyphofpolybomb.png
+#	modified:   images/talents/goblinfusion.png
+#	modified:   images/talents/goforthethroat.png
+#	modified:   images/talents/gorge.png
+#	modified:   images/talents/graceofair.png
+#	modified:   images/talents/graduatingrange.png
+#	modified:   images/talents/grandslam.png
+#	modified:   images/talents/gravitonsurge.png
+#	modified:   images/talents/gravitonvortex.png
+#	modified:   images/talents/gravitykills.png
+#	modified:   images/talents/gravobomb3000.png
+#	modified:   images/talents/greatercleave.png
+#	modified:   images/talents/greaterpolymorph.png
+#	modified:   images/talents/greaterspellshield.png
+#	modified:   images/talents/grenadier.png
+#	new file:   images/talents/grimtask.png
+#	new file:   images/talents/grizzledfortitude.png
+#	modified:   images/talents/groundingbrew.png
+#	modified:   images/talents/guardianoftirisfal.png
+#	new file:   images/talents/guardiantoads.png
+#	modified:   images/talents/guitarhero.png
+#	modified:   images/talents/hammergains.png
+#	modified:   images/talents/hammerofthelightbringer.png
+#	modified:   images/talents/hammeroftwilight.png
+#	modified:   images/talents/hammeron.png
+#	modified:   images/talents/hamstringshot.png
+#	new file:   images/talents/handofragnaros.png
+#	modified:   images/talents/hardenedbones.png
+#	modified:   images/talents/hardenedfocus.png
+#	modified:   images/talents/hardenedshield.png
+#	modified:   images/talents/hardenedskin.png
+#	new file:   images/talents/hardstyle.png
+#	new file:   images/talents/harshwinds.png
+#	modified:   images/talents/harvestlife.png
+#	modified:   images/talents/harvestvitality.png
+#	modified:   images/talents/hastybargain.png
+#	modified:   images/talents/haunt.png
+#	modified:   images/talents/haymaker.png
+#	modified:   images/talents/healingstatic.png
+#	modified:   images/talents/healingtotem.png
+#	modified:   images/talents/healingward.png
+#	modified:   images/talents/healthfunnel.png
+#	modified:   images/talents/healthstone.png
+#	new file:   images/talents/heavenlyzeal.png
+#	modified:   images/talents/heavensfury.png
+#	modified:   images/talents/heavyburden.png
+#	modified:   images/talents/heavyimpact.png
+#	modified:   images/talents/heavyslam.png
+#	modified:   images/talents/hedonism.png
+#	new file:   images/talents/heliotropics.png
+#	new file:   images/talents/hellfire.png
+#	modified:   images/talents/hellforgedarmor.png
+#	new file:   images/talents/hellgate.png
+#	new file:   images/talents/hellishhirelings.png
+#	modified:   images/talents/hellstorm.png
+#	new file:   images/talents/hemorrhage.png
+#	new file:   images/talents/heroicdifficulty.png
+#	modified:   images/talents/herostalker.png
+#	new file:   images/talents/hexedcrawlers.png
+#	new file:   images/talents/highkingsquest.png
+#	modified:   images/talents/hinderedmotion.png
+#	modified:   images/talents/hinderingmoonfire.png
+#	modified:   images/talents/hinderingwinds.png
+#	modified:   images/talents/hinterlandblast.png
+#	modified:   images/talents/hitme.png
+#	modified:   images/talents/hivemaster.png
+#	modified:   images/talents/hivemind.png
+#	modified:   images/talents/holdyourground.png
+#	modified:   images/talents/holostability.png
+#	modified:   images/talents/holyarena.png
+#	modified:   images/talents/holyfire.png
+#	modified:   images/talents/holyground.png
+#	modified:   images/talents/holyrenewal.png
+#	modified:   images/talents/holyshock.png
+#	modified:   images/talents/hopelessness.png
+#	modified:   images/talents/horadricreforging.png
+#	modified:   images/talents/horrify.png
+#	modified:   images/talents/hotpursuit.png
+#	modified:   images/talents/hoversiegemode.png
+#	modified:   images/talents/humongoid.png
+#	modified:   images/talents/hungerforpower.png
+#	modified:   images/talents/hungerofthewolf.png
+#	modified:   images/talents/hungrybear.png
+#	modified:   images/talents/hungryformore.png
+#	modified:   images/talents/hungryhungrystitches.png
+#	modified:   images/talents/hunkaburningolaf.png
+#	modified:   images/talents/huntergatherer.png
+#	modified:   images/talents/huntersblunderbuss.png
+#	modified:   images/talents/huntersonslaught.png
+#	modified:   images/talents/huntersswiftness.png
+#	modified:   images/talents/huntressfury.png
+#	modified:   images/talents/hurricane.png
+#	modified:   images/talents/hydralisktransfusion.png
+#	modified:   images/talents/hypercoolingengines.png
+#	modified:   images/talents/hyperfocuscoils.png
+#	modified:   images/talents/hyperion.png
+#	modified:   images/talents/hypershift.png
+#	modified:   images/talents/iamhurrying.png
+#	modified:   images/talents/iamthestrongest.png
+#	modified:   images/talents/icebarrier.png
+#	modified:   images/talents/iceblock.png
+#	modified:   images/talents/iceboundfortitude.png
+#	modified:   images/talents/icefloes.png
+#	modified:   images/talents/icelance.png
+#	modified:   images/talents/icyveins.png
+#	modified:   images/talents/ignorepain.png
+#	modified:   images/talents/illusionist.png
+#	new file:   images/talents/illusionmaster.png
+#	modified:   images/talents/immolation.png
+#	modified:   images/talents/immortalcoil.png
+#	modified:   images/talents/impatienceisavirtue.png
+#	modified:   images/talents/imposingpresence.png
+#	modified:   images/talents/imposingwill.png
+#	modified:   images/talents/improvediceblock.png
+#	modified:   images/talents/improvedlifetap.png
+#	modified:   images/talents/incendiaryelixir.png
+#	modified:   images/talents/increasingclarity.png
+#	modified:   images/talents/indestructible.png
+#	modified:   images/talents/indigestion.png
+#	modified:   images/talents/infernalglobe.png
+#	modified:   images/talents/infest.png
+#	modified:   images/talents/infusedgrenade.png
+#	modified:   images/talents/infusedpower.png
+#	new file:   images/talents/initiative.png
+#	modified:   images/talents/insatiable.png
+#	modified:   images/talents/insatiableblade.png
+#	modified:   images/talents/insight.png
+#	modified:   images/talents/intensivecare.png
+#	modified:   images/talents/intherhythm.png
+#	modified:   images/talents/invigoratingspores.png
+#	modified:   images/talents/invigoration.png
+#	modified:   images/talents/invisibility.png
+#	modified:   images/talents/ironfists.png
+#	modified:   images/talents/ironforgedmomentum.png
+#	modified:   images/talents/irradiate.png
+#	modified:   images/talents/isolation.png
+#	modified:   images/talents/isthatahealthpack.png
+#	modified:   images/talents/itsasabotage.png
+#	modified:   images/talents/itsrainingscrap.png
+#	modified:   images/talents/jailors.png
+#	modified:   images/talents/judgment.png
+#	new file:   images/talents/juggernaut.png
+#	modified:   images/talents/jugof1000000cups.png
+#	modified:   images/talents/jugof1000cups.png
+#	modified:   images/talents/jump.png
+#	modified:   images/talents/jumper.png
+#	new file:   images/talents/kawarimi.png
+#	modified:   images/talents/kegtoss.png
+#	new file:   images/talents/khalascelerity.png
+#	modified:   images/talents/khalasembrace.png
+#	new file:   images/talents/khalaslight.png
+#	new file:   images/talents/khaydarinresonance.png
+#	modified:   images/talents/killcommand.png
+#	modified:   images/talents/kungfuhustle.png
+#	modified:   images/talents/kwikreleasecharge.png
+#	modified:   images/talents/lambtotheslaughter.png
+#	modified:   images/talents/landingmomentum.png
+#	modified:   images/talents/largeandincharge.png
+#	modified:   images/talents/lastbite.png
+#	modified:   images/talents/lastlaugh.png
+#	new file:   images/talents/lavasurge.png
+#	new file:   images/talents/lavawave.png
+#	modified:   images/talents/lawsofhope.png
+#	modified:   images/talents/leadrain.png
+#	modified:   images/talents/leap.png
+#	modified:   images/talents/leapingstrike.png
+#	modified:   images/talents/leechingrounds.png
+#	modified:   images/talents/leechingscarabs.png
+#	modified:   images/talents/legionofbeetles.png
+#	modified:   images/talents/legionofnorthrend.png
+#	modified:   images/talents/lethaldecoy.png
+#	modified:   images/talents/letthemwither.png
+#	modified:   images/talents/leylineseal.png
+#	modified:   images/talents/lifedrain.png
+#	modified:   images/talents/lifefunnel.png
+#	modified:   images/talents/lifeleech.png
+#	modified:   images/talents/lifeseed.png
+#	modified:   images/talents/lightningbond.png
+#	modified:   images/talents/lightningbreath.png
+#	modified:   images/talents/lightningserpent.png
+#	modified:   images/talents/lightspeed.png
+#	modified:   images/talents/lingeringapparition.png
+#	modified:   images/talents/lingeringblind.png
+#	modified:   images/talents/lingeringchill.png
+#	new file:   images/talents/lionsmaw.png
+#	new file:   images/talents/livebythesword.png
+#	modified:   images/talents/livingthedream.png
+#	modified:   images/talents/lockedandloaded.png
+#	modified:   images/talents/locustbrood.png
+#	modified:   images/talents/locustneedles.png
+#	modified:   images/talents/locustnest.png
+#	modified:   images/talents/locustswarm.png
+#	modified:   images/talents/longboatraid.png
+#	modified:   images/talents/longshot.png
+#	modified:   images/talents/loophole.png
+#	modified:   images/talents/lordofterror.png
+#	modified:   images/talents/lostsoul.png
+#	modified:   images/talents/loudspeakers.png
+#	modified:   images/talents/lunarblaze.png
+#	modified:   images/talents/lunarmomentum.png
+#	modified:   images/talents/lunarshower.png
+#	modified:   images/talents/lurkerstrain.png
+#	modified:   images/talents/maelstrom.png
+#	modified:   images/talents/magearmor.png
+#	modified:   images/talents/majesticspan.png
+#	new file:   images/talents/makinginky.png
+#	modified:   images/talents/manaaddict.png
+#	modified:   images/talents/manatap.png
+#	modified:   images/talents/manathirst.png
+#	modified:   images/talents/manatide.png
+#	modified:   images/talents/manicpixie.png
+#	modified:   images/talents/manticore.png
+#	modified:   images/talents/marchofsin.png
+#	modified:   images/talents/marchoftheblackking.png
+#	modified:   images/talents/marchofthemurlocs.png
+#	modified:   images/talents/markedfordeath.png
+#	modified:   images/talents/markofmending.png
+#	modified:   images/talents/massvortex.png
+#	modified:   images/talents/masterassassin.png
+#	new file:   images/talents/masteratarms.png
+#	modified:   images/talents/masterofdestruction.png
+#	modified:   images/talents/masterofflames.png
+#	modified:   images/talents/masterwarpblade.png
+#	modified:   images/talents/maximumcharge.png
+#	new file:   images/talents/maximumtempo.png
+#	modified:   images/talents/meatshield.png
+#	modified:   images/talents/mechalord.png
+#	modified:   images/talents/medbay.png
+#	modified:   images/talents/medivacdropship.png
+#	modified:   images/talents/medivhcheats.png
+#	modified:   images/talents/medusablades.png
+#	modified:   images/talents/megasmash.png
+#	modified:   images/talents/mendingserpent.png
+#	new file:   images/talents/mendingstrikes.png
+#	modified:   images/talents/mentalacuity.png
+#	modified:   images/talents/mercenarylord.png
+#	modified:   images/talents/mercenaryqueen.png
+#	new file:   images/talents/mercilessstrikes.png
+#	modified:   images/talents/metamorphosis.png
+#	new file:   images/talents/meteorbomb.png
+#	modified:   images/talents/miccheck.png
+#	modified:   images/talents/mightygust.png
+#	modified:   images/talents/mindcontrol.png
+#	modified:   images/talents/minefield.png
+#	modified:   images/talents/miniatureblackhole.png
+#	new file:   images/talents/mirage.png
+#	modified:   images/talents/mirrorball.png
+#	new file:   images/talents/mirroredsteel.png
+#	modified:   images/talents/mistified.png
+#	modified:   images/talents/mobiusloop.png
+#	modified:   images/talents/moltenblock.png
+#	new file:   images/talents/moltenpower.png
+#	modified:   images/talents/monsterhunter.png
+#	modified:   images/talents/moonburn.png
+#	new file:   images/talents/mortalstrike.png
+#	modified:   images/talents/mortalwound.png
+#	modified:   images/talents/moshpit.png
+#	modified:   images/talents/mutalisk.png
+#	new file:   images/talents/mutilate.png
+#	modified:   images/talents/mysticalspear.png
+#	modified:   images/talents/napalmstrike.png
+#	modified:   images/talents/naturalperspective.png
+#	modified:   images/talents/naturesculling.png
+#	modified:   images/talents/needlespine.png
+#	modified:   images/talents/negativelycharged.png
+#	modified:   images/talents/neosteelcoating.png
+#	modified:   images/talents/nerazimfury.png
+#	modified:   images/talents/nervesofsteel.png
+#	modified:   images/talents/netherwind.png
+#	modified:   images/talents/networkedcarapace.png
+#	modified:   images/talents/neverendingmurlocs.png
+#	modified:   images/talents/nexusblades.png
+#	modified:   images/talents/nexusfrenzy.png
+#	modified:   images/talents/nightmare.png
+#	new file:   images/talents/nightslayer.png
+#	modified:   images/talents/nimbledefender.png
+#	modified:   images/talents/nimblewisp.png
+#	modified:   images/talents/noescape.png
+#	new file:   images/talents/nonstopremix.png
+#	modified:   images/talents/nordicattacksquad.png
+#	modified:   images/talents/norseforce.png
+#	modified:   images/talents/northernexposure.png
+#	modified:   images/talents/nowheretohide.png
+#	new file:   images/talents/nullification.png
+#	modified:   images/talents/numbingblast.png
+#	modified:   images/talents/nydusnetwork.png
+#	modified:   images/talents/octograb.png
+#	new file:   images/talents/offthewall.png
+#	modified:   images/talents/olafthestout.png
+#	modified:   images/talents/omegastorm.png
+#	modified:   images/talents/oneinthechamber.png
+#	modified:   images/talents/onewhocollects.png
+#	new file:   images/talents/onewiththewind.png
+#	modified:   images/talents/ontheprowl.png
+#	modified:   images/talents/orbitalbfg.png
+#	modified:   images/talents/orbitalbombardment.png
+#	modified:   images/talents/osseinrenewal.png
+#	modified:   images/talents/overdrive.png
+#	modified:   images/talents/overflowinglight.png
+#	modified:   images/talents/overflowingquiver.png
+#	new file:   images/talents/overpower.png
+#	modified:   images/talents/overwhelmingaffliction.png
+#	modified:   images/talents/paindonthurt.png
+#	modified:   images/talents/painistemporary.png
+#	new file:   images/talents/pandemic.png
+#	modified:   images/talents/paralyzingenzymes.png
+#	modified:   images/talents/paralyzingrage.png
+#	modified:   images/talents/partinggift.png
+#	new file:   images/talents/partymix.png
+#	modified:   images/talents/pastandfutureme.png
+#	modified:   images/talents/peacefulrepose.png
+#	modified:   images/talents/peekaboo.png
+#	modified:   images/talents/perfectaim.png
+#	modified:   images/talents/perfectshot.png
+#	modified:   images/talents/perfectstorm.png
+#	modified:   images/talents/perishingflame.png
+#	modified:   images/talents/pesteringblossom.png
+#	new file:   images/talents/phantompain.png
+#	modified:   images/talents/phasebulwark.png
+#	new file:   images/talents/phasedisruption.png
+#	modified:   images/talents/phaseshield.png
+#	modified:   images/talents/phoenix.png
+#	modified:   images/talents/photosynthesis.png
+#	modified:   images/talents/pierce.png
+#	modified:   images/talents/piercingbolt.png
+#	modified:   images/talents/piercinglash.png
+#	modified:   images/talents/piercingsands.png
+#	modified:   images/talents/pinballwizard.png
+#	modified:   images/talents/pinpointaccuracy.png
+#	modified:   images/talents/pitchperfect.png
+#	modified:   images/talents/pixieboost.png
+#	modified:   images/talents/pixiecharm.png
+#	new file:   images/talents/plasmaburn.png
+#	modified:   images/talents/plasmashock.png
+#	modified:   images/talents/playagain.png
+#	modified:   images/talents/pocketoftime.png
+#	modified:   images/talents/poisonedspear.png
+#	modified:   images/talents/poisonnova.png
+#	modified:   images/talents/polybomb.png
+#	modified:   images/talents/portalmastery.png
+#	modified:   images/talents/possession.png
+#	modified:   images/talents/powerconduit.png
+#	modified:   images/talents/powerhungry.png
+#	modified:   images/talents/powersurge.png
+#	modified:   images/talents/precisionbarrage.png
+#	modified:   images/talents/precisionstrike.png
+#	modified:   images/talents/presenceofmind.png
+#	modified:   images/talents/presstheadvantage.png
+#	new file:   images/talents/presstheattack.png
+#	modified:   images/talents/pressurepoint.png
+#	modified:   images/talents/pressurizedglands.png
+#	modified:   images/talents/preventativecare.png
+#	modified:   images/talents/primalaggression.png
+#	modified:   images/talents/primalintimidation.png
+#	new file:   images/talents/primalswarm.png
+#	new file:   images/talents/prismaticlink.png
+#	modified:   images/talents/progrock.png
+#	modified:   images/talents/projectedforce.png
+#	modified:   images/talents/prolificdispersal.png
+#	modified:   images/talents/prolongedsafeguard.png
+#	modified:   images/talents/protectionindeath.png
+#	modified:   images/talents/protectivecoating.png
+#	modified:   images/talents/protectiveshield.png
+#	modified:   images/talents/protoss.png
+#	modified:   images/talents/psiinfusion.png
+#	new file:   images/talents/psionicecho.png
+#	modified:   images/talents/psionicefficiency.png
+#	new file:   images/talents/psionicprojection.png
+#	modified:   images/talents/psionicpulse.png
+#	modified:   images/talents/psionicsynergy.png
+#	modified:   images/talents/psionicwound.png
+#	modified:   images/talents/psychokinesis.png
+#	modified:   images/talents/psychoticbreak.png
+#	modified:   images/talents/pulserounds.png
+#	modified:   images/talents/pulsestrike.png
+#	modified:   images/talents/pulverize.png
+#	modified:   images/talents/puncturingarrow.png
+#	modified:   images/talents/punishment.png
+#	modified:   images/talents/puremalice.png
+#	modified:   images/talents/purgeevil.png
+#	modified:   images/talents/purifierbeam.png
+#	new file:   images/talents/purifyingbrew.png
+#	modified:   images/talents/pursuitofflame.png
+#	modified:   images/talents/putridbile.png
+#	modified:   images/talents/putridground.png
+#	modified:   images/talents/puttinonaclinic.png
+#	modified:   images/talents/pyroblast.png
+#	modified:   images/talents/pyromaniac.png
+#	modified:   images/talents/quantumoverdrive.png
+#	modified:   images/talents/quantumspike.png
+#	modified:   images/talents/quarterback.png
+#	modified:   images/talents/queensrush.png
+#	modified:   images/talents/quickening.png
+#	modified:   images/talents/quickeningblessing.png
+#	modified:   images/talents/quickmind.png
+#	modified:   images/talents/quicksilver.png
+#	modified:   images/talents/quicksilverbullets.png
+#	modified:   images/talents/rabidwolves.png
+#	modified:   images/talents/radiatingfaith.png
+#	modified:   images/talents/ragnaroknroll.png
+#	modified:   images/talents/rainofdestruction.png
+#	modified:   images/talents/rainofvengeance.png
+#	modified:   images/talents/raisedmage.png
+#	modified:   images/talents/rampanthellfire.png
+#	modified:   images/talents/rancor.png
+#	modified:   images/talents/ranger.png
+#	modified:   images/talents/rangersmark.png
+#	modified:   images/talents/rapidchase.png
+#	modified:   images/talents/rapidprojection.png
+#	modified:   images/talents/rathmasblessing.png
+#	modified:   images/talents/ravenfamiliar.png
+#	modified:   images/talents/ravenousspirit.png
+#	new file:   images/talents/ravensintellect.png
+#	modified:   images/talents/raynorsraiders.png
+#	modified:   images/talents/reabsorption.png
+#	modified:   images/talents/reachingthroughtime.png
+#	modified:   images/talents/reactiveparry.png
+#	modified:   images/talents/reanimation.png
+#	modified:   images/talents/rebirth.png
+#	modified:   images/talents/reciprocate.png
+#	modified:   images/talents/recklessstrike.png
+#	modified:   images/talents/redemption.png
+#	modified:   images/talents/reducereuserecycle.png
+#	modified:   images/talents/reflexiveblock.png
+#	new file:   images/talents/refreshingelixir.png
+#	modified:   images/talents/regenerationmaster.png
+#	modified:   images/talents/regenerativebile.png
+#	modified:   images/talents/regenerativemicrobes.png
+#	modified:   images/talents/reinforce.png
+#	modified:   images/talents/rejuvenatingbubble.png
+#	new file:   "images/talents/rejuvenesc\303\252ncia.png"
+#	modified:   images/talents/relentlessleader.png
+#	modified:   images/talents/relentlesssoldier.png
+#	new file:   images/talents/relentlessstrikes.png
+#	modified:   images/talents/remorseless.png
+#	modified:   images/talents/remorselesswinter.png
+#	modified:   images/talents/remotedelivery.png
+#	modified:   images/talents/rendingcleave.png
+#	modified:   images/talents/renewedswing.png
+#	modified:   images/talents/repeatedoffense.png
+#	modified:   images/talents/repeatingarrow.png
+#	modified:   images/talents/repellingstrike.png
+#	modified:   images/talents/repulsion.png
+#	modified:   images/talents/reservoirofhope.png
+#	new file:   images/talents/resilientflame.png
+#	modified:   images/talents/resistant.png
+#	modified:   images/talents/resonation.png
+#	modified:   images/talents/restlesswolves.png
+#	modified:   images/talents/restorativefumes.png
+#	modified:   images/talents/resurrect.png
+#	modified:   images/talents/reverberation.png
+#	new file:   images/talents/reverseamp.png
+#	modified:   images/talents/revitalizingmist.png
+#	modified:   images/talents/revolutionoverdrive.png
+#	modified:   images/talents/rewind.png
+#	modified:   images/talents/ricochet.png
+#	modified:   images/talents/ridethelightning.png
+#	modified:   images/talents/ridethewind.png
+#	modified:   images/talents/righteousassault.png
+#	modified:   images/talents/righteousdefense.png
+#	modified:   images/talents/righteoussmash.png
+#	modified:   images/talents/ringoffire.png
+#	modified:   images/talents/ringoffrost.png
+#	new file:   images/talents/ringofpoison.png
+#	modified:   images/talents/risingdread.png
+#	modified:   images/talents/risingstorm.png
+#	modified:   images/talents/roar.png
+#	modified:   images/talents/robogoblin.png
+#	modified:   images/talents/rockitturretxl.png
+#	modified:   images/talents/rollback.png
+#	modified:   images/talents/rollingthunder.png
+#	modified:   images/talents/royalfocus.png
+#	modified:   images/talents/ruinousaffliction.png
+#	modified:   images/talents/runedgauntlet.png
+#	modified:   images/talents/runetap.png
+#	modified:   images/talents/runicfeedback.png
+#	modified:   images/talents/runicpersistence.png
+#	modified:   images/talents/runningwild.png
+#	new file:   images/talents/rupture.png
+#	modified:   images/talents/safetysprint.png
+#	modified:   images/talents/salvation.png
+#	modified:   images/talents/sanctification.png
+#	modified:   images/talents/savagecharge.png
+#	modified:   images/talents/savortheflavor.png
+#	modified:   images/talents/scorchedearth.png
+#	modified:   images/talents/scoutingdrone.png
+#	modified:   images/talents/scrapomaticsmelter.png
+#	new file:   images/talents/sealfate.png
+#	modified:   images/talents/searedflesh.png
+#	modified:   images/talents/searingarrows.png
+#	modified:   images/talents/searinglight.png
+#	modified:   images/talents/seasonedmarksman.png
+#	modified:   images/talents/secondopinion.png
+#	new file:   images/talents/secondwind.png
+#	modified:   images/talents/secretweapon.png
+#	modified:   images/talents/seeker.png
+#	new file:   images/talents/seekerinthedark.png
+#	modified:   images/talents/seethinghatred.png
+#	new file:   images/talents/sentencedtodeath.png
+#	modified:   images/talents/serenity.png
+#	modified:   images/talents/serpentsidekick.png
+#	modified:   images/talents/serratedspines.png
+#	modified:   images/talents/sevensidedstrike.png
+#	modified:   images/talents/shackler.png
+#	modified:   images/talents/shade.png
+#	modified:   images/talents/shadowassault.png
+#	modified:   images/talents/shadowboltvolley.png
+#	modified:   images/talents/shadowflare.png
+#	modified:   images/talents/shadowfury.png
+#	new file:   images/talents/shadowhunter.png
+#	modified:   images/talents/shadowstalk.png
+#	modified:   images/talents/shakeitoff.png
+#	modified:   images/talents/shandosclarity.png
+#	modified:   images/talents/sharpenedblades.png
+#	modified:   images/talents/shatteredground.png
+#	new file:   images/talents/shatteringthrow.png
+#	modified:   images/talents/shedexoskeleton.png
+#	modified:   images/talents/shieldbattery.png
+#	modified:   images/talents/shielddust.png
+#	modified:   images/talents/shieldofhope.png
+#	modified:   images/talents/shieldsequencer.png
+#	modified:   images/talents/shieldsurge.png
+#	new file:   images/talents/shieldwall.png
+#	new file:   images/talents/shiftingmeteor.png
+#	modified:   images/talents/shiftingsands.png
+#	modified:   images/talents/shishkabob.png
+#	modified:   images/talents/shootingstar.png
+#	modified:   images/talents/shotoffury.png
+#	modified:   images/talents/shove.png
+#	modified:   images/talents/showstopper.png
+#	modified:   images/talents/shrinkray.png
+#	new file:   images/talents/shroudofadun.png
+#	new file:   images/talents/shukuchi.png
+#	modified:   images/talents/siegingwrath.png
+#	modified:   images/talents/sinforsin.png
+#	modified:   images/talents/sinsexposed.png
+#	modified:   images/talents/sinsgrasp.png
+#	modified:   images/talents/siphoningarrow.png
+#	modified:   images/talents/siphoningimpact.png
+#	modified:   images/talents/siphoningtoxin.png
+#	modified:   images/talents/sixthsense.png
+#	modified:   images/talents/sizzlinattacks.png
+#	modified:   images/talents/skeletalmages.png
+#	modified:   images/talents/skeletonmastery.png
+#	modified:   images/talents/skullcracker.png
+#	modified:   images/talents/skyboundwisp.png
+#	modified:   images/talents/slaughterhouse.png
+#	modified:   images/talents/sledgehammer.png
+#	modified:   images/talents/sleightofhand.png
+#	new file:   images/talents/sliceanddice.png
+#	new file:   images/talents/slimetime.png
+#	new file:   images/talents/slip.png
+#	new file:   images/talents/slipintoshadow.png
+#	new file:   images/talents/slipperywhenwet.png
+#	modified:   images/talents/slipstream.png
+#	new file:   images/talents/slowburn.png
+#	modified:   images/talents/slowingsands.png
+#	new file:   images/talents/smokebomb.png
+#	modified:   images/talents/snipemaster.png
+#	modified:   images/talents/snowstorm.png
+#	modified:   images/talents/solaritereaper.png
+#	modified:   images/talents/somatransference.png
+#	new file:   images/talents/sonicamplifier.png
+#	modified:   images/talents/soulfeast.png
+#	new file:   images/talents/soulharvest.png
+#	new file:   images/talents/soulshield.png
+#	new file:   images/talents/soundbarrier.png
+#	modified:   images/talents/spatialecho.png
+#	modified:   images/talents/spatialefficiency.png
+#	modified:   images/talents/spectralleech.png
+#	modified:   images/talents/speedbarrier.png
+#	new file:   images/talents/speeddemon.png
+#	modified:   images/talents/speedmetal.png
+#	modified:   images/talents/speedoftwilight.png
+#	modified:   images/talents/spellbarrier.png
+#	modified:   images/talents/spellshield.png
+#	new file:   images/talents/spidercolony.png
+#	modified:   images/talents/spintowin.png
+#	new file:   images/talents/spiritally.png
+#	modified:   images/talents/spiritbond.png
+#	modified:   images/talents/spiritjourney.png
+#	new file:   images/talents/spiritofarachyr.png
+#	modified:   images/talents/spiritwalkersgrace.png
+#	modified:   images/talents/splinteredspear.png
+#	modified:   images/talents/spraynpray.png
+#	modified:   images/talents/sprint.png
+#	modified:   images/talents/spurredonward.png
+#	modified:   images/talents/spygames.png
+#	modified:   images/talents/stableportal.png
+#	modified:   images/talents/stagedive.png
+#	modified:   images/talents/starfall.png
+#	modified:   images/talents/starwoodspear.png
+#	modified:   images/talents/staticshield.png
+#	modified:   images/talents/steelresolve.png
+#	modified:   images/talents/stickybomb.png
+#	modified:   images/talents/stickyflare.png
+#	modified:   images/talents/stimdrone.png
+#	modified:   images/talents/stoneform.png
+#	modified:   images/talents/stoneskin.png
+#	modified:   images/talents/stonewolves.png
+#	modified:   images/talents/stormcaller.png
+#	modified:   images/talents/stormearthfire.png
+#	modified:   images/talents/stormfront.png
+#	modified:   images/talents/stormofvengeance.png
+#	modified:   images/talents/stormshield.png
+#	new file:   images/talents/stormstoutsecretrecipe.png
+#	modified:   images/talents/strafe.png
+#	new file:   images/talents/strangle.png
+#	modified:   images/talents/stranglingvines.png
+#	modified:   images/talents/subdue.png
+#	new file:   images/talents/submerge.png
+#	new file:   images/talents/subtlety.png
+#	new file:   images/talents/subwoofer.png
+#	new file:   images/talents/sulfurashungers.png
+#	new file:   images/talents/sulfurassmash.png
+#	modified:   images/talents/summonsindragosa.png
+#	modified:   images/talents/summonultralisk.png
+#	modified:   images/talents/summonwaterelemental.png
+#	modified:   images/talents/sundering.png
+#	modified:   images/talents/sunfireenchantment.png
+#	modified:   images/talents/sunkingsfury.png
+#	new file:   images/talents/superheated.png
+#	modified:   images/talents/superiorschematics.png
+#	new file:   images/talents/superstition.png
+#	modified:   images/talents/suppressionpulse.png
+#	modified:   images/talents/surgeofstamina.png
+#	modified:   images/talents/surgingdash.png
+#	modified:   images/talents/surgingwinds.png
+#	modified:   images/talents/survivalinstincts.png
+#	modified:   images/talents/sustainedcarapace.png
+#	modified:   images/talents/sustainingpower.png
+#	modified:   images/talents/swiftpursuit.png
+#	modified:   images/talents/swiftretribution.png
+#	modified:   images/talents/swiftsweep.png
+#	modified:   images/talents/symbiosis.png
+#	new file:   images/talents/synaesthesiaauditiva.png
+#	modified:   images/talents/systemshock.png
+#	modified:   images/talents/takingflight.png
+#	modified:   images/talents/talrashaselements.png
+#	modified:   images/talents/targetpurified.png
+#	modified:   images/talents/tasteforblood.png
+#	new file:   images/talents/taunt.png
+#	modified:   images/talents/temperedbydiscipline.png
+#	new file:   images/talents/temperedflame.png
+#	modified:   images/talents/tempestfury.png
+#	new file:   images/talents/templarswill.png
+#	modified:   images/talents/templarszeal.png
+#	modified:   images/talents/temporalflux.png
+#	modified:   images/talents/temporalloop.png
+#	modified:   images/talents/tenaciousroots.png
+#	modified:   images/talents/tenderizer.png
+#	modified:   images/talents/thatsthestuff.png
+#	modified:   images/talents/thebiggertheyare.png
+#	modified:   images/talents/thecrusademarcheson.png
+#	modified:   images/talents/thegoodstuff.png
+#	modified:   images/talents/thehunt.png
+#	modified:   images/talents/themasterstouch.png
+#	modified:   images/talents/thenethercalls.png
+#	modified:   images/talents/thesequel.png
+#	modified:   images/talents/thewillofgall.png
+#	modified:   images/talents/thickskin.png
+#	modified:   images/talents/thingofthedeep.png
+#	modified:   images/talents/thirdwind.png
+#	modified:   images/talents/thirstingblade.png
+#	new file:   images/talents/thistletea.png
+#	modified:   images/talents/thornwoodvine.png
+#	new file:   images/talents/threebladestyle.png
+#	modified:   images/talents/thrillofthehunt.png
+#	modified:   images/talents/thunderburn.png
+#	modified:   images/talents/thunderstrike.png
+#	modified:   images/talents/thunderstrikes.png
+#	modified:   images/talents/thunderstruck.png
+#	modified:   images/talents/tidalwaves.png
+#	modified:   images/talents/timelesscreature.png
+#	modified:   images/talents/timelostwisp.png
+#	modified:   images/talents/timeout.png
+#	new file:   images/talents/timetokrill.png
+#	modified:   images/talents/timewalkerspursuit.png
+#	modified:   images/talents/tissueregeneration.png
+#	modified:   images/talents/titangrenade.png
+#	modified:   images/talents/titankiller.png
+#	modified:   images/talents/toadsofhugeness.png
+#	modified:   images/talents/togetherwearestrong.png
+#	modified:   images/talents/toothandclaw.png
+#	modified:   images/talents/torrasque.png
+#	modified:   images/talents/totalrecall.png
+#	modified:   images/talents/totemicprojection.png
+#	modified:   images/talents/tothelimit.png
+#	modified:   images/talents/tourbus.png
+#	new file:   images/talents/toxicbuildup.png
+#	modified:   images/talents/toxicgas.png
+#	modified:   images/talents/tracerrounds.png
+#	modified:   images/talents/tragoulsessence.png
+#	modified:   images/talents/trailoffrost.png
+#	modified:   images/talents/tranquility.png
+#	modified:   images/talents/transcendence.png
+#	modified:   images/talents/transfusion.png
+#	modified:   images/talents/transgression.png
+#	modified:   images/talents/traumatrigger.png
+#	modified:   images/talents/triplestrike.png
+#	modified:   images/talents/tripletap.png
+#	modified:   images/talents/triumvirate.png
+#	modified:   images/talents/trueshotaura.png
+#	modified:   images/talents/tufferfish.png
+#	new file:   images/talents/tunnelingclaws.png
+#	modified:   images/talents/turretstorage.png
+#	modified:   images/talents/twilightarchon.png
+#	modified:   images/talents/twilightdream.png
+#	modified:   images/talents/twilightnova.png
+#	modified:   images/talents/twilightveil.png
+#	new file:   images/talents/twinbladesoffury.png
+#	modified:   images/talents/twinspheres.png
+#	modified:   images/talents/twistingnether.png
+#	modified:   images/talents/twoforone.png
+#	modified:   images/talents/tyrantmaw.png
+#	modified:   images/talents/ultimateevolution.png
+#	modified:   images/talents/unbound.png
+#	modified:   images/talents/underking.png
+#	modified:   images/talents/unendinghatred.png
+#	modified:   images/talents/unfairadvantage.png
+#	modified:   images/talents/unfetteredassault.png
+#	modified:   images/talents/unfurlingspray.png
+#	modified:   images/talents/unleashed.png
+#	modified:   images/talents/unleashtheboars.png
+#	modified:   images/talents/unrelentingpursuit.png
+#	modified:   images/talents/unstableanomaly.png
+#	modified:   images/talents/unstablepoison.png
+#	modified:   images/talents/unstoppablecompetitor.png
+#	modified:   images/talents/unstoppableforce.png
+#	modified:   images/talents/untappedpotential.png
+#	modified:   images/talents/untouchable.png
+#	modified:   images/talents/unyieldingdefender.png
+#	modified:   images/talents/unyieldingdespair.png
+#	modified:   images/talents/updraft.png
+#	modified:   images/talents/upheaval.png
+#	new file:   images/talents/upthefrequency.png
+#	modified:   images/talents/urticatingspines.png
+#	modified:   images/talents/vengefulroots.png
+#	modified:   images/talents/versatile.png
+#	modified:   images/talents/viciousness.png
+#	new file:   images/talents/victoryrush.png
+#	modified:   images/talents/victuals.png
+#	new file:   images/talents/vigilance.png
+#	new file:   images/talents/vigor.png
+#	modified:   images/talents/vigorousassault.png
+#	modified:   images/talents/vigorousstrike.png
+#	modified:   images/talents/vikingbribery.png
+#	new file:   images/talents/vikingfuryofthestorm.png
+#	new file:   images/talents/vileinfection.png
+#	modified:   images/talents/vilenest.png
+#	modified:   images/talents/visceralattacks.png
+#	modified:   images/talents/viscousacid.png
+#	modified:   images/talents/voidprison.png
+#	modified:   images/talents/voidslash.png
+#	modified:   images/talents/volatileacid.png
+#	modified:   images/talents/volatilemutation.png
+#	modified:   images/talents/vorpalblade.png
+#	modified:   images/talents/wailingarrow.png
+#	modified:   images/talents/wanderingkeg.png
+#	new file:   images/talents/warbringer.png
+#	modified:   images/talents/warpaint.png
+#	modified:   images/talents/warpsickness.png
+#	modified:   images/talents/waterdragon.png
+#	modified:   images/talents/waveofforce.png
+#	modified:   images/talents/waveoflight.png
+#	new file:   images/talents/wayofillusion.png
+#	new file:   images/talents/wayoftheblade.png
+#	modified:   images/talents/wayofthehundredfists.png
+#	new file:   images/talents/wayofthewind.png
+#	modified:   images/talents/weaken.png
+#	new file:   images/talents/wemovetogether.png
+#	new file:   images/talents/widowmakers.png
+#	modified:   images/talents/wildfirebear.png
+#	modified:   images/talents/wildvigor.png
+#	modified:   images/talents/willingvessel.png
+#	modified:   images/talents/willofheaven.png
+#	modified:   images/talents/willoftheforsaken.png
+#	modified:   images/talents/windrunner.png
+#	modified:   images/talents/windshear.png
+#	modified:   images/talents/windsofcelerity.png
+#	new file:   images/talents/windstrider.png
+#	modified:   images/talents/windtunnel.png
+#	modified:   images/talents/wingman.png
+#	modified:   images/talents/wintermute.png
+#	modified:   images/talents/wintersreach.png
+#	modified:   images/talents/witheringbarrage.png
+#	new file:   images/talents/witheringflames.png
+#	modified:   images/talents/withouteffort.png
+#	modified:   images/talents/withthewind.png
+#	modified:   images/talents/wizenedduelist.png
+#	modified:   images/talents/wolfheart.png
+#	modified:   images/talents/wolfrun.png
+#	modified:   images/talents/worldbreaker.png
+#	modified:   images/talents/wormhole.png
+#	new file:   images/talents/woundpoison.png
+#	modified:   images/talents/wrathofcod.png
+#	modified:   images/talents/wrathofheaven.png
+#	modified:   images/talents/wrathoftheberserker.png
+#	modified:   images/talents/xtralargebombs.png
+#	modified:   images/talents/zealotcharge.png
+#	modified:   images/talents/zealotry.png
+#	modified:   images/talents/zeisvengeance.png
+#
 # Changes not staged for commit:
 #   (use "git add <file>..." to update what will be committed)
 #   (use "git checkout -- <file>..." to discard changes in working directory)
 #
+#	modified:   DIFF
 #	modified:   auto_update.php
 #	modified:   characters
 #	modified:   constants.php
 #	modified:   empty.html
-#	modified:   images/talents/arcanebrilliance.png
-#	modified:   images/talents/bloodfrenzy.png
-#	modified:   images/talents/chitinousplating.png
-#	modified:   images/talents/crowdcontrol.png
-#	modified:   images/talents/endlesscreep.png
-#	modified:   images/talents/evenindeath.png
-#	modified:   images/talents/flamethrower.png
-#	modified:   images/talents/infest.png
-#	modified:   images/talents/punishment.png
-#	modified:   images/talents/repeatingarrow.png
-#	modified:   images/talents/shotoffury.png
-#	modified:   images/talents/siphoningarrow.png
-#	modified:   images/talents/sixthsense.png
-#	modified:   images/talents/staticshield.png
-#	modified:   images/talents/thunderburn.png
-#	modified:   images/talents/totemicprojection.png
-#	modified:   images/talents/triumvirate.png
-#	modified:   images/talents/urticatingspines.png
-#	modified:   images/talents/volatilemutation.png
+#	modified:   newChar.php
+#	modified:   talents.php
 #
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#	DIFF
-#	images/busts/Alarak.jpg
-#	images/busts/Auriel.jpg
-#	images/busts/Cho'gall.jpg
-#	images/talents/angelicflight.png
-#	images/talents/appliedforce.png
-#	images/talents/arcanedynamo.png
-#	images/talents/beaconoflight.png
-#	images/talents/blindingflash.png
-#	images/talents/borninbattle.png
-#	images/talents/burstinglight.png
-#	images/talents/chaosreigns.png
-#	images/talents/cleansingshield.png
-#	images/talents/clearout.png
-#	images/talents/cleaver.png
-#	images/talents/convergingforce.png
-#	images/talents/corrosivesaliva.png
-#	images/talents/counterstrike.png
-#	images/talents/covertmission.png
-#	images/talents/creedofthehunter.png
-#	images/talents/crystalaegis.png
-#	images/talents/cycleofdiscord.png
-#	images/talents/deadlycharge.png
-#	images/talents/deathdealer.png
-#	images/talents/defensiveshielding.png
-#	images/talents/demolitionsexpert.png
-#	images/talents/diamondresolve.png
-#	images/talents/dissonance.png
-#	images/talents/doublecross.png
-#	images/talents/eagerwolf.png
-#	images/talents/empathiclink.png
-#	images/talents/endlessenergy.png
-#	images/talents/endurancetraining.png
-#	images/talents/energizedcord.png
-#	images/talents/explosivebarrier.png
-#	images/talents/expulsionzone.png
-#	images/talents/extendedlightning.png
-#	images/talents/farflightquiver.png
-#	images/talents/feeltheheat.png
-#	images/talents/fleabag.png
-#	images/talents/gaintrain.png
-#	images/talents/givemetwenty.png
-#	images/talents/glimmerofhope.png
-#	images/talents/gloom.png
-#	images/talents/gravitonsurge.png
-#	images/talents/gravitykills.png
-#	images/talents/grenadier.png
-#	images/talents/hastybargain.png
-#	images/talents/heavyburden.png
-#	images/talents/hinderedmotion.png
-#	images/talents/hitme.png
-#	images/talents/hydralisktransfusion.png
-#	images/talents/iamthestrongest.png
-#	images/talents/increasingclarity.png
-#	images/talents/lastlaugh.png
-#	images/talents/lightspeed.png
-#	images/talents/majesticspan.png
-#	images/talents/maximumcharge.png
-#	images/talents/meatshield.png
-#	images/talents/monsterhunter.png
-#	images/talents/negativelycharged.png
-#	images/talents/painistemporary.png
-#	images/talents/piercinglash.png
-#	images/talents/pinpointaccuracy.png
-#	images/talents/pixiecharm.png
-#	images/talents/plasmashock.png
-#	images/talents/powerconduit.png
-#	images/talents/projectedforce.png
-#	images/talents/protectivecoating.png
-#	images/talents/psychokinesis.png
-#	images/talents/puremalice.png
-#	images/talents/quickmind.png
-#	images/talents/recklessstrike.png
-#	images/talents/repeatedoffense.png
-#	images/talents/repellingstrike.png
-#	images/talents/reservoirofhope.png
-#	images/talents/restorativefumes.png
-#	images/talents/resurrect.png
-#	images/talents/righteousassault.png
-#	images/talents/righteousdefense.png
-#	images/talents/searinglight.png
-#	images/talents/seethinghatred.png
-#	images/talents/serratedspines.png
-#	images/talents/shieldofhope.png
-#	images/talents/sinforsin.png
-#	images/talents/speedbarrier.png
-#	images/talents/spellbarrier.png
-#	images/talents/sustainingpower.png
-#	images/talents/swiftretribution.png
-#	images/talents/swiftsweep.png
-#	images/talents/thunderstruck.png
-#	images/talents/togetherwearestrong.png
-#	images/talents/tothelimit.png
-#	images/talents/unstoppablecompetitor.png
-#	images/talents/unyieldingdefender.png
-#	images/talents/viscousacid.png
-#	images/talents/widelightning.png
-#	images/talents/willofheaven.png
-#	images/talents/wingman.png
-#	images/talents/withouteffort.png
-#	images/talents/wrathofheaven.png
-no changes added to commit (use "git add" and/or "git commit -a")

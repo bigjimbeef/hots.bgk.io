@@ -1,5 +1,7 @@
 <?php
 
+include_once("utils.php");
+
 if ($argc < 2) {
 	echo "Usage: php newChar.php [CHARNAME]\n";
 	exit();
@@ -7,12 +9,14 @@ if ($argc < 2) {
 
 $newChar = $argv[1];
 
-$file = fopen("characters", "r");
+$filepath = dirname(__FILE__) . "/characters";
+$file = fopen($filepath, "r");
 $chars = [];
 
 $prevCharacter = "";
 $prevLine = 0;
 
+printWithDate("Reading characters file.");
 while(!feof($file)){
     $line = fgets($file);
 
@@ -26,7 +30,7 @@ while(!feof($file)){
     break;
 }
 fclose($file);
-
+printWithDate("Done reading characters file.");
 
 function writeTextAfterCharacter($file, $text, $prevCharacter) {
 
@@ -50,15 +54,4 @@ $prevCharacter = trim($prevCharacter);
 // We now have the previous character, so read until we hit that character, then add our new one.
 writeTextAfterCharacter("characters", "$newChar", $prevCharacter);
 writeTextAfterCharacter("constants.php", "\t\t\"$newChar\",", $prevCharacter);
-writeTextAfterCharacter("empty.html", "\t\t\t\t\t\t<a href=\"/$newChar\"><img data-name=\"$newChar\" title=\"$newChar\" src=\"/images/busts/$newChar.jpg\" /></a>", $prevCharacter);
-
-// Populate the new talents, and images, for the new guy.
-system("/usr/bin/php talents.php --images > /home/minikeen/hotsbuilds_talents");
-
-// Get the video path for the new guy.
-system("/usr/bin/php videos.php > /home/minikeen/hotsbuilds_videos");
-
-// Get the data!
-system("/usr/bin/php populate.php > /home/minikeen/hotsbuilds_pop");
-
-?>
+writeTextAfterCharacter("empty.html", "\t\t\t\t\t\t<a href='/$newChar'><img data-name='$newChar' title='$newChar' src='/images/busts/$newChar.jpg' /></a>", $prevCharacter);

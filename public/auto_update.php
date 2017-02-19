@@ -3,11 +3,13 @@
 include_once("simple_html_dom.php");
 include_once("utils.php");
 
-chdir("/var/www/hotsbuilds.info/public");
+chdir("/var/www/beta.hotsbuilds.info/public");
 
 $html = file_get_html("http://www.heroesfire.com/hots/wiki/heroes");
 
 $charArray = getCharacterList();
+
+$updated = false;
 
 foreach($html->find(".card-wrap a div") as $heroText) {
 
@@ -27,14 +29,32 @@ foreach($html->find(".card-wrap a div") as $heroText) {
 		$url = "http://eu.battle.net/heroes/static/images/heroes/busts/";
 		$url.= $imgName;
 
+		printWithDate("Getting image from $url");
 		exec("wget $url");
+
+		printWithDate("Moving image to images/busts/$heroName.jpg");
 		exec("mv $imgName images/busts/$heroName.jpg");
 
 		// Now get all information for this hero.
+		printWithDate("Getting info for $heroName");
 		exec("/usr/bin/php newChar.php $heroName");
 
-		exec("/usr/bin/php postpro.php");
+		//exec("/usr/bin/php postpro.php");
+
+		$updated = true;
 	}
+}
+
+if ($updated) {
+
+	// Populate the new talents, and images, for the new guy.
+	system("php talents.php --images");
+
+	// Get the video path for the new guy.
+	system("php videos.php");
+
+	// Get the data!
+	system("php populate.php");
 }
 
 ?>
