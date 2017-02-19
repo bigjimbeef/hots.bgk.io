@@ -36,9 +36,18 @@
 		if ( !empty($matches) )
 		{
 			if ( !$isChogall ) {
+
 				// Greymane special casing.
 				if ( $characterName == "Greymane" ) {
 					$character = "greymane-human";
+				}
+				// Valeera special casing.
+				else if ( $characterName == "Valeera" ) {
+					$character = "valeera-standard";
+				}
+				// Varian special casing.
+				else if ( $characterName == "Varian" ) {
+					$character = "varian-warrior";
 				}
 
 				$videoUrl = "http://media.blizzard.com/heroes/videos/heroes/skins/" . $character . "_" . $matches[1] . ".webm";

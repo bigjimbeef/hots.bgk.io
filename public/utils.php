@@ -90,6 +90,17 @@
 		echo ("[" . $date . "] " . $text . "\n");
 	}
 
+	function logQuery($query) {
+
+		$date = date('m-d-Y_hi');
+		$filepath = dirname(__FILE__) . "/logs/" . $date;
+
+		$fh = fopen($filepath, "w+");
+		fwrite($fh, $query);
+
+		fclose($fh);
+	}
+
 	function getCharacterList() {
 
 		$filepath = dirname(__FILE__) . "/characters";

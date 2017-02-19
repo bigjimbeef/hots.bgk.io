@@ -9,6 +9,8 @@
 		    die('Could not connect: ' . mysql_error());
 		}
 
+		logQuery($sQueryString);
+
 		$result = @mysql_query($sQueryString, $link);
 
 		if ( !$result ) {

@@ -161,11 +161,22 @@
 
 	function setUrl($character, $moddedHTML, $targetTable) {
 
-		$query = "SELECT $targetTable FROM hots_bgk_io." . ETable::Urls . " AS u WHERE u.name LIKE '%" . addslashes($character) . "%'";
-		$result = queryDB($query);
+		if ( $targetTable != ETable::IcyVeins )
+		{
+			$query = "SELECT $targetTable FROM hots_bgk_io." . ETable::Urls . " AS u WHERE u.name LIKE '%" . addslashes($character) . "%'";
+			$result = queryDB($query);
 
-		$res = mysql_fetch_assoc($result["res"]);
-		$url = $res[$targetTable];
+			$res = mysql_fetch_assoc($result["res"]);
+			$url = $res[$targetTable];
+		}
+		else
+		{
+			$baseUrl 	= "http://www.icy-veins.com/heroes/";
+			$blizzName 	= getBlizzName($character);
+			$guide		= "-build-guide";
+
+			$url		= $baseUrl . $blizzName . $guide;
+		}
 
 		$moddedHTML->find("#$targetTable h2 a", 0)->href = $url;
 
@@ -191,7 +202,7 @@
 		// Get the JSON.
 		$baseUrl = "http://www.icy-veins.com/heroes/";
 		$targetUrl = $baseUrl . $blizzName . ".json";
-		if ( !urlOk($targetUrl) ) {
+		if ( !isUrlOk($targetUrl) ) {
 
 			$iv = $baseHTML->find("#icyveins", 0)->outertext = '';
 			return $baseHTML;
@@ -228,7 +239,9 @@
 			$html .= "<tbody id='$buildName'>";
 			foreach ( $talents as $index => $talent ) {
 
-				$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND t.shortname LIKE '%" . $talent . "%'";
+				$talentName = $talent["name"];
+
+				$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND t.name LIKE '%" . addslashes($talentName) . "%'";
 	        	$result = queryDB($query);
 
 	        	$res = mysql_fetch_assoc($result["res"]);

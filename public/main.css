@@ -85,7 +85,8 @@ thead {
 }
 
 thead tr {
-	height:			18px;
+	height:			14px;
+	line-height: 	14px;
 }
 
 #icyveins {
