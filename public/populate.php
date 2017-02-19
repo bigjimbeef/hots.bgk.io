@@ -95,10 +95,6 @@
 
 		$talents = array();
 
-		if ( !urlOk($url) ) {
-			return $talents;
-		}
-
 		$html = file_get_html($url);
 
 		$table 	= $html->find("table", 2);
@@ -107,24 +103,22 @@
 		if(!is_object($row))
 		    return $talents;
 
-		$imgs = $row->find("td img");
-
-		if(empty($imgs))
-			return $talents;
-
 		$count = 0;
 		foreach($row->find("td") as $td)
 		{
+			// skip first two tds
 			++$count;
 			if ($count <= 2)
 				continue;
+
+			$img = $td->find("img", 0);
 
 			if (is_object($img))
 			{
 				$decoded = html_entity_decode($img->title, ENT_QUOTES);
 
 				$matches = null;
-				$returnValue = preg_match("/([\w\s'!,\.-]+:?[\w\s!',-]+):(.*)/", $decoded, $matches);
+				preg_match("/([\w\s'!,\.-]+:?[\w\s!',-]+):(.*)/", $decoded, $matches);
 
 				if ( !empty($matches) )
 				{
@@ -422,6 +416,7 @@
 	truncateTable(ETable::Urls);
 	populateUrls($hlUrls, $gbUrls, $hfUrls, $ivUrls, $characterList);
 
-	exec("/usr/bin/php postpro.php");
+	// Fix up the data.
+	system("/usr/bin/php postpro.php");
 
 ?>

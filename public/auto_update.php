@@ -30,16 +30,15 @@ foreach($html->find(".card-wrap a div") as $heroText) {
 		$url.= $imgName;
 
 		printWithDate("Getting image from $url");
-		exec("wget $url");
+		system("wget $url");
 
 		printWithDate("Moving image to images/busts/$heroName.jpg");
-		exec("mv $imgName images/busts/$heroName.jpg");
+		system("mv $imgName images/busts/$heroName.jpg");
 
 		// Now get all information for this hero.
-		printWithDate("Getting info for $heroName");
-		exec("/usr/bin/php newChar.php $heroName");
+		printWithDate("Getting info for $heroName...");
 
-		//exec("/usr/bin/php postpro.php");
+		system("/usr/bin/php newChar.php $heroName");
 
 		$updated = true;
 	}
@@ -52,9 +51,6 @@ if ($updated) {
 
 	// Get the video path for the new guy.
 	system("php videos.php");
-
-	// Get the data!
-	system("php populate.php");
 }
 
 ?>

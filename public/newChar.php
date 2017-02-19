@@ -13,12 +13,16 @@ $filepath = dirname(__FILE__) . "/characters";
 $file = fopen($filepath, "r");
 $chars = [];
 
-$prevCharacter = "";
+$prevCharacter = null;
 $prevLine = 0;
+$currCharacter = "";
 
-printWithDate("Reading characters file.");
 while(!feof($file)){
     $line = fgets($file);
+    
+    if (!empty($line)) {
+        $currCharacter = $line;        
+    }
 
     // Check if this is where the new character fits.
     if (strcasecmp($newChar, $line) > 0) {
@@ -30,7 +34,14 @@ while(!feof($file)){
     break;
 }
 fclose($file);
-printWithDate("Done reading characters file.");
+
+// Special case for this being the final character in the list.
+if (is_null($prevCharacter)) {
+
+    $prevCharacter = $currCharacter;
+}
+
+printWithDate("Previous character: $prevCharacter");
 
 function writeTextAfterCharacter($file, $text, $prevCharacter) {
 
@@ -54,4 +65,4 @@ $prevCharacter = trim($prevCharacter);
 // We now have the previous character, so read until we hit that character, then add our new one.
 writeTextAfterCharacter("characters", "$newChar", $prevCharacter);
 writeTextAfterCharacter("constants.php", "\t\t\"$newChar\",", $prevCharacter);
-writeTextAfterCharacter("empty.html", "\t\t\t\t\t\t<a href='/$newChar'><img data-name='$newChar' title='$newChar' src='/images/busts/$newChar.jpg' /></a>", $prevCharacter);
+writeTextAfterCharacter("empty.html", "\t\t\t\t\t\t<a href=\"/$newChar\"><img data-name=\"$newChar\" title=\"$newChar\" src=\"/images/busts/$newChar.jpg\" /></a>", $prevCharacter);

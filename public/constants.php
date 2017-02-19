@@ -45,7 +45,6 @@
 	$CHARACTERS = array(
 		"Abathur",
 		"Alarak",
-		"Alarak",
 		"Anub'arak",
 		"Artanis",
 		"Arthas",
@@ -54,9 +53,6 @@
 		"Brightwing",
 		"Chen",
 		"Cho",
-		"Cho'gall",
-		"Cho'gall",
-		"Cho'gall",
 		"Chromie",
 		"Dehaka",
 		"Diablo",
@@ -107,9 +103,8 @@
 		"Varian",
 		"Xul",
 		"Zagara",
-		"Zarya",
-		"Zarya",
-		"Zeratul"
+		"Zeratul",
+		"Zul'jin",
 	);
 
 	const MAX_TALENTS = 7;
