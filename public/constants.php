@@ -104,6 +104,7 @@
 		"Valla",
 		"Varian",
 		"Xul",
+		"Zarya",
 		"Zagara",
 		"Zeratul",
 		"Zul'jin",

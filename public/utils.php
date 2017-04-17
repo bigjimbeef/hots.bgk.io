@@ -95,6 +95,8 @@
 		$date = date('m-d-Y_hi');
 		$filepath = dirname(__FILE__) . "/logs/" . $date;
 
+		system("touch $filepath");
+
 		$fh = fopen($filepath, "w+");
 		fwrite($fh, $query);
 
