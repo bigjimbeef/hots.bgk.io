@@ -45,6 +45,8 @@ printWithDate("Previous character: $prevCharacter");
 
 function writeTextAfterCharacter($file, $text, $prevCharacter) {
 
+    $file = dirname(__FILE__) . "/" . $file;
+
     $lines = file($file);
     $constantsF = fopen($file, "w+");
 

@@ -110,3 +110,12 @@
 
 		return $charArray;
 	}
+
+	function strippedName($talent) {
+		
+		$talent = strtolower($talent);
+		$talent = preg_replace("/[':,!]/", "", $talent);
+		$talent = preg_replace("/[ \.]/", "-", $talent);
+		
+		return $talent;
+	}
