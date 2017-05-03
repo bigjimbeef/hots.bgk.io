@@ -102,6 +102,7 @@
 	}
 
 	function populateVideos($array) {
+		
 		$query = "INSERT IGNORE INTO hots_bgk_io." . ETable::Videos . " (hero, videopath) VALUES";
 
 		$count = 0;

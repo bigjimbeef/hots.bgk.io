@@ -9,6 +9,18 @@
 	foreach($characterList as $characterName) {
 
 		$character = (string)$characterName;
+		$matchQuery = "SELECT * FROM hots_bgk_io." . ETable::Videos . " AS t WHERE t.hero=";
+		$matchQuery .= "\"" . addslashes($character) . "\"";
+
+		$result = queryDB($matchQuery);
+		$output = mysql_fetch_assoc($result["res"]);
+
+		if ( $output !== false ) {
+
+			continue;
+		}
+
+		echo "Made it through with $character...\n";
 
 		$isChogall = $characterName == "Cho" || $characterName == "Gall";
 
@@ -31,7 +43,9 @@
 		$targetAttr = $video->{"data-ng-class"};
 		$targetAttr = htmlspecialchars_decode($targetAttr);
 
-		preg_match("/currentSkin.slug == '(\w+)'/", $targetAttr, $matches);
+		preg_match("/currentSkin.slug == '([a-zA-Z_-]+)'/", $targetAttr, $matches);
+
+		print_r($matches);
 
 		if ( !empty($matches) )
 		{
@@ -50,9 +64,10 @@
 					$character = "varian-warrior";
 				}
 
-				$videoUrl = "http://media.blizzard.com/heroes/videos/heroes/skins/" . $character . "_" . $matches[1] . ".webm";
+				$videoUrl = "http://media.blizzard.com/heroes/$character/skins/videos/" . $matches[1] . ".webm";
 			}
 			else {
+
 				$lowerCharName = strtolower($characterName);
 				$videoUrl = "http://media.blizzard.com/heroes/videos/heroes/skins/" . $lowerCharName . "_" . $matches[1] . ".webm";
 
@@ -62,11 +77,14 @@
 				}
 			}
 
-			echo "Adding video path for $characterName...\n";
+			echo "Adding video path for $characterName: $videoUrl\n";
 			$videos[$characterName] = $videoUrl;
 		}
 	}
 
-	populateVideos($videos);
+	if ( !empty($videos) ) {
+
+		populateVideos($videos);
+	}
 
 ?>

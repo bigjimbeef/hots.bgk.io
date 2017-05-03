@@ -23,16 +23,24 @@ foreach($html->find(".card-wrap a div") as $heroText) {
 
 		// Get blizz image.
 		$blizzName = getBlizzName($heroName);
-		$imgName = $blizzName . ".jpg";
 
-		$url = "http://eu.battle.net/heroes/static/images/heroes/busts/";
-		$url.= $imgName;
+		// Check if we should use the new way.
+		system("wget -q --spider http://media.blizzard.com/heroes/$blizzName/bust.jpg", $newHotness);
 
-		printWithDate("Getting image from $url");
-		system("wget $url");
+		if ( $newHotness != 0 ) {
 
-		printWithDate("Moving image to images/busts/$heroName.jpg");
-		system("mv $imgName $filePath/images/busts/$heroName.jpg");
+			$imgName = $blizzName . ".jpg";
+
+			$url = "http://eu.battle.net/heroes/static/images/heroes/busts/";
+			$url.= $imgName;
+		}
+		else {
+
+			$url = "http://media.blizzard.com/heroes/$blizzName/bust.jpg";
+		}
+
+		printWithDate("Getting image from $url...");
+		system("wget -q $url -O $filePath/images/busts/$heroName.jpg");
 
 		// Now get all information for this hero.
 		printWithDate("Getting info for $heroName...");
@@ -42,6 +50,8 @@ foreach($html->find(".card-wrap a div") as $heroText) {
 		$updated = true;
 	}
 }
+
+exit();
 
 if ($updated) {
 

@@ -61,6 +61,7 @@
 		"Falstad",
 		"Gall",
 		"Gazlowe",
+		"Genji",
 		"Greymane",
 		"Gul'dan",
 		"Illidan",

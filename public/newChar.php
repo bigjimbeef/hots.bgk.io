@@ -18,14 +18,23 @@ $prevLine = 0;
 $currCharacter = "";
 
 while(!feof($file)){
-    $line = fgets($file);
+
+    $line = trim(fgets($file));
     
     if (!empty($line)) {
         $currCharacter = $line;        
     }
 
+    // Check if we're already in here.
+    if (strcasecmp($newChar, $line) == 0) {
+        
+        printWithDate("ERROR: $newChar already exists!");
+        exit();
+    }
+
     // Check if this is where the new character fits.
     if (strcasecmp($newChar, $line) > 0) {
+
         $prevLine = $line;
         continue;
     }
@@ -41,7 +50,7 @@ if (is_null($prevCharacter)) {
     $prevCharacter = $currCharacter;
 }
 
-printWithDate("Previous character: $prevCharacter");
+printWithDate("Inserting $newChar after $prevCharacter.");
 
 function writeTextAfterCharacter($file, $text, $prevCharacter) {
 

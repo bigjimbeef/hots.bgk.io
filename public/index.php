@@ -200,10 +200,11 @@
 		$blizzName = getBlizzName($character);
 
 		// Get the JSON.
-		$baseUrl = "http://www.icy-veins.com/heroes/";
+		$baseUrl = "https://www.icy-veins.com/heroes/";
 		$targetUrl = $baseUrl . $blizzName . ".json";
 		if ( !isUrlOk($targetUrl) ) {
 
+			error_log("NOTHING AT $targetUrl");
 			$iv = $baseHTML->find("#icyveins", 0)->outertext = '';
 			return $baseHTML;
 		}
