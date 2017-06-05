@@ -55,6 +55,7 @@
 		"Chen",
 		"Cho",
 		"Chromie",
+		"D.Va",
 		"Dehaka",
 		"Diablo",
 		"E.T.C.",
