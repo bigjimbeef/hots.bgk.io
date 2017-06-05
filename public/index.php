@@ -240,9 +240,14 @@
 			$html .= "<tbody id='$buildName'>";
 			foreach ( $talents as $index => $talent ) {
 
-				$talentName = $talent["name"];
+				$talentName = $talent;
 
-				$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND t.name LIKE '%" . addslashes($talentName) . "%'";
+				if ( is_array($talent) ) {
+					$talentName = $talent["slug"];
+					error_log($talentName);
+				}
+
+				$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND SOUNDEX(shortname) = SOUNDEX('" . addslashes($talentName) . "')";
 	        	$result = queryDB($query);
 
 	        	$res = mysql_fetch_assoc($result["res"]);

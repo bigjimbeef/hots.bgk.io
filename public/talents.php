@@ -64,7 +64,7 @@
 			$blizzName 	= getBlizzName($charName);
 			$url 		= $baseURL . $heroesURL . $blizzName . $abilities;
 
-			echo "Scraping " . $blizzName . "talents from [$url]...\n";
+			echo $blizzName . ": $url\n";
 			
 			$content	= file_get_html($url);
 
@@ -120,7 +120,7 @@
 			$imageTarget = end(explode('/', $url));
 			$imageName 	= prepImageName($talentName);
 
-			$cmd		= "wget $url";
+			$cmd		= "wget -q $url";
 			exec($cmd);
 
 			$dest		= dirname(__FILE__) . $imagePath . $imageName . ".png";

@@ -154,7 +154,7 @@
 	//
 	function populateTalents($talents) {
 
-		$query 	= "INSERT IGNORE INTO hots_bgk_io." . ETable::Talents . "(hero, name, tier, description, imgurl, number) VALUES ";
+		$query 	= "INSERT IGNORE INTO hots_bgk_io." . ETable::Talents . "(hero, name, shortname, tier, description, imgurl, number) VALUES ";
 
 		// DEBUG
 		//$query 	= "INSERT IGNORE INTO hots_bgk_io." . ETable_DEBUG::Talents . "(hero, name, tier, description, imgurl, number) VALUES ";
@@ -171,6 +171,7 @@
 					}
 
 					$talentName = $singleTalent["name"];
+					$shortName = strippedName($talentName);
 					$talentDesc = $singleTalent["desc"];
 					$talentNum	= $singleTalent["num"];
 
@@ -178,20 +179,23 @@
 					$query 		.= 
 						"(\"" 			. addslashes($heroName) 	. 
 							"\", \"" 	. addslashes($talentName) 	. 
+							"\", \"" 	. addslashes($shortName) 	. 
 							"\", \"" 	. addslashes($tierName) 	. 
 							"\", \"" 	. addslashes($talentDesc) 	. 
 							"\", \"" 	. addslashes($imgurl) 		. 
-							"\", \"" 	. addslashes($talentNum) 		. 
+							"\", \"" 	. addslashes($talentNum) 	. 
 						"\"), ";
 				}
 			}
 		}
 
 		// Add in the "Player's Choice" talent.
-		$query .= "('any', 'Player\'s Choice', 'any', 'Up to you what to pick. All talents are viable.', '/images/talents/playerschoice.png', '?'), ";
+		$query .= "('any', 'Player\'s Choice', 'players-choice', 'any', 'Up to you what to pick. All talents are viable.', '/images/talents/playerschoice.png', '?'), ";
 
 		$query = rtrim($query, ", ");
 		$query .= ";";
+
+		echo "\n" . $query . "\n";
 
 		queryDB($query);
 	}
