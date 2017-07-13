@@ -195,7 +195,5 @@
 		$query = rtrim($query, ", ");
 		$query .= ";";
 
-		echo "\n" . $query . "\n";
-
 		queryDB($query);
 	}

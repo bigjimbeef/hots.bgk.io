@@ -120,7 +120,7 @@
 			$imageTarget = end(explode('/', $url));
 			$imageName 	= prepImageName($talentName);
 
-			$cmd		= "wget -q $url";
+			$cmd		= "wget $url";
 			exec($cmd);
 
 			$dest		= dirname(__FILE__) . $imagePath . $imageName . ".png";

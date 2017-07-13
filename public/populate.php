@@ -264,6 +264,6 @@
 	populateUrls($hlUrls, $gbUrls, $hfUrls, $ivUrls, $characterList);
 
 	// Fix up the data.
-	system("/usr/bin/php postpro.php");
+	//system("/usr/bin/php postpro.php");
 
 ?>

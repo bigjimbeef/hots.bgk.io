@@ -8,12 +8,7 @@
 	function isUrlOk($url) {
 	    $headers = @get_headers($url);
 
-	    if ( $headers[0] == 'HTTP/1.1 200 OK' ) {
-	    	return true;
-	    }
-	    else {
-	    	return false;
-	    }
+	    return ( $headers && $headers[0] != 'HTTP/1.1 404 Not Found' );
 	}
 
 	function replaceAccents($str) {
