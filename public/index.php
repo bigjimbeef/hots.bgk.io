@@ -240,12 +240,16 @@
 			$html .= "<tbody id='$buildName'>";
 			foreach ( $talents as $index => $talent ) {
 
-				$talentName = $talent;
-
-				if ( is_array($talent) ) {
-					$talentName = $talent["slug"];
-					error_log($talentName);
+				$talentObj = null;
+				foreach ($talent as $prio => $talentInfo) {
+					$talentObj = $talentInfo;
+					break;
 				}
+				if ($talentObj == null ) {
+					error_log("No talent found!");
+				}
+
+				$talentName = $talentObj["slug"];
 
 				$query = "SELECT * FROM hots_bgk_io." . ETable::Talents . " AS t WHERE t.hero LIKE '%" . addslashes($character) . "%' AND SOUNDEX(shortname) = SOUNDEX('" . addslashes($talentName) . "')";
 	        	$result = queryDB($query);

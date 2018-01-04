@@ -12,12 +12,24 @@
 		global $TALENT_LEVELS;
 		$tierNames = array_keys($TALENT_LEVELS);
 
-		if (!isUrlOk($url) ) {
+		// Remove "outdated" marker.
+		$currentUrl = $url;
+		$url = preg_replace('/-od$/', '', $url);
+		if ( $url != $currentUrl ) {
+			echo "OUTDATED: $currentUrl...\n";
+		}
+
+		if ( !isUrlOk($url) ) {
 			error_log("URL is busted: $url");
 			return;
 		}
 
 		$content = file_get_html($url);
+		if ( !is_object($content) ) {
+			error_log("Talent is busted at [$url].");
+			return;
+		}
+
 		$textBoxObj = $content->find("div.text-box", 0);
 		if (!is_object($textBoxObj)) {
 			error_log("Text box is busted at [$url].");

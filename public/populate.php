@@ -93,7 +93,7 @@
 	// BLOODY HEROESFIRE JESUS COME ON
 	function findCharacterID($character) {
 
-		$html = file_get_html("http://www.heroesfire.com/hots/guides");
+		$html = file_get_html("https://www.heroesfire.com/hots/guides");
 
 		$id = -1;
 		foreach ( $html->find(".select-guides .heroes img") as $val ) {
